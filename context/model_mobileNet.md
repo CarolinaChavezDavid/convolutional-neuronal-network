@@ -72,3 +72,15 @@ Decision metodologica:
 
 MobileNetV3Small es el primer candidato recomendado porque mejora la familia MobileNetV2 sin saltar a un modelo excesivamente pesado como MobileNetV5. Esto mantiene el foco de la tesis en precision practica y viabilidad para Android.
 
+
+## Corrida MobileNetV3 - 2026-05-04 10:58:25
+
+- Notebook: `/home/nicolaurenti/Documents/convolutional-neuronal-network/MobileNetV2/MobileNetV3.ipynb`
+- Modelo: `MobileNetV3Small` con pesos ImageNet, `include_preprocessing=False`
+- Training mode: `full`
+- Dataset: PlantVillage, 38 clases, split 80/10/10, seed `123`
+- Effective split sizes: train `43442`, validation `5430`, test `5431`
+- Test accuracy: `0.9856`
+- Test loss: `0.0485`
+- TFLite FP16 size MB: `1.90887451171875`
+- Decision provisional: comparar contra MobileNetV2 por accuracy, tamano y latencia antes de integrar a Android.
