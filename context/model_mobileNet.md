@@ -84,3 +84,36 @@ MobileNetV3Small es el primer candidato recomendado porque mejora la familia Mob
 - Test loss: `0.0485`
 - TFLite FP16 size MB: `1.90887451171875`
 - Decision provisional: comparar contra MobileNetV2 por accuracy, tamano y latencia antes de integrar a Android.
+
+## Experimentacion
+
+Antes de subir el modelo a la aplicacion Android, se realiza una fase de experimentacion local sobre el modelo TFLite exportado para validar su comportamiento con imagenes reales y registrar las metricas definitivas.
+
+### Modelo bajo evaluacion
+
+- Archivo: `saved_models/mobilenetv3_small_v1_fp16.tflite`
+- Cuantizacion: FP16
+- Clases: 38 (PlantVillage completo)
+- Tamano: ~1.91 MB
+
+### Notebook de experimentacion
+
+- Ruta: `MobileNet/experimentation/mobilenet_experimentation.ipynb`
+- Permite cargar imagenes desde el computador usando un widget interactivo o especificando la ruta directamente.
+- Realiza inferencia con el interprete TFLite y muestra:
+  - Clasificacion top-1 y top-5 con confianza
+  - Latencia promedio de inferencia (ms) sobre N ejecuciones
+  - Tamano del modelo en MB
+- El preprocesamiento es identico al del entrenamiento: normalizacion a `[-1, 1]` con `(pixel - 127.5) / 127.5`.
+
+### Metricas a registrar en el Excel de seguimiento
+
+Hoja de registro: https://docs.google.com/spreadsheets/d/13_oqj5JWWKHnTzcsgkbcmKLMdpNZmSif45y6sf3gGeo/edit?gid=1383304375
+
+Columnas relevantes a completar:
+- Nombre del modelo
+- Tipo de cuantizacion
+- Tamano TFLite (MB)
+- Latencia promedio local (ms)
+- Clases
+- Observaciones sobre imagenes de prueba reales
