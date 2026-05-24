@@ -1,0 +1,28 @@
+\documentclass[12pt, oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3.5cm,right=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref} % Permite crear enlaces clicables
+\usepackage[spanish]{babel} % Para que las etiquetas como "Referencias" salgan en español
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
+% --- AQUÍ EMPIEZA EL CONTENIDO ---
+\begin{document}
+
+
+\input{cover.tex}
+
+\tableofcontents
+\input{introduction.tex}
+\input{state_art.tex}
+\input{methodology.tex}
+\input{results.tex}
+\input{conclusion.tex}
+
+\bibliographystyle{plain} % Estilo de la bibliografía (ej: plain, unsrt, alpha)
+\bibliography{bibliografia} % El nombre de tu archivo .bib (sin extensión)
+\end{document}
