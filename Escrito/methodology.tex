@@ -153,25 +153,45 @@ resultados en el entrenamiento, sino también cuál resulta más adecuado para i
 evaluación se realizó considerando tanto métricas de clasificación como aspectos prácticos de implementación, entre ellos el tiempo de
 inferencia, el uso de memoria, la confianza de las predicciones y el comportamiento frente a imágenes que no contienen hojas.
 
-\subsection{MobileNetV2}
-MobileNetV2 es una arquitectura de red neuronal convolucional diseñada para ser eficiente en términos de recursos computacionales, lo
-que la hace adecuada para su implementación en dispositivos móviles. Su diseño se basa en bloques convolucionales livianos que reducen
-la cantidad de operaciones necesarias durante la inferencia, manteniendo un buen desempeño en tareas de clasificación de imágenes.
+\subsection{Modelos MobileNet}
+MobileNet es una familia de arquitecturas de redes neuronales convolucionales desarrollada por Google y optimizada específicamente
+para dispositivos móviles y sistemas embebidos \cite{howard2017mobilenetsefficientconvolutionalneural}. Su uso resulta adecuado para
+esta investigación porque el objetivo no es solamente obtener una buena precisión durante el entrenamiento, sino también integrar el
+modelo en una aplicación Android y ejecutarlo en un dispositivo con recursos limitados.
 
-En esta investigación, MobileNetV2 se utilizó como modelo base para el entrenamiento inicial debido a su amplia adopción en aplicaciones
-móviles y a su buen balance entre precisión y eficiencia computacional. A partir de este punto, se exploraron versiones alternativas de
-la familia MobileNet, especialmente MobileNetV3 y MobileNetV5, con el propósito de identificar si arquitecturas más recientes podían
-mejorar el rendimiento del sistema sin afectar de forma significativa su viabilidad en el dispositivo móvil.
+Dentro de la familia MobileNet se consideraron distintas versiones como parte del proceso experimental. MobileNetV2 funcionó como punto
+de referencia inicial, ya que es una arquitectura ampliamente utilizada en aplicaciones móviles. Posteriormente se evaluó MobileNetV3,
+que representa una evolución natural de esta familia y mantiene una arquitectura diseñada para dispositivos móviles, exportable a
+TensorFlow Lite y metodológicamente coherente con el objetivo de la aplicación. MobileNetV5 se consideró como un experimento exploratorio,
+pero el preset disponible en KerasHub resultó demasiado grande para una aplicación móvil común, por lo que no fue seleccionado como
+modelo final.
 
-\subsection{EfficientNet}
-EfficientNet es una familia de arquitecturas de red neuronal convolucional que busca lograr un equilibrio entre precisión y eficiencia
-computacional. A diferencia de otras arquitecturas que aumentan principalmente la profundidad o el ancho de la red, EfficientNet utiliza
-una estrategia de escalado más sistemática, ajustando de manera conjunta la profundidad, el ancho y la resolución de entrada.
+MobileNetV3 fue diseñada para dispositivos móviles y de borde (edge), donde la capacidad de procesamiento suele ser limitada. Esta
+versión prioriza la precisión, la eficiencia y la velocidad, incorporando bloques livianos que permiten reducir el costo computacional
+durante la inferencia. Además, cuenta con dos variantes principales: MobileNetV3-Large y MobileNetV3-Small. La variante Small ofrece un
+mejor equilibrio entre velocidad, tamaño y precisión para aplicaciones móviles, siendo su peso aproximadamente cuatro quintos del tamaño
+de la versión Large \cite{li2022mobilenetv3}. Con base en estas características, la elección final de uno de los modeloa a utilizar en la aplicación
+móvil fue MobileNetV3-Small.
 
-En el marco de esta metodología, EfficientNet se incorporó como una alternativa de comparación frente a los modelos de la familia
-MobileNet. Su inclusión permite evaluar si un modelo con mayor capacidad de representación puede mejorar la clasificación de enfermedades
-en hojas, y al mismo tiempo permite analizar el costo asociado en términos de tamaño del modelo, tiempo de inferencia y desempeño en el
-dispositivo móvil utilizado para las pruebas.
+
+\subsection{Modelos EfficientNet}
+EfficientNet es una familia de redes neuronales convolucionales diseñada para mejorar la relación entre precisión y eficiencia
+computacional \cite{tan2020efficientnetrethinkingmodelscaling}. A diferencia de otras arquitecturas que aumentan principalmente la
+profundidad o el ancho de la red, EfficientNet propone un escalado compuesto, donde se ajustan de manera conjunta la profundidad, el
+ancho y la resolución de entrada del modelo. Esta estrategia permite mejorar el rendimiento en tareas de clasificación de imágenes sin
+incrementar innecesariamente el costo computacional.
+
+En el año 2021 se introdujo EfficientNetV2, una evolución de la arquitectura original orientada a obtener modelos más pequeños y con
+entrenamientos más rápidos \cite{DBLP:journals/corr/abs-2104-00298}. Esta versión incorpora cambios en la estructura de los bloques
+convolucionales y mantiene el objetivo de lograr un buen equilibrio entre capacidad de representación, precisión y eficiencia. Dentro
+de esta familia, EfficientNetV2B0 resulta una variante relevante que corresponde a una versión base y liviana, que ha demostrado
+tener la buena precisión en comparación con otras arquitecturas como ResNet50 \cite{molcan2023classification}.
+
+En el marco de esta investigación, EfficientNetV2B0 se incorporó como una alternativa de comparación frente a los modelos de la familia
+MobileNet. Su inclusión permite analizar si una arquitectura con mayor capacidad de representación puede mejorar la clasificación de
+enfermedades en hojas y, al mismo tiempo, evaluar el costo asociado en términos de tamaño del modelo, tiempo de inferencia y desempeño
+en el dispositivo móvil utilizado para las pruebas. De esta manera, la comparación no se limita únicamente a la exactitud obtenida en
+el entrenamiento, sino que también considera la viabilidad práctica del modelo dentro de una aplicación móvil.
 
 \section{Aplicación en dispositivos móviles}
 Para implementar los modelos de Deep Learning en dispositivos móviles, se utilizó TensorFlow Lite, una biblioteca de aprendizaje automático optimizada para dispositivos móviles. Se realizaron pruebas de rendimiento para evaluar la velocidad de inferencia y el consumo de recursos en diferentes dispositivos móviles, asegurando que los modelos sean viables para su uso en tiempo real en el reconocimiento de enfermedades en plantas. Además, se desarrolló una aplicación móvil que integra los modelos entrenados, permitiendo a los usuarios capturar imágenes de plantas y recibir diagnósticos instantáneos sobre posibles enfermedades presentes.
