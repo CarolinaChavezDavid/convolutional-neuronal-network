@@ -59,15 +59,8 @@
 
 ## 2. Especificaciones de hardware
 
-| Atributo | Moto G (30) | Samsung Galaxy S23 |
-|---|---|---|
-| SoC | Qualcomm Snapdragon 662 (SM6115 "BENGAL", 11 nm) | Qualcomm Snapdragon 8 Gen 2 for Galaxy (4 nm) |
-| CPU | 8 núcleos: 4× Kryo 260 Gold (Cortex-A73) @ 2.0 GHz + 4× Kryo 260 Silver (Cortex-A53) @ 1.8 GHz | 10 núcleos: 1× Cortex-X3 @ 3.36 GHz + 2× Cortex-A715 @ 2.8 GHz + 2× Cortex-A710 @ 2.8 GHz + 3× Cortex-A510 @ 2.0 GHz |
-| GPU | Qualcomm Adreno 610 @ 950 MHz | Qualcomm Adreno 740 |
-| RAM | 4 GB (3.815 GB usable) | 8 GB LPDDR5X |
-| Android | Android 12 (API 31) | Android 13 (API 31) |
-| Almacenamiento | 128 GB total, ~33 GB usado | 256 GB total, ~117 GB usado |
-| Categoría | Dispositivo **mid-range** | Dispositivo **high-end / flagship** |
+
+
 
 Estos dos dispositivos representan extremos distintos del mercado de smartphones Android: el Moto G (30) es un dispositivo de gama media con SoC de 11 nm fabricado en 2020, mientras que el Samsung Galaxy S23 utiliza el chipset más avanzado de Qualcomm disponible en 2023 con proceso de 4 nm. La brecha de rendimiento esperada entre ambos es significativa y permite evaluar cómo escala el rendimiento on-device con el hardware.
 

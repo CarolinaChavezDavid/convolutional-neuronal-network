@@ -193,20 +193,261 @@ enfermedades en hojas y, al mismo tiempo, evaluar el costo asociado en términos
 en el dispositivo móvil utilizado para las pruebas. De esta manera, la comparación no se limita únicamente a la exactitud obtenida en
 el entrenamiento, sino que también considera la viabilidad práctica del modelo dentro de una aplicación móvil.
 
-\section{Aplicación en dispositivos móviles}
-Para implementar los modelos de Deep Learning en dispositivos móviles, se utilizó TensorFlow Lite, una biblioteca de aprendizaje automático optimizada para dispositivos móviles. Se realizaron pruebas de rendimiento para evaluar la velocidad de inferencia y el consumo de recursos en diferentes dispositivos móviles, asegurando que los modelos sean viables para su uso en tiempo real en el reconocimiento de enfermedades en plantas. Además, se desarrolló una aplicación móvil que integra los modelos entrenados, permitiendo a los usuarios capturar imágenes de plantas y recibir diagnósticos instantáneos sobre posibles enfermedades presentes.
+\section{Entrenamiento de los modelos}
+
+El proceso de entrenamiento de los modelos seleccionados se llevó a cabo en el entorno de Jupyter Notebook, utilizando
+la biblioteca de aprendizaje profundo TensorFlow junto con Keras. El entrenamiento se ejecutó en una
+máquina con una GPU NVIDIA GeForce RTX 2060. Para garantizar la reproducibilidad y comparabilidad de los resultados, el
+conjunto de datos PlantVillage se dividió de manera determinista en un esquema 80/10/10, correspondiente a los subconjuntos de
+entrenamiento, validación y prueba, utilizando una semilla fija de valor 123 en ambos modelos. Esta decisión asegura que ambas
+arquitecturas fueron evaluadas exactamente sobre las mismas imágenes de prueba, lo que hace válida la comparación directa de sus
+métricas.
+
+Se aplicaron técnicas de aumento de datos (\textit{data augmentation}) durante el entrenamiento con el fin de mejorar la
+capacidad de generalización de los modelos ante variaciones presentes en imágenes reales. Las transformaciones aplicadas incluyeron
+rotaciones, traslaciones horizontales y verticales, y cambios aleatorios de brillo. Dado que el objetivo de la investigación es
+evaluar el desempeño de los modelos en condiciones de campo, donde las imágenes pueden presentar distintas orientaciones y
+condiciones de iluminación, estas técnicas resultan relevantes para reducir el sobreajuste al conjunto de entrenamiento.
 
 
-\subsection{Desarrollo de la aplicación móvil}
+\subsection{Preprocesamiento de imágenes}
 
-Un aspecto relevante de la metodología fue la evaluación en dispositivo móvil, utilizando un teléfono Moto G como entorno de prueba. Esta etapa permitió medir el desempeño real de los modelos luego de su integración en la aplicación, más allá de los resultados obtenidos en notebooks de entrenamiento. Asimismo, se incluyeron imágenes de fondo aleatorio sin hojas, denominadas IFD, con el fin de observar la respuesta de los modelos ante entradas fuera del dominio esperado.
+Antes de ser entregadas a cada modelo, las imágenes fueron sometidas a un proceso de preprocesamiento específico para cada
+arquitectura. Esta distinción es relevante porque MobileNetV3 Small y EfficientNetV2B0 tienen requisitos de entrada diferentes,
+y utilizar una normalización incorrecta puede causar una disminución significativa en el desempeño del modelo.
 
-\subsection{Implementación de la interfaz de usuario}
-La interfaz de usuario de la aplicación móvil fue diseñada para ser intuitiva y fácil de usar, permitiendo a los usuarios capturar imágenes de plantas y recibir diagnósticos de manera rápida y eficiente. Se implementaron funcionalidades adicionales, como la visualización de resultados históricos y recomendaciones para el cuidado de las plantas, basadas en los diagnósticos obtenidos por los modelos de Deep Learning.
+Para MobileNetV3 Small, las imágenes fueron redimensionadas a 224$\times$224 píxeles y normalizadas al rango $[-1, 1]$
+mediante la transformación $(pixel - 127.5) / 127.5$. Este rango de entrada corresponde a la distribución esperada por la
+arquitectura MobileNetV3 cuando se instancia con \texttt{include\_preprocessing=False}, dejando la responsabilidad de
+normalización al pipeline de datos. El pipeline se construyó aplicando la función de preprocesamiento en paralelo mediante
+\texttt{num\_parallel\_calls=AUTOTUNE}, organizando las imágenes en lotes de 32 elementos y utilizando \texttt{prefetch(AUTOTUNE)}
+para superponer la preparación del siguiente lote con la ejecución del lote actual, eliminando tiempos de espera de entrada/salida
+durante el entrenamiento.
 
-\subsection{Implmentación de los modelos de Deep Learning en la aplicación móvil}
-Los modelos de Deep Learning entrenados fueron convertidos a un formato compatible con TensorFlow Lite para su implementación en la aplicación móvil. Se realizaron pruebas exhaustivas para asegurar que los modelos funcionen correctamente en diferentes dispositivos móviles, evaluando tanto la precisión de las predicciones como el rendimiento en términos de velocidad de inferencia y consumo de recursos. Se optimizó el código para garantizar una experiencia de usuario fluida y eficiente, permitiendo a los usuarios obtener diagnósticos en tiempo real sobre las enfermedades presentes en sus plantas.
+Para EfficientNetV2B0, las imágenes fueron redimensionadas a 224$\times$224 píxeles y normalizadas al rango $[0, 1]$ mediante
+la división de cada canal por 255.0. Esta normalización difiere de la utilizada por MobileNetV3 y responde a la forma en que
+EfficientNetV2 fue diseñado para recibir sus entradas cuando se utiliza el parámetro \texttt{include\_preprocessing=False}.
+A diferencia de EfficientNetV1, que aplicaba su propio reescalado interno y no admitía dicho parámetro, EfficientNetV2 delega
+completamente la normalización al pipeline externo, lo que permite un mayor control sobre el preprocesamiento y simplifica la
+integración del modelo en la aplicación Android, donde el mismo proceso de normalización debio replicarse.
 
-\subsection{Captura de imágenes y diagnóstico en tiempo real}
 
-\subsection{Obtención de resultados y análisis de desempeño}
+\subsection{Entrenamiento de MobileNetV3 Small}
+
+El entrenamiento de MobileNetV3 Small se realizó en dos fases, siguiendo el esquema habitual de \textit{transfer learning}
+con pesos preentrenados en ImageNet. En la primera fase, el \textit{backbone} convolucional se mantuvo congelado y únicamente
+se entrenó la cabeza de clasificación, compuesta por una capa de \textit{Global Average Pooling}, una capa de normalización
+por lotes (\textit{Batch Normalization}), una capa de \textit{Dropout} y una capa densa de salida con activación \textit{softmax}
+sobre las 38 clases. Este enfoque permite que la cabeza aprenda a mapear las representaciones extraídas por el backbone hacia
+las clases de PlantVillage sin perturbar los pesos preentrenados durante las primeras épocas, cuando los gradientes aún son
+inestables.
+
+El optimizador utilizado fue Adam con una tasa de aprendizaje inicial de $1 \times 10^{-3}$. Se emplearon tres \textit{callbacks}
+para controlar el proceso de entrenamiento: \textit{ModelCheckpoint}, que guarda únicamente el modelo con la mejor exactitud de
+validación observada hasta el momento; \textit{EarlyStopping}, que detiene el entrenamiento si la exactitud de validación no
+mejora durante cuatro épocas consecutivas y restaura automáticamente los pesos del mejor punto registrado; y
+\textit{ReduceLROnPlateau}, que reduce la tasa de aprendizaje en un factor de 0.3 si la pérdida de validación no disminuye en
+dos épocas consecutivas, permitiendo al modelo ajustarse de forma más fina sin necesidad de intervención manual.
+
+
+\subsection{Entrenamiento de EfficientNetV2B0}
+
+El entrenamiento de EfficientNetV2B0 siguió la misma estrategia de dos fases utilizada para MobileNetV3 Small, adaptada a las
+características propias de esta arquitectura. El modelo fue instanciado con pesos preentrenados en ImageNet y con el parámetro
+\texttt{include\_preprocessing=False}, delegando la normalización de entrada al pipeline de datos descrito en la sección anterior.
+La cabeza de clasificación incorporó una capa de \textit{Global Average Pooling 2D}, una capa de \textit{Batch Normalization},
+una capa de \textit{Dropout} con tasa de 0.3 y una capa densa con activación \textit{softmax} sobre las 38 clases. Se utilizó
+una tasa de \textit{Dropout} de 0.3, ligeramente superior a la empleada en MobileNetV3, debido a la mayor capacidad de
+representación de EfficientNetV2B0 y al consecuente mayor riesgo de sobreajuste al conjunto de entrenamiento.
+
+La primera fase consistió en el entrenamiento de la cabeza con el backbone completamente congelado durante un máximo de 15 épocas,
+utilizando el optimizador Adam con una tasa de aprendizaje de $1 \times 10^{-3}$. Se aplicaron los mismos \textit{callbacks}
+utilizados en MobileNetV3: \textit{ModelCheckpoint} monitoreando la exactitud de validación, \textit{EarlyStopping} con una
+paciencia de cuatro épocas y restauración de los mejores pesos, y \textit{ReduceLROnPlateau} con un factor de reducción de 0.3
+y una paciencia de dos épocas.
+
+La segunda fase correspondió al ajuste fino (\textit{fine-tuning}) del modelo, habilitada únicamente durante el entrenamiento
+completo. En esta fase se descongelaron las últimas 20 capas del backbone, manteniendo las capas de \textit{Batch Normalization}
+internas del backbone en estado congelado para preservar las estadísticas de normalización aprendidas durante el preentrenamiento
+en ImageNet. Descongelar estas capas podría desestabilizar el entrenamiento al modificar las distribuciones internas de activación.
+El ajuste fino se realizó durante un máximo de 10 épocas adicionales, utilizando una tasa de aprendizaje reducida de $1 \times
+10^{-5}$, dos órdenes de magnitud inferior a la utilizada en la primera fase. Esta reducción es necesaria para realizar
+modificaciones graduales sobre los pesos del backbone sin destruir las representaciones aprendidas en ImageNet, que proporcionan
+una base sólida para el reconocimiento de patrones visuales en las imágenes de hojas de PlantVillage.
+
+Una vez finalizado el entrenamiento, el modelo guardado como \textit{checkpoint} fue evaluado sobre el conjunto de prueba para
+obtener las métricas de clasificación definitivas. Posteriormente, el modelo se exportó al formato SavedModel de TensorFlow y
+se convirtió a TensorFlow Lite con cuantización \textit{float16} (FP16), produciendo el archivo \texttt{efficientnetv2b0\_v1\_fp16.tflite}
+de 11.33 MB que fue integrado en la aplicación móvil. La cuantización FP16 reduce el tamaño del modelo aproximadamente a la
+mitad respecto al formato de 32 bits, sin una pérdida significativa de exactitud en dispositivos Android modernos con soporte
+para operaciones en punto flotante de 16 bits.
+
+\section{Aplicación móvil}
+Uno de los aspectos centrales para el desarrollo de la investación es el desarrollo de una aplicación móvil capaz de integrar 
+los modelos de aprendizaje
+profundo entrenados. La aplicación fue desarrollada para dispositivos Android utilizando Android Studio, un entorno de desarrollo
+integrado (IDE) ampliamente utilizado para la creación de aplicaciones móviles, y Kotlin como lenguaje de programación. La aplicación se
+diseñó para ser intuitiva y fácil de usar, pero también para funcionar como un entorno de prueba que permitiera ejecutar los modelos en
+condiciones reales de uso. El proyecto se construyó bajo una arquitectura nativa, sin dependencia de servicios externos para la
+inferencia, esto de acuerdo con el objetivo de evaluar el comportamiento de los modelos directamente en el dispositivo.
+
+Para la construcción de la interfaz de usuario se utilizó Jetpack Compose, lo que permitió desarrollar pantallas declarativas. 
+La captura y el procesamiento inicial de imágenes se integraron mediante
+CameraX, una librería de Android diseñada para simplificar el uso de la cámara en distintos dispositivos.
+
+En cuanto al componente de inteligencia artificial, la aplicación recibe los modelos convertidos a formato TensorFlow Lite / LiteRT,
+almacenados localmente. Esto permite ejecutar la inferencia en el dispositivo sin conexión a
+internet. Los modelos evaluados incluyen MobileNetV3 Small FP16 y EfficientNetV2B0 FP16, ambos integrados como archivos .tflite. Cada
+modelo cuenta con un preprocesamiento específico de entrada, por ejemplo normalización en el rango [-1, 1] para MobileNetV3 y [0, 1]
+para EfficientNetV2B0.
+
+La gestión de los clasificadores se implementó mediante una fábrica de modelos, lo que permite seleccionar dinámicamente el modelo activo
+durante la experimentación. Esta estructura facilita la comparación entre arquitecturas, la medición de tiempos de inferencia, el uso de
+memoria y el registro de métricas durante las pruebas en dispositivo real. En síntesis, la aplicación combina herramientas nativas de
+Android para interfaz, cámara y gestión de estado, junto con tecnologías de aprendizaje automático optimizadas para dispositivos móviles.
+Esta selección permitió desarrollar una aplicación funcional capaz de capturar imágenes, procesarlas localmente, ejecutar modelos de
+clasificación y comparar su rendimiento en condiciones reales de uso.
+
+\subsection{Dispositivo de prueba}
+Como parte de la metodología, se seleccionaron dos dispositivos móviles para realizar las pruebas de inferencia y evaluación de los
+modelos integrados en la aplicación. Se consideró importante evaluar dispositivos con características de hardware diferentes, incluyendo
+distintos tamaños de memoria RAM, procesadores y unidades gráficas. De esta manera, se buscó obtener una perspectiva más amplia sobre
+el desempeño de los modelos en distintos escenarios de uso y no limitar la evaluación a un único tipo de hardware. Los dispositivos
+seleccionados fueron un Moto G30 y un Samsung Galaxy S23, ambos con sistema operativo Android. Las características técnicas de cada
+dispositivo se detallan en la tabla \ref{tab:device_specs}.
+
+\begin{table}[H]
+    \centering
+    \caption{Especificaciones técnicas de los dispositivos móviles utilizados para las pruebas.}
+    \label{tab:device_specs}
+    \small
+    \begin{tabular}{>{\raggedright\arraybackslash}p{3cm}
+                    >{\raggedright\arraybackslash}p{5.1cm}
+                    >{\raggedright\arraybackslash}p{5.1cm}}
+        \hline
+        \textbf{Atributo} & \textbf{Moto G30} & \textbf{Samsung Galaxy S23} \\
+        \hline
+        SoC & Qualcomm Snapdragon 662 (SM6115 ``BENGAL'', 11 nm) & Qualcomm Snapdragon 8 Gen 2 for Galaxy (4 nm) \\
+        CPU & 8 núcleos: 4x Kryo 260 Gold (Cortex-A73) @ 2.0 GHz + 4x Kryo 260 Silver (Cortex-A53) @ 1.8 GHz & 10 núcleos: 1x Cortex-X3 @ 3.36 GHz + 2x Cortex-A715 @ 2.8 GHz + 2x Cortex-A710 @ 2.8 GHz + 3x Cortex-A510 @ 2.0 GHz \\
+        GPU & Qualcomm Adreno 610 @ 950 MHz & Qualcomm Adreno 740 \\
+        RAM & 4 GB (3.815 GB usable) & 8 GB LPDDR5X \\
+        Android & Android 12 (API 31) & Android 13 (API 31) \\
+        Almacenamiento & 128 GB total, aprox. 33 GB usado & 256 GB total, aprox. 117 GB usado \\
+        Categoría & Dispositivo \textit{mid-range} & Dispositivo \textit{high-end / flagship} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Estos dos dispositivos representan extremos distintos del mercado de smartphones Android: el Moto G (30) es un dispositivo de gama media 
+con SoC de 11 nm fabricado en 2020, mientras que el Samsung Galaxy S23 utiliza el chipset más avanzado de Qualcomm disponible en 2023 
+con proceso de 4 nm. La brecha de rendimiento esperada entre ambos es significativa y permite evaluar cómo escala el rendimiento on-device
+con el hardware.
+
+Estas características técnicas son relevantes porque influyen directamente en el desempeño de los modelos al ejecutarse en el dispositivo.
+La cantidad de memoria RAM disponible afecta la capacidad de la aplicación para cargar el modelo, procesar la imagen capturada y mantener
+la inferencia de forma estable, sin cierres inesperados. El procesador o SoC determina gran parte de la velocidad con la que se ejecutan
+las operaciones necesarias para la clasificación, mientras que la cantidad de núcleos de CPU permite distribuir parte del trabajo de
+procesamiento durante la inferencia. Por otra parte, la GPU puede favorecer ciertas operaciones gráficas y de cómputo cuando el entorno
+de ejecución lo permite, aunque el rendimiento final también depende de la compatibilidad del modelo y de la forma en que TensorFlow Lite
+utiliza los recursos disponibles. Por esta razón, comparar dispositivos con diferencias de hardware permite observar si el comportamiento
+del modelo se mantiene estable en condiciones reales de uso o si su rendimiento depende de forma significativa de las capacidades del
+teléfono.
+
+
+\subsection{Métricas del modelo}
+
+Con el fin de evaluar la capacidad de clasificación de los modelos entrenados, se adoptó un conjunto de métricas estándar en
+tareas de clasificación multiclase. Estas métricas se calcularon sobre el subconjunto de prueba, que representa el 10\% del
+total de imágenes de PlantVillage y no fue utilizado en ninguna etapa del entrenamiento ni de la validación, garantizando así
+una evaluación imparcial del desempeño real de cada modelo.
+
+La \textbf{exactitud} (\textit{accuracy}) mide la proporción de imágenes correctamente clasificadas sobre el total de imágenes
+evaluadas. Si bien es la métrica más intuitiva, resulta insuficiente como indicador único en conjuntos de datos con distribución
+desbalanceada, como es el caso de PlantVillage, donde algunas clases cuentan con miles de imágenes mientras otras no superan
+las 500. Por esta razón, se complementa con métricas que consideran el comportamiento del modelo por clase.
+
+La \textbf{precisión} (\textit{precision}) indica, para cada clase, qué proporción de las predicciones realizadas por el modelo
+en esa clase corresponden realmente a esa clase. Un valor bajo de precisión en una clase determinada implica que el modelo
+genera una cantidad significativa de falsos positivos, es decir, predice esa clase para imágenes que pertenecen a otras
+categorías.
+
+La \textbf{sensibilidad} o \textbf{recall} expresa qué proporción de las imágenes reales de cada clase fueron correctamente
+identificadas por el modelo. Un valor bajo de recall indica que el modelo falla en detectar instancias de esa clase, lo que
+en el contexto del diagnóstico de enfermedades en plantas puede implicar que una hoja enferma sea clasificada como sana o como
+una enfermedad diferente.
+
+El \textbf{F1-score} combina precisión y recall en una única métrica mediante su media armónica, lo que penaliza de forma
+equitativa tanto los falsos positivos como los falsos negativos. Esta métrica resulta especialmente relevante para este trabajo
+porque permite comparar el desempeño de los modelos en clases con diferente cantidad de ejemplos de forma más equilibrada que
+la exactitud global. Se reporta el F1-score tanto por clase como el macro-promedio sobre las 38 clases, donde cada clase tiene
+el mismo peso independientemente de su frecuencia en el conjunto de datos.
+
+La \textbf{matriz de confusión} organiza las predicciones del modelo en una tabla donde cada fila representa la clase real y
+cada columna la clase predicha. La diagonal principal contiene las predicciones correctas, mientras que los valores fuera de la
+diagonal corresponden a errores de clasificación. Analizar la distribución de estos errores permite identificar pares de clases
+que el modelo confunde sistemáticamente, lo cual es relevante para comprender las limitaciones del modelo en función de la
+similitud visual entre enfermedades y del desbalance de representación en el dataset.
+
+Además de las métricas estándar de clasificación, se define la \textbf{coherencia botánica} como una métrica complementaria
+orientada al contexto de esta investigación. Esta métrica evalúa si el modelo predice correctamente la especie de planta,
+independientemente de si identifica la enfermedad exacta. Se calcula extrayendo el prefijo de especie de la etiqueta predicha
+y comparándolo con la especie real. Una predicción es botánicamente coherente si ambas coinciden, aunque la enfermedad
+específica difiera. Esta métrica resulta de particular utilidad al evaluar los modelos con imágenes de plantas que presentan
+menor representación en el conjunto de entrenamiento, permitiendo distinguir entre confusiones dentro de la misma especie y
+confusiones entre especies distintas.
+
+Estas métricas en conjunto permiten responder a la pregunta de investigación sobre la precisión diagnóstica alcanzable con
+modelos livianos entrenados sobre PlantVillage, y establecen la base para comparar el desempeño de MobileNetV3 Small y
+EfficientNetV2B0 en condiciones equivalentes.
+
+
+\subsection{Métricas de ejecución en dispositivo}
+
+La evaluación del comportamiento de los modelos en el dispositivo móvil requiere un conjunto de métricas distinto al utilizado
+durante el entrenamiento. Estas métricas caracterizan el rendimiento del sistema en condiciones reales de uso y permiten
+determinar si los modelos son viables para su integración en una aplicación que opere con los recursos limitados de un
+dispositivo de gama media. Para su recolección, se ejecutaron tres sesiones por modelo y por dispositivo, cada una abarcando
+las 100 imágenes del protocolo experimental, con el fin de verificar la estabilidad y reproducibilidad de las mediciones.
+
+La \textbf{latencia de inferencia} es el tiempo, expresado en milisegundos, que tarda el modelo en producir una predicción
+a partir de una imagen ya preprocesada. Es la métrica central para determinar si la experiencia de uso en campo puede
+considerarse fluida o si implica una espera perceptible para el usuario. Se reporta como promedio (\textit{avg}), mediana
+(\textit{P50}), percentil 95 (\textit{P95}) y desviación estándar (\textit{std}) sobre todas las inferencias de estado
+estable de cada sesión, excluyendo la primera inferencia correspondiente al \textit{warmup}. El percentil 95 es especialmente
+relevante desde la perspectiva de la experiencia de usuario porque cuantifica el tiempo de respuesta en el peor caso del 95\%
+de las ejecuciones, evitando que valores atípicos distorsionen la interpretación del rendimiento habitual.
+
+El \textbf{tiempo de inicialización} corresponde al tiempo necesario para cargar el modelo en memoria al abrir la aplicación.
+Si bien se trata de un costo único por sesión de uso y no afecta la experiencia durante la clasificación, resulta relevante
+para caracterizar las diferencias entre la API de inferencia utilizada por cada modelo: MobileNetV3 Small emplea compilación
+anticipada (\textit{ahead-of-time}, AOT) a través de \texttt{CompiledModel}, que requiere compilar los kernels con los
+aceleradores disponibles antes de la primera ejecución, mientras que EfficientNetV2B0 utiliza el intérprete clásico de
+TFLite, que carga el grafo de forma directa sin compilación previa.
+
+La \textbf{memoria PSS} (\textit{Proportional Set Size}) mide el uso de memoria del proceso de la aplicación en megabytes
+en el momento de cada inferencia, capturada mediante la API de diagnóstico de Android \texttt{android.os.Debug.getMemoryInfo()}.
+Esta métrica es importante porque una aplicación que supera la memoria disponible en el dispositivo puede ser terminada por
+el sistema operativo de forma inesperada, comprometiendo la estabilidad del sistema. Comparar el consumo de PSS entre modelos
+y entre dispositivos permite evaluar si el modelo más grande introduce una presión significativa sobre los recursos del
+sistema.
+
+El \textbf{consumo de batería} se registra como la diferencia porcentual entre el nivel de carga al inicio y al final de
+cada sesión. Esta métrica es relevante para evaluar la viabilidad de uso sostenido de la aplicación en campo, donde el acceso
+a carga eléctrica puede ser limitado. Un modelo que consume significativamente más batería reduce la autonomía del dispositivo
+y puede representar un obstáculo práctico para su adopción en contextos agrícolas reales.
+
+La \textbf{temperatura del dispositivo} se mide a través de la interfaz térmica del sistema operativo Android al inicio y al
+final de cada sesión. Un incremento de temperatura elevado durante la inferencia puede activar mecanismos de reducción de
+rendimiento (\textit{thermal throttling}) que degradan la velocidad de cómputo para proteger el hardware. Registrar la
+temperatura permite identificar si alguno de los modelos o dispositivos evaluados alcanza rangos que comprometan la
+consistencia de las mediciones de latencia a lo largo de la sesión.
+
+El \textbf{tamaño del modelo} se expresa en megabytes y corresponde al tamaño del archivo \texttt{.tflite} integrado en la
+aplicación. Esta métrica incide directamente en el tamaño de instalación de la aplicación y en el tiempo de descarga para el
+usuario final, siendo un factor relevante en contextos de conectividad limitada.
+
+El conjunto de métricas de ejecución descritas permite responder a los objetivos de la investigación relacionados con la
+viabilidad técnica del despliegue on-device, la comparación de eficiencia entre arquitecturas y el análisis del impacto del
+hardware sobre el rendimiento. La evaluación simultánea en dos dispositivos con características de hardware marcadamente
+distintas, un dispositivo de gama media y uno de gama alta, permite además determinar si los resultados observados son
+específicos de un tipo de hardware o si se mantienen de forma consistente en diferentes configuraciones de dispositivos Android.
