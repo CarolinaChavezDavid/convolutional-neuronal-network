@@ -1,10 +1,27 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{afzaal2021instance}
+Umar Afzaal, Binod Bhattarai, Yadav~R. Pandeya, and Jong Lee.
+\newblock An instance segmentation model for strawberry diseases based on mask
+  r-cnn.
+\newblock {\em Sensors}, 21(19):6565, 2021.
+
+\bibitem{chen2025idadp}
+Lei Chen, Boru Shi, and Yuan Yuan.
+\newblock Idadp - corn disease image description dataset, 2025.
+\newblock Accessed: 2026-05-27.
 
 \bibitem{howard2017mobilenetsefficientconvolutionalneural}
 Andrew~G. Howard, Menglong Zhu, Bo~Chen, Dmitry Kalenichenko, Weijun Wang,
   Tobias Weyand, Marco Andreetto, and Hartwig Adam.
 \newblock Mobilenets: Efficient convolutional neural networks for mobile vision
   applications, 2017.
+
+\bibitem{mendeley_8nnd2ypcv3}
+David Hughes.
+\newblock An open access repository of images on plant health to enable the
+  development of mobile disease diagnostics through machine learning and
+  crowdsourcing, 2016.
 
 \bibitem{DBLP:journals/corr/HughesS15}
 David~P. Hughes and Marcel Salath{\'{e}}.
@@ -20,6 +37,10 @@ Yajing Li, Huimin Hao, Jiahai Huang, and Wenbin Xin.
 \newblock {\em Research Square}, May 2022.
 \newblock Preprint.
 
+\bibitem{liu2024pepper}
+Jun Liu.
+\newblock Pepperdisease, 2024.
+
 \bibitem{molcan2023classification}
 Samuel Mol{\v{c}}an, Monika Smie{\v{s}}kov{\'a}, Hynek Bachrat{\'y},
   Katar{\'\i}na Bachrat{\'a}, and Peter Novotn{\'y}.
@@ -27,10 +48,28 @@ Samuel Mol{\v{c}}an, Monika Smie{\v{s}}kov{\'a}, Hynek Bachrat{\'y},
   convolutional neural networks from simulated videos.
 \newblock {\em Applied Sciences}, 13(13):7967, 2023.
 
+\bibitem{rajput2023soynet}
+Arpan~Singh Rajput, Shailja Shukla, and S.~S. Thakur.
+\newblock Soynet: Indian soybean image dataset with quality images captured
+  from the agriculture field (healthy and disease images), 2023.
+
+\bibitem{rashid2024pumpkin}
+Mohammad Rifat~Ahmmad Rashid, Joy Biswas, and Md~Miskat Hossain.
+\newblock Pumpkin leaf diseases dataset from bangladesh, 2024.
+
+\bibitem{shabrina2023potato}
+Nabila~Husna Shabrina, Siwi Indarti, Rina Maharani, Dinar~Ajeng Kristiyanti,
+  Irmawati Irmawati, Niki Prastomo, and Tika~Adillah M.
+\newblock Potato leaf disease dataset in uncontrolled environment, 2023.
+
 \bibitem{agronomy13040961}
 Chinna~Gopi Simhadri and Hari~Kishan Kondaveeti.
 \newblock Automatic recognition of rice leaf diseases using transfer learning.
 \newblock {\em Agronomy}, 13(4), 2023.
+
+\bibitem{solapure2024tomato}
+Vaibhav Solapure, SmartAgroTech DY, and Anish Jawale.
+\newblock Tomato leaf disease dataset, 2024.
 
 \bibitem{subramaniam2026comparative}
 Saundarya Subramaniam, Shalini Majumdar, Shantanu Nadar, and Kaustubh Kulkarni.
@@ -54,5 +93,10 @@ Jitendra~V. Tembhurne, Saurav~M. Gajbhiye, Vedant~R. Gannarpwar, Harshal~R.
   Khandait, Purva~R. Goydani, and Tausif Diwan.
 \newblock Plant disease detection using deep learning based mobile application.
 \newblock {\em Multimedia Tools and Applications}, 82:27365--27390, 2023.
+
+\bibitem{Zhu2023}
+Fangzhou Zhu.
+\newblock {AppleLeaf9-Enhanced Edition(AL9EE)}.
+\newblock 6 2023.
 
 \end{thebibliography}

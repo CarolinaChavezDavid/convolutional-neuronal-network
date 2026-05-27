@@ -354,100 +354,135 @@ del modelo se mantiene estable en condiciones reales de uso o si su rendimiento 
 teléfono.
 
 
+\subsection{Protocolo de evaluación en dispositivo}
+
+Para evaluar el comportamiento de los modelos en los dispositivos móviles se definió un protocolo de prueba común para ambas
+arquitecturas. El objetivo fue ejecutar los modelos bajo las mismas condiciones y así comparar su desempeño de forma consistente. Para
+esto, se realizaron tres sesiones de prueba por cada modelo y por cada dispositivo, utilizando el mismo conjunto de 100 imágenes en cada
+caso. Esta repetición permitió observar si las mediciones eran estables entre sesiones o si existían variaciones importantes asociadas al
+estado del dispositivo, la carga del sistema o el comportamiento propio de cada modelo.
+
+Antes de registrar las mediciones, se consideró una primera inferencia como etapa de calentamiento (\textit{warmup}), ya que la primera
+ejecución puede incluir costos adicionales relacionados con la carga del modelo, la preparación del intérprete o la compilación interna
+de algunas operaciones. Por esta razón, la primera inferencia no se utilizó para calcular los valores finales de latencia. Las inferencias
+restantes fueron utilizadas para obtener las métricas de ejecución en estado estable, manteniendo el mismo procedimiento para MobileNetV3
+Small y EfficientNetV2B0.
+
+Este protocolo permitió evaluar los modelos en un contexto cercano al uso real de la aplicación, donde el usuario captura o selecciona
+una imagen, el sistema realiza el preprocesamiento correspondiente y luego ejecuta la inferencia localmente. De esta manera, la evaluación
+no se limitó al desempeño obtenido durante el entrenamiento, sino que también consideró el comportamiento práctico de los modelos una vez
+integrados en la aplicación Android.
+
+La distribución de las 100 imágenes utilizadas para las pruebas en dispositivo se muestra en la tabla \ref{tab:device_test_images}.
+Estas imágenes fueron tomadas de distintos conjuntos de datos y algunas fueron capturadas con los dispositivos de prueba. A diferencia de PlantVillage,
+incluyen fondos más variados y complejos, distintas condiciones de iluminación y, en algunos casos, imágenes sin hojas. Esto permitió
+evaluar la robustez de los modelos frente a entradas más cercanas a un escenario real de uso.
+
+\begin{table}[H]
+    \centering
+    \caption{Origen de las imágenes utilizadas en el protocolo de evaluación en dispositivo.}
+    \label{tab:device_test_images}
+    \scriptsize
+    \begin{tabular}{>{\raggedright\arraybackslash}p{2.2cm}
+                    >{\centering\arraybackslash}p{0.8cm}
+                    >{\raggedright\arraybackslash}p{2.7cm}
+                    >{\raggedright\arraybackslash}p{1.6cm}
+                    >{\raggedright\arraybackslash}p{5.7cm}}
+        \hline
+        \textbf{Planta} & \textbf{N} & \textbf{Origen} & \textbf{Referencia} & \textbf{Notas} \\
+        \hline
+        Corn & 10 & Dataset IDADP & \cite{chen2025idadp} & Mezcla de hojas sanas y enfermas en un cultivo con varias clases. \\
+        Apple & 10 & Dataset AL9EE + Dispositivo & \cite{Zhu2023} & Fondos complejos para evaluar capturas menos controladas. \\
+        Grape & 10 & Dataset NGLD + Dispositivo & \cite{mendeley_8nnd2ypcv3} & Variaciones de ángulo y posición de la hoja. \\
+        Cherry & 4 & Dispositivos & Propia & Capturas reales con fondo complejo. \\
+        Pepper & 6 & Dataset Liu & \cite{liu2024pepper} & Iluminación variable con presencia de sombra. \\
+        Tomato & 10 & Dataset JAWALE + Dispositivo & \cite{solapure2024tomato} & Mezcla de hojas sanas y enfermas en un cultivo con varias clases. \\
+        Strawberry & 7 & Dataset afzaal & \cite{afzaal2021instance} & Patrones visuales localizados asociados a manchas foliares. \\
+        Orange & 3 & Dispositivo & Propia & \textbf{Fuera de dominio}: especie no entrenada en PlantVillage. \\
+        Squash & 10 & Dataset Rashid & \cite{rashid2024pumpkin} & Síntomas extendidos de oídio sobre la hoja. \\
+        Potato & 10 & Dataset Shabrina & \cite{shabrina2023potato} & Predominio de hojas sanas o con síntomas leves. \\
+        Soybean & 10 & Dataset Soynet & \cite{rajput2023soynet} & Evaluación de coherencia en un cultivo solo saludable. \\
+        Imagenes sin hojas & 10 & \textemdash & Propia & Fondos aleatorios \textbf{sin hojas} para evaluar entradas fuera de dominio. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
 \subsection{Métricas del modelo}
 
-Con el fin de evaluar la capacidad de clasificación de los modelos entrenados, se adoptó un conjunto de métricas estándar en
-tareas de clasificación multiclase. Estas métricas se calcularon sobre el subconjunto de prueba, que representa el 10\% del
-total de imágenes de PlantVillage y no fue utilizado en ninguna etapa del entrenamiento ni de la validación, garantizando así
-una evaluación imparcial del desempeño real de cada modelo.
+Para evaluar la capacidad de clasificación de los modelos entrenados se utilizaron métricas comunes en problemas de clasificación
+multiclase. En esta sección no se busca presentar los resultados obtenidos, sino dejar definido cómo fueron evaluados los modelos y qué
+representa cada métrica dentro del contexto del trabajo. Todas las métricas se calcularon sobre el subconjunto de prueba, que corresponde
+al 10\% de las imágenes de PlantVillage y que no fue utilizado durante el entrenamiento ni durante la validación.
 
-La \textbf{exactitud} (\textit{accuracy}) mide la proporción de imágenes correctamente clasificadas sobre el total de imágenes
-evaluadas. Si bien es la métrica más intuitiva, resulta insuficiente como indicador único en conjuntos de datos con distribución
-desbalanceada, como es el caso de PlantVillage, donde algunas clases cuentan con miles de imágenes mientras otras no superan
-las 500. Por esta razón, se complementa con métricas que consideran el comportamiento del modelo por clase.
+La \textbf{exactitud} (\textit{accuracy}) indica la proporción de imágenes clasificadas correctamente respecto al total de imágenes
+evaluadas. Es una métrica útil para tener una primera idea del desempeño general del modelo, pero no es suficiente por sí sola. En este
+caso, PlantVillage tiene clases con distinta cantidad de imágenes, por lo que una buena exactitud global no necesariamente significa que
+el modelo funcione igual de bien en todas las clases.
 
-La \textbf{precisión} (\textit{precision}) indica, para cada clase, qué proporción de las predicciones realizadas por el modelo
-en esa clase corresponden realmente a esa clase. Un valor bajo de precisión en una clase determinada implica que el modelo
-genera una cantidad significativa de falsos positivos, es decir, predice esa clase para imágenes que pertenecen a otras
-categorías.
+La \textbf{precisión} (\textit{precision}) permite observar, para cada clase, cuántas de las predicciones realizadas por el modelo fueron
+realmente correctas. Esta métrica es importante porque muestra si el modelo está asignando una clase de manera excesiva. Por ejemplo, una
+precisión baja en una enfermedad indicaría que el modelo predice esa enfermedad en imágenes que en realidad pertenecen a otras clases.
 
-La \textbf{sensibilidad} o \textbf{recall} expresa qué proporción de las imágenes reales de cada clase fueron correctamente
-identificadas por el modelo. Un valor bajo de recall indica que el modelo falla en detectar instancias de esa clase, lo que
-en el contexto del diagnóstico de enfermedades en plantas puede implicar que una hoja enferma sea clasificada como sana o como
-una enfermedad diferente.
+La \textbf{sensibilidad} o \textbf{recall} indica cuántas imágenes reales de una clase fueron detectadas correctamente por el modelo. En
+el contexto de esta investigación, esta métrica es relevante porque permite identificar si el modelo está dejando de reconocer ciertas
+enfermedades o si clasifica hojas enfermas como sanas o como otra enfermedad.
 
-El \textbf{F1-score} combina precisión y recall en una única métrica mediante su media armónica, lo que penaliza de forma
-equitativa tanto los falsos positivos como los falsos negativos. Esta métrica resulta especialmente relevante para este trabajo
-porque permite comparar el desempeño de los modelos en clases con diferente cantidad de ejemplos de forma más equilibrada que
-la exactitud global. Se reporta el F1-score tanto por clase como el macro-promedio sobre las 38 clases, donde cada clase tiene
-el mismo peso independientemente de su frecuencia en el conjunto de datos.
+El \textbf{F1-score} combina precisión y recall en una sola métrica. Se utilizó porque permite evaluar el desempeño del modelo de una
+forma más equilibrada, especialmente cuando las clases no tienen la misma cantidad de ejemplos. En este trabajo se consideró tanto el
+F1-score por clase como el macro-promedio, donde todas las clases tienen el mismo peso independientemente de su frecuencia en el conjunto
+de datos.
 
-La \textbf{matriz de confusión} organiza las predicciones del modelo en una tabla donde cada fila representa la clase real y
-cada columna la clase predicha. La diagonal principal contiene las predicciones correctas, mientras que los valores fuera de la
-diagonal corresponden a errores de clasificación. Analizar la distribución de estos errores permite identificar pares de clases
-que el modelo confunde sistemáticamente, lo cual es relevante para comprender las limitaciones del modelo en función de la
-similitud visual entre enfermedades y del desbalance de representación en el dataset.
+La \textbf{matriz de confusión} se utilizó para analizar con mayor detalle los errores de clasificación. Esta matriz permite observar qué
+clases fueron predichas correctamente y cuáles fueron confundidas con otras. Su análisis resulta importante porque no todos los errores
+tienen la misma interpretación: no es lo mismo confundir dos enfermedades visualmente parecidas dentro de un mismo cultivo que confundir
+plantas de especies distintas.
 
-Además de las métricas estándar de clasificación, se define la \textbf{coherencia botánica} como una métrica complementaria
-orientada al contexto de esta investigación. Esta métrica evalúa si el modelo predice correctamente la especie de planta,
-independientemente de si identifica la enfermedad exacta. Se calcula extrayendo el prefijo de especie de la etiqueta predicha
-y comparándolo con la especie real. Una predicción es botánicamente coherente si ambas coinciden, aunque la enfermedad
-específica difiera. Esta métrica resulta de particular utilidad al evaluar los modelos con imágenes de plantas que presentan
-menor representación en el conjunto de entrenamiento, permitiendo distinguir entre confusiones dentro de la misma especie y
-confusiones entre especies distintas.
+Además de las métricas estándar, se definió la \textbf{coherencia botánica} como una métrica complementaria propia del contexto de esta
+investigación. Esta métrica evalúa si el modelo identifica correctamente el cultivo, aunque no acierte la enfermedad exacta. Para esto,
+se compara la especie de planta presente en la etiqueta real con la especie de planta presente en la etiqueta predicha. Esta métrica
+permite diferenciar errores dentro de un mismo cultivo de errores más graves, donde el modelo confunde directamente la especie de la
+planta.
 
-Estas métricas en conjunto permiten responder a la pregunta de investigación sobre la precisión diagnóstica alcanzable con
-modelos livianos entrenados sobre PlantVillage, y establecen la base para comparar el desempeño de MobileNetV3 Small y
-EfficientNetV2B0 en condiciones equivalentes.
+En conjunto, estas métricas permiten evaluar el desempeño de MobileNetV3 Small y EfficientNetV2B0 no solo a partir de un valor general de
+exactitud, sino también considerando el comportamiento por clase, los tipos de error y la coherencia de las predicciones con el cultivo
+analizado.
 
 
 \subsection{Métricas de ejecución en dispositivo}
 
-La evaluación del comportamiento de los modelos en el dispositivo móvil requiere un conjunto de métricas distinto al utilizado
-durante el entrenamiento. Estas métricas caracterizan el rendimiento del sistema en condiciones reales de uso y permiten
-determinar si los modelos son viables para su integración en una aplicación que opere con los recursos limitados de un
-dispositivo de gama media. Para su recolección, se ejecutaron tres sesiones por modelo y por dispositivo, cada una abarcando
-las 100 imágenes del protocolo experimental, con el fin de verificar la estabilidad y reproducibilidad de las mediciones.
+La evaluación en dispositivo móvil requiere métricas diferentes a las utilizadas durante el entrenamiento. En este caso no solo interesa
+saber si el modelo predice correctamente, sino también si puede ejecutarse de forma rápida, estable y con un consumo razonable de recursos
+dentro de una aplicación Android.
 
-La \textbf{latencia de inferencia} es el tiempo, expresado en milisegundos, que tarda el modelo en producir una predicción
-a partir de una imagen ya preprocesada. Es la métrica central para determinar si la experiencia de uso en campo puede
-considerarse fluida o si implica una espera perceptible para el usuario. Se reporta como promedio (\textit{avg}), mediana
-(\textit{P50}), percentil 95 (\textit{P95}) y desviación estándar (\textit{std}) sobre todas las inferencias de estado
-estable de cada sesión, excluyendo la primera inferencia correspondiente al \textit{warmup}. El percentil 95 es especialmente
-relevante desde la perspectiva de la experiencia de usuario porque cuantifica el tiempo de respuesta en el peor caso del 95\%
-de las ejecuciones, evitando que valores atípicos distorsionen la interpretación del rendimiento habitual.
+La \textbf{latencia de inferencia} corresponde al tiempo que tarda el modelo en generar una predicción a partir de una imagen ya
+preprocesada. Esta métrica se expresa en milisegundos y permite evaluar si la respuesta de la aplicación puede considerarse fluida para
+el usuario. Para resumir este comportamiento se utilizaron el promedio, la mediana (P50), el percentil 95 (P95) y la desviación estándar.
+El P95 es especialmente útil porque muestra cómo se comporta el modelo en los casos más lentos sin depender únicamente de valores
+promedio.
 
-El \textbf{tiempo de inicialización} corresponde al tiempo necesario para cargar el modelo en memoria al abrir la aplicación.
-Si bien se trata de un costo único por sesión de uso y no afecta la experiencia durante la clasificación, resulta relevante
-para caracterizar las diferencias entre la API de inferencia utilizada por cada modelo: MobileNetV3 Small emplea compilación
-anticipada (\textit{ahead-of-time}, AOT) a través de \texttt{CompiledModel}, que requiere compilar los kernels con los
-aceleradores disponibles antes de la primera ejecución, mientras que EfficientNetV2B0 utiliza el intérprete clásico de
-TFLite, que carga el grafo de forma directa sin compilación previa.
+El \textbf{tiempo de inicialización} corresponde al tiempo necesario para cargar el modelo antes de realizar las inferencias. Aunque este
+tiempo ocurre una sola vez por sesión de uso, es importante porque puede afectar la primera interacción del usuario con la aplicación.
+Además, permite comparar diferencias entre las formas de ejecución utilizadas por cada modelo, ya que MobileNetV3 Small usa
+\texttt{CompiledModel}, mientras que EfficientNetV2B0 se ejecuta mediante el intérprete clásico de TensorFlow Lite.
 
-La \textbf{memoria PSS} (\textit{Proportional Set Size}) mide el uso de memoria del proceso de la aplicación en megabytes
-en el momento de cada inferencia, capturada mediante la API de diagnóstico de Android \texttt{android.os.Debug.getMemoryInfo()}.
-Esta métrica es importante porque una aplicación que supera la memoria disponible en el dispositivo puede ser terminada por
-el sistema operativo de forma inesperada, comprometiendo la estabilidad del sistema. Comparar el consumo de PSS entre modelos
-y entre dispositivos permite evaluar si el modelo más grande introduce una presión significativa sobre los recursos del
-sistema.
+La \textbf{memoria PSS} (\textit{Proportional Set Size}) se utilizó para medir el consumo de memoria del proceso de la aplicación durante
+la inferencia. Esta métrica fue obtenida mediante la API de diagnóstico de Android \texttt{android.os.Debug.getMemoryInfo()} y permite
+observar si alguno de los modelos genera mayor presión sobre los recursos del dispositivo. Esto es importante porque, en teléfonos con
+menor memoria disponible, un consumo elevado puede afectar la estabilidad de la aplicación.
 
-El \textbf{consumo de batería} se registra como la diferencia porcentual entre el nivel de carga al inicio y al final de
-cada sesión. Esta métrica es relevante para evaluar la viabilidad de uso sostenido de la aplicación en campo, donde el acceso
-a carga eléctrica puede ser limitado. Un modelo que consume significativamente más batería reduce la autonomía del dispositivo
-y puede representar un obstáculo práctico para su adopción en contextos agrícolas reales.
+El \textbf{consumo de batería} se registró como la diferencia entre el porcentaje de carga al inicio y al final de cada sesión. Esta
+métrica permite evaluar si el uso continuo del modelo puede afectar la autonomía del dispositivo, un aspecto importante para una
+aplicación pensada para escenarios de uso fuera de un entorno controlado.
 
-La \textbf{temperatura del dispositivo} se mide a través de la interfaz térmica del sistema operativo Android al inicio y al
-final de cada sesión. Un incremento de temperatura elevado durante la inferencia puede activar mecanismos de reducción de
-rendimiento (\textit{thermal throttling}) que degradan la velocidad de cómputo para proteger el hardware. Registrar la
-temperatura permite identificar si alguno de los modelos o dispositivos evaluados alcanza rangos que comprometan la
-consistencia de las mediciones de latencia a lo largo de la sesión.
+La \textbf{temperatura del dispositivo} se registró al inicio y al final de cada sesión. Este valor permite observar si la ejecución del
+modelo genera un aumento térmico importante, ya que temperaturas elevadas pueden activar mecanismos de reducción de rendimiento en el
+dispositivo y afectar la consistencia de los tiempos de inferencia.
 
-El \textbf{tamaño del modelo} se expresa en megabytes y corresponde al tamaño del archivo \texttt{.tflite} integrado en la
-aplicación. Esta métrica incide directamente en el tamaño de instalación de la aplicación y en el tiempo de descarga para el
-usuario final, siendo un factor relevante en contextos de conectividad limitada.
+Finalmente, el \textbf{tamaño del modelo} corresponde al tamaño del archivo \texttt{.tflite} integrado en la aplicación. Esta métrica es
+relevante porque influye en el tamaño final de la aplicación y también en la facilidad de distribución, especialmente en contextos donde
+la conectividad o el almacenamiento disponible pueden ser limitados.
 
-El conjunto de métricas de ejecución descritas permite responder a los objetivos de la investigación relacionados con la
-viabilidad técnica del despliegue on-device, la comparación de eficiencia entre arquitecturas y el análisis del impacto del
-hardware sobre el rendimiento. La evaluación simultánea en dos dispositivos con características de hardware marcadamente
-distintas, un dispositivo de gama media y uno de gama alta, permite además determinar si los resultados observados son
-específicos de un tipo de hardware o si se mantienen de forma consistente en diferentes configuraciones de dispositivos Android.
+Estas métricas de ejecución permiten evaluar la viabilidad técnica de los modelos dentro de una aplicación móvil. De esta forma, la
+comparación entre MobileNetV3 Small y EfficientNetV2B0 no se limita a la calidad de la predicción, sino que también considera el costo
+práctico de ejecutar cada modelo en dispositivos Android con capacidades de hardware diferentes.
