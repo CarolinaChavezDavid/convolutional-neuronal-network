@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  26 MAY 2026 22:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  28 MAY 2026 23:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -349,7 +349,7 @@ Package hyperref Info: Link coloring OFF on input line 20.
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
  (./cover.tex
-<images/Logo_UNLP.jpg, id=60, 592.614pt x 289.08pt>
+<images/Logo_UNLP.jpg, id=84, 592.614pt x 289.08pt>
 File: images/Logo_UNLP.jpg Graphic file (type jpg)
 <use images/Logo_UNLP.jpg>
 Package pdftex.def Info: images/Logo_UNLP.jpg  used on input line 6.
@@ -369,75 +369,100 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write4
 \openout4 = `tesis.toc'.
 
- (./introduction.tex) (./state_art.tex) (./methodology.tex [2
+ (./introduction.tex [2
 
 ]
 Cap\'{\i }tulo 1.
 [3
 
 ]
-<images/ejemplos_plant_village.png, id=97, 839.7774pt x 572.3784pt>
-File: images/ejemplos_plant_village.png Graphic file (type png)
-<use images/ejemplos_plant_village.png>
-Package pdftex.def Info: images/ejemplos_plant_village.png  used on input line 47.
-(pdftex.def)             Requested size: 441.01773pt x 300.59923pt.
-<images/dataset_distribution.png, id=100, 1003.5894pt x 570.4512pt>
-File: images/dataset_distribution.png Graphic file (type png)
-<use images/dataset_distribution.png>
-Package pdftex.def Info: images/dataset_distribution.png  used on input line 58.
-(pdftex.def)             Requested size: 441.01773pt x 250.67723pt.
-LaTeX Info: Redefining \. on input line 62.
-LaTeX Info: Redefining \% on input line 62.
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 62.
- [4 <./images/ejemplos_plant_village.png>]
-ignored: Infinite glue shrinkage found in box being split
-LaTeX Info: Redefining \. on input line 121.
-LaTeX Info: Redefining \% on input line 121.
- [5 <./images/dataset_distribution.png>]
-ignored: Infinite glue shrinkage found in box being split
-LaTeX Info: Redefining \. on input line 121.
-LaTeX Info: Redefining \% on input line 121.
- [6]
-LaTeX Info: Redefining \. on input line 156.
-LaTeX Info: Redefining \% on input line 156.
- [7]
-LaTeX Info: Redefining \. on input line 195.
-LaTeX Info: Redefining \% on input line 195.
- [8]
-LaTeX Info: Redefining \. on input line 233.
-LaTeX Info: Redefining \% on input line 233.
- [9]
-LaTeX Info: Redefining \. on input line 277.
-LaTeX Info: Redefining \% on input line 277.
- [10]
-LaTeX Info: Redefining \. on input line 310.
-LaTeX Info: Redefining \% on input line 310.
- [11]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 324.
-LaTeX Info: Redefining \. on input line 355.
-LaTeX Info: Redefining \% on input line 355.
- [12]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 386.
-LaTeX Info: Redefining \. on input line 409.
-LaTeX Info: Redefining \% on input line 409.
- [13]
-LaTeX Info: Redefining \. on input line 436.
-LaTeX Info: Redefining \% on input line 436.
- [14]
-LaTeX Info: Redefining \. on input line 481.
-LaTeX Info: Redefining \% on input line 481.
- [15]) (./results.tex) (./conclusion.tex) (./tesis.bbl
+(babel)             Reported on input line 68.
+ [4]) (./state_art.tex) (./methodology.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [16] [17
+ [5]
+Cap\'{\i }tulo 2.
+[6
 
-])
+]
+<images/ejemplos_plant_village.png, id=173, 839.7774pt x 572.3784pt>
+File: images/ejemplos_plant_village.png Graphic file (type png)
+<use images/ejemplos_plant_village.png>
+Package pdftex.def Info: images/ejemplos_plant_village.png  used on input line 39.
+(pdftex.def)             Requested size: 441.01773pt x 300.59923pt.
+<images/dataset_distribution.png, id=176, 1003.5894pt x 570.4512pt>
+File: images/dataset_distribution.png Graphic file (type png)
+<use images/dataset_distribution.png>
+Package pdftex.def Info: images/dataset_distribution.png  used on input line 50.
+(pdftex.def)             Requested size: 441.01773pt x 250.67723pt.
+LaTeX Info: Redefining \. on input line 54.
+LaTeX Info: Redefining \% on input line 54.
+ [7 <./images/ejemplos_plant_village.png>]
+ignored: Infinite glue shrinkage found in box being split
+LaTeX Info: Redefining \. on input line 113.
+LaTeX Info: Redefining \% on input line 113.
+ [8 <./images/dataset_distribution.png>]
+ignored: Infinite glue shrinkage found in box being split
+LaTeX Info: Redefining \. on input line 113.
+LaTeX Info: Redefining \% on input line 113.
+ [9]
+LaTeX Info: Redefining \. on input line 148.
+LaTeX Info: Redefining \% on input line 148.
+ [10]
+LaTeX Info: Redefining \. on input line 187.
+LaTeX Info: Redefining \% on input line 187.
+ [11]
+LaTeX Info: Redefining \. on input line 225.
+LaTeX Info: Redefining \% on input line 225.
+ [12]
+LaTeX Info: Redefining \. on input line 269.
+LaTeX Info: Redefining \% on input line 269.
+ [13]
+LaTeX Info: Redefining \. on input line 302.
+LaTeX Info: Redefining \% on input line 302.
+ [14]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 316.
+LaTeX Info: Redefining \. on input line 347.
+LaTeX Info: Redefining \% on input line 347.
+ [15]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 376.
+LaTeX Info: Redefining \. on input line 399.
+LaTeX Info: Redefining \% on input line 399.
+ [16]
+<images/muestra_imagenes_protocolo.png, id=260, 656.4525pt x 357.58594pt>
+File: images/muestra_imagenes_protocolo.png Graphic file (type png)
+<use images/muestra_imagenes_protocolo.png>
+Package pdftex.def Info: images/muestra_imagenes_protocolo.png  used on input line 407.
+(pdftex.def)             Requested size: 441.01773pt x 240.23608pt.
+LaTeX Info: Redefining \. on input line 419.
+LaTeX Info: Redefining \% on input line 419.
+ [17 <./images/muestra_imagenes_protocolo.png>]
+LaTeX Info: Redefining \. on input line 454.
+LaTeX Info: Redefining \% on input line 454.
+ [18]) (./results.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [19]
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [20]
+Cap\'{\i }tulo 3.
+) (./conclusion.tex) (./tesis.bbl [21
+
+] [22
+
+]
+LaTeX Info: Redefining \. on input line 162.
+LaTeX Info: Redefining \% on input line 162.
+ [23])
 LaTeX Info: Redefining \. on input line 34.
 LaTeX Info: Redefining \% on input line 34.
- [18] (./tesis.aux
+ [24] (./tesis.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -445,22 +470,29 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-Package rerunfilecheck Info: File `tesis.out' has not changed.
-(rerunfilecheck)             Checksum: 116CEE980A9F9262351F1E82213653C1;2672.
+
+
+Package rerunfilecheck Warning: File `tesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `tesis.out':
+(rerunfilecheck)             Before: 368553CB8FCB376E823078F099831A76;3481
+(rerunfilecheck)             After:  A38EBD0D24668433574484F4772AC590;3546.
  ) 
 Here is how much of TeX's memory you used:
- 12273 strings out of 469006
- 199771 string characters out of 5454814
- 655417 words of memory out of 5000000
- 40767 multiletter control sequences out of 15000+600000
+ 12334 strings out of 469006
+ 201050 string characters out of 5454814
+ 656096 words of memory out of 5000000
+ 40802 multiletter control sequences out of 15000+600000
  635328 words of font info for 65 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  75i,11n,79p,515b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on tesis.pdf (18 pages, 6577720 bytes).
+Output written on tesis.pdf (24 pages, 7327927 bytes).
 PDF statistics:
- 289 PDF objects out of 1000 (max. 8388607)
- 235 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 128 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 384 PDF objects out of 1000 (max. 8388607)
+ 322 compressed objects within 4 object streams
+ 85 named destinations out of 1000 (max. 500000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

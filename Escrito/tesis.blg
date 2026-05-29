@@ -4,59 +4,59 @@ The top-level auxiliary file: tesis.aux
 The style file: plain.bst
 Database file #1: bibliografia.bib
 Warning--entry type for "chen2025idadp" isn't style-file defined
---line 105 of file bibliografia.bib
+--line 249 of file bibliografia.bib
 Warning--entry type for "mendeley_8nnd2ypcv3" isn't style-file defined
---line 125 of file bibliografia.bib
+--line 269 of file bibliografia.bib
 Warning--entry type for "liu2024pepper" isn't style-file defined
---line 134 of file bibliografia.bib
+--line 278 of file bibliografia.bib
 Warning--entry type for "solapure2024tomato" isn't style-file defined
---line 144 of file bibliografia.bib
+--line 288 of file bibliografia.bib
 Warning--entry type for "rashid2024pumpkin" isn't style-file defined
---line 166 of file bibliografia.bib
+--line 310 of file bibliografia.bib
 Warning--entry type for "shabrina2023potato" isn't style-file defined
---line 176 of file bibliografia.bib
+--line 320 of file bibliografia.bib
 Warning--entry type for "rajput2023soynet" isn't style-file defined
---line 186 of file bibliografia.bib
+--line 330 of file bibliografia.bib
 Warning--empty journal in Zhu2023
-You've used 18 entries,
+You've used 31 entries,
             2118 wiz_defined-function locations,
-            586 strings with 7159 characters,
-and the built_in function-call counts, 5313 in all, are:
-= -- 466
-> -- 356
+            657 strings with 9650 characters,
+and the built_in function-call counts, 9393 in all, are:
+= -- 867
+> -- 580
 < -- 0
-+ -- 143
-- -- 122
-* -- 356
-:= -- 940
-add.period$ -- 47
-call.type$ -- 18
-change.case$ -- 115
++ -- 234
+- -- 198
+* -- 654
+:= -- 1667
+add.period$ -- 91
+call.type$ -- 31
+change.case$ -- 194
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 156
-empty$ -- 380
-format.name$ -- 122
-if$ -- 1060
+cite$ -- 32
+duplicate$ -- 285
+empty$ -- 663
+format.name$ -- 198
+if$ -- 1867
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 9
-newline$ -- 86
-num.names$ -- 36
-pop$ -- 149
+int.to.str$ -- 31
+missing$ -- 19
+newline$ -- 156
+num.names$ -- 62
+pop$ -- 210
 preamble$ -- 1
-purify$ -- 97
+purify$ -- 161
 quote$ -- 0
-skip$ -- 140
+skip$ -- 231
 stack$ -- 0
-substring$ -- 154
-swap$ -- 17
+substring$ -- 376
+swap$ -- 28
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 72
+type$ -- 124
 warning$ -- 1
-while$ -- 40
-width$ -- 20
-write$ -- 173
+while$ -- 77
+width$ -- 33
+write$ -- 322
 (There were 8 warnings)

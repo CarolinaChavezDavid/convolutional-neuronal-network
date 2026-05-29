@@ -1,0 +1,80 @@
+\chapter{Introducción}
+
+Argentina destaca por estar entre los países exportadores agrícolas más importantes del mundo. Según el Banco Mundial, en 2021 el sector agroalimentario
+representó aproximadamente el 15,7\% del Producto Interno Bruto (PIB) nacional y generó cerca del 10,6\% de los ingresos fiscales del país \cite{worldbank2024agricultura}. 
+La amplia extensión de tierras agrícolas (aproximadamente el 47\% del territorio argentino) sustenta cultivos y producciones que abastecen 
+tanto el mercado interno como la exportación \cite{usda2024argentina}. Además, productos como la soja, el maíz y el trigo representan alrededor del 36\% de los ingresos
+por exportaciones del país. Al considerar de manera conjunta los productos primarios y las manufacturas de origen agropecuario, el sector alcanza 
+aproximadamente el 60\% de las exportaciones totales de Argentina \cite{millermagazine2024argentina}, lo que consolida al sector agrícola como un actor clave para la estabilidad 
+económica, la generación de divisas y el sostenimiento del empleo rural.
+
+Las enfermedades en plantas y las plagas constituyen un riesgo permanente   
+para los cultivos; en Argentina, los sistemas productivos enfrentan una amplia variedad de enfermedades fúngicas, bacterianas y virales que generan
+pérdidas significativas y requieren monitoreo constante para preservar los rendimientos y la calidad de producción \cite{aapresid2024maiz}. La detección tradicional de 
+enfermedades se basa en la observación visual en campo y en análisis de laboratorio realizados por organismos como el Servicio Nacional de Sanidad y
+Calidad Agroalimentaria (SENASA) \cite{argentina2024laboratorio}.  Estas técnicas permiten identificar síntomas visuales característicos en las hojas, tales como lesiones
+necróticas, alteraciones en la coloración y deterioro del tejido vegetal, así como confirmar la presencia de patógenos mediante métodos moleculares,
+contribuyendo al manejo integrado de plagas y enfermedades. En paralelo, en los últimos años se han desarrollado herramientas tecnológicas 
+orientadas a asistir y automatizar el monitoreo sanitario de los cultivos, incluyendo el uso de sensores, drones y sistemas de análisis de imágenes.
+Estas soluciones buscan ampliar la cobertura del monitoreo y reducir la dependencia exclusiva de la inspección manual. Sin embargo, en zonas rurales 
+o remotas, donde la conectividad es intermitente o inexistente, el acceso oportuno a plataformas digitales o a sistemas que dependen de infraestructura
+externa resulta limitado.
+
+En las últimas décadas, el aumento de la capacidad de cómputo, el acceso a grandes conjuntos de datos y el desarrollo de algoritmos avanzados han 
+impulsado la adopción de la Inteligencia Artificial (IA) en una amplia variedad de dominios \cite{dhar2019ondevice}. En el sector agrícola, la creciente demanda de 
+agricultura de precisión ha promovido la exploración de tecnologías basadas en IA para mejorar el rendimiento de los cultivos y optimizar el 
+monitoreo de enfermedades \cite{ahmed2021mobile,johannes2017automatic,Niaz2025Efficient}. Uno de los enfoques más prometedores es el diagnóstico automatizado de enfermedades foliares, que emplea 
+técnicas de visión por computadora, procesamiento de imágenes y algoritmos de aprendizaje automático (Machine Learning, ML) y aprendizaje profundo (Deep Learning, DL) para identificar 
+patologías a partir de imágenes \cite{agronomy13040961}. Esta capacidad, sumada a la democratización de la tecnología mediante el uso de dispositivos móviles, 
+permite el desarrollo de herramientas accesibles como apoyo en el proceso de inspección visual, sin necesidad de especialistas ni infraestructura 
+compleja.
+
+Muchos estudios en los que se implementan modelos de aprendizaje automático y aprendizaje profundo en dispositivos móviles dependen del procesamiento en 
+la nube \cite{ahmed2021mobile,Tembhurne2023}, lo que introduce limitaciones como latencia, dependencia de la conectividad y riesgos de privacidad asociados al envío de 
+información a servidores externos \cite{xiao2025understanding}. En contraste, la inferencia directa en el dispositivo (on-device), mediante la ejecución del modelo en 
+el hardware del teléfono, permite procesar los datos localmente, reduciendo la latencia, preservando la privacidad y habilitando el funcionamiento 
+sin conexión \cite{dhar2019ondevice}. Además, al prescindir de recursos en la nube, se disminuyen los costos operativos y se mejora la accesibilidad 
+de la solución.
+
+A pesar de estos beneficios, la implementación de modelos de aprendizaje profundo en dispositivos móviles enfrenta retos técnicos significativos.
+Los dispositivos móviles tienen recursos limitados de memoria, procesamiento y energía, lo que restringe la complejidad de los modelos que pueden 
+ejecutarse sin comprometer la eficiencia. Por eso, es fundamental encontrar un equilibrio adecuado entre precisión del modelo, consumo de recursos
+(latencia, energía, memoria) y tamaño de la aplicación.
+
+En este escenario, las arquitecturas ligeras como MobileNet y EfficientNet han demostrado un rendimiento competitivo en tareas de clasificación bajo
+restricciones de hardware \cite{zainab2025plant,geetharamani2019identification,subramaniam2026comparative}. Sin embargo, gran parte de los trabajos revisados se concentra principalmente en métricas de precisión del modelo, mientras que son 
+más limitados los estudios que analizan de manera comparativa y sistemática el desempeño conjunto de precisión y eficiencia computacional directamente
+en dispositivos móviles reales, bajo condiciones controladas y medibles.
+
+Por lo tanto, se vuelve relevante desarrollar un estudio que evalúe comparativamente estas arquitecturas en un entorno de inferencia en el dispositivo, utilizando métricas 
+integradas de desempeño (exactitud, sensibilidad y F1-score) junto con métricas de eficiencia (latencia de inferencia, uso de CPU, consumo de memoria, 
+energía y tamaño del modelo). Este análisis permitirá determinar la viabilidad técnica real de soluciones basadas en aprendizaje profundo ejecutadas 
+localmente en dispositivos móviles, aportando evidencia empírica sobre su aplicabilidad en escenarios rurales con conectividad limitada y 
+contribuyendo al diseño de sistemas agrícolas inteligentes con enfoque local.
+
+\section{Objetivos}
+
+\subsection{Objetivo general}
+
+Evaluar la viabilidad técnica del reconocimiento de enfermedades en plantas mediante arquitecturas ligeras de aprendizaje profundo
+ejecutadas en dispositivos móviles sin dependencia de conectividad a internet, analizando su desempeño en términos de precisión de
+clasificación, eficiencia de ejecución y uso de recursos computacionales.
+
+\subsection{Objetivos específicos}
+
+Para alcanzar este objetivo general, se plantean los siguientes objetivos específicos:
+
+\begin{itemize}
+    \item Preparar y preprocesar el conjunto de datos PlantVillage para el entrenamiento, validación y prueba de modelos de clasificación de 
+    enfermedades en hojas de plantas.
+    \item Implementar y entrenar arquitecturas ligeras de aprendizaje profundo, específicamente MobileNetV3 Small y EfficientNetV2B0, 
+    utilizando técnicas de transferencia de aprendizaje y ajuste fino.
+    \item Convertir los modelos entrenados a un formato compatible con dispositivos Android mediante TensorFlow Lite, considerando una 
+    representación optimizada para su ejecución en el dispositivo.
+    \item Desarrollar una aplicación móvil prototipo que permita ejecutar inferencias localmente sobre imágenes de hojas, sin dependencia de 
+    servicios externos ni conectividad a internet.
+    \item Evaluar comparativamente los modelos en dispositivos móviles con distintas capacidades de hardware, considerando métricas de 
+    clasificación, latencia, memoria, consumo energético, temperatura y tamaño del modelo.
+    \item Analizar el comportamiento de los modelos frente a imágenes capturadas en condiciones menos controladas que PlantVillage, 
+    incluyendo fondos complejos, variaciones de iluminación e imágenes fuera del dominio esperado.
+\end{itemize}

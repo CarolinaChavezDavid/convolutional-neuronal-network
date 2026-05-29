@@ -1,15 +1,47 @@
 \begin{thebibliography}{10}
 
+\bibitem{aapresid2024maiz}
+{Aapresid}.
+\newblock Maíz nea: enfermedades de tallo y raíz complican la cosecha.
+\newblock {\em Blog de Aapresid}, 2024.
+\newblock Consultado el 28 de mayo de 2026.
+
 \bibitem{afzaal2021instance}
 Umar Afzaal, Binod Bhattarai, Yadav~R. Pandeya, and Jong Lee.
 \newblock An instance segmentation model for strawberry diseases based on mask
   r-cnn.
 \newblock {\em Sensors}, 21(19):6565, 2021.
 
+\bibitem{ahmed2021mobile}
+Ahmed~Abdelmoamen Ahmed and Gopireddy~Harshavardhan Reddy.
+\newblock A mobile-based system for detecting plant leaf diseases using deep
+  learning.
+\newblock {\em AgriEngineering}, 3(3):478--493, jul 2021.
+
+\bibitem{worldbank2024agricultura}
+{Banco Mundial}.
+\newblock Agricultura argentina: hacia un sector agroalimentario más
+  competitivo, inclusivo y resiliente.
+\newblock Technical report, Banco Mundial, jun 2024.
+\newblock Fecha de consulta: 28 de mayo de 2026.
+
 \bibitem{chen2025idadp}
 Lei Chen, Boru Shi, and Yuan Yuan.
 \newblock Idadp - corn disease image description dataset, 2025.
 \newblock Accessed: 2026-05-27.
+
+\bibitem{dhar2019ondevice}
+Sauptik Dhar, Junyao Guo, Jiayi Liu, Samarth Tripathi, Unmesh Kurup, and Mohak
+  Shah.
+\newblock On-device machine learning: An algorithms and learning theory
+  perspective.
+\newblock {\em arXiv preprint arXiv:1911.00623}, November 2019.
+
+\bibitem{geetharamani2019identification}
+G.~Geetharamani and Arun Pandian~J.
+\newblock Identification of plant leaf diseases using a nine-layer deep
+  convolutional neural network.
+\newblock {\em Computers and Electrical Engineering}, 76:323--338, 2019.
 
 \bibitem{howard2017mobilenetsefficientconvolutionalneural}
 Andrew~G. Howard, Menglong Zhu, Bo~Chen, Dmitry Kalenichenko, Weijun Wang,
@@ -30,6 +62,13 @@ David~P. Hughes and Marcel Salath{\'{e}}.
   crowdsourcing.
 \newblock {\em CoRR}, abs/1511.08060, 2015.
 
+\bibitem{johannes2017automatic}
+A.~Johannes, A.~Picon, A.~{\'A}lvarez-Gila, J.~Seitz, R.~Sadikaj, and
+  J.~Echazarra.
+\newblock Automatic plant disease diagnosis using mobile devices and deep
+  neural networks.
+\newblock {\em Computers and Electronics in Agriculture}, 138:326--336, 2017.
+
 \bibitem{li2022mobilenetv3}
 Yajing Li, Huimin Hao, Jiahai Huang, and Wenbin Xin.
 \newblock Mobilenetv3-centernet: A target recognition method for avoiding
@@ -41,12 +80,32 @@ Yajing Li, Huimin Hao, Jiahai Huang, and Wenbin Xin.
 Jun Liu.
 \newblock Pepperdisease, 2024.
 
+\bibitem{millermagazine2024argentina}
+{Miller Magazine}.
+\newblock Argentina’s agro-export growth: A strong 2024 and promising 2025
+  outlook.
+\newblock {\em Miller Magazine}, 2024.
+\newblock Consultado el 28 de mayo de 2026.
+
+\bibitem{argentina2024laboratorio}
+{Ministerio de Economía - Secretaría de Agricultura, Ganadería y Pesca}.
+\newblock El laboratorio vegetal amplía su capacidad diagnóstica de plagas y
+  enfermedades, 2024.
+\newblock Consultado el 28 de mayo de 2026.
+
 \bibitem{molcan2023classification}
 Samuel Mol{\v{c}}an, Monika Smie{\v{s}}kov{\'a}, Hynek Bachrat{\'y},
   Katar{\'\i}na Bachrat{\'a}, and Peter Novotn{\'y}.
 \newblock Classification of red blood cells using time-distributed
   convolutional neural networks from simulated videos.
 \newblock {\em Applied Sciences}, 13(13):7967, 2023.
+
+\bibitem{Niaz2025Efficient}
+Awais~Amir Niaz, Rehan Ashraf, Toqeer Mahmood, C.~M.~Nadeem Faisal, and
+  Muhammad~Mobeen Abid.
+\newblock An efficient smart phone application for wheat crop diseases
+  detection using advanced machine learning.
+\newblock {\em PLOS ONE}, 20(1):e0312768, 01 2025.
 
 \bibitem{rajput2023soynet}
 Arpan~Singh Rajput, Shailja Shukla, and S.~S. Thakur.
@@ -88,11 +147,38 @@ Mingxing Tan and Quoc~V. Le.
 \newblock Efficientnetv2: Smaller models and faster training.
 \newblock {\em CoRR}, abs/2104.00298, 2021.
 
+\bibitem{Tembhurne2023}
+Jitendra~V. Tembhurne, Saurav~M. Gajbhiye, Vedant~R. Gannarpwar, Harshal~R.
+  Khandait, Purva~R. Goydani, and Tausif Diwan.
+\newblock Plant disease detection using deep learning based mobile application.
+\newblock {\em Multimedia Tools and Applications}, 82:27365--27390, febrero
+  2023.
+
 \bibitem{tembhurne2023plant24}
 Jitendra~V. Tembhurne, Saurav~M. Gajbhiye, Vedant~R. Gannarpwar, Harshal~R.
   Khandait, Purva~R. Goydani, and Tausif Diwan.
 \newblock Plant disease detection using deep learning based mobile application.
 \newblock {\em Multimedia Tools and Applications}, 82:27365--27390, 2023.
+
+\bibitem{usda2024argentina}
+{USDA Foreign Agricultural Service}.
+\newblock Argentina: 2024/25 grain production remains projected to be high.
+\newblock Technical report, United States Department of Agriculture (USDA),
+  2024.
+\newblock Consultado el 28 de mayo de 2026.
+
+\bibitem{xiao2025understanding}
+Jie Xiao, Qianyi Huang, Xu~Chen, and Chen Tiant.
+\newblock Understanding large language models in your pockets: Performance
+  study on cots mobile devices.
+\newblock {\em Journal of LaTeX Class Files}, 14(8), August 2021.
+\newblock arXiv preprint arXiv:2410.03613v2 [cs.LG], May 4 2025.
+
+\bibitem{zainab2025plant}
+Zunaira Zainab and Rabbia Mahum.
+\newblock Plant disease detection using deep learning techniques.
+\newblock {\em ICCK Journal of Image Analysis and Processing}, 1(1):36--44,
+  2025.
 
 \bibitem{Zhu2023}
 Fangzhou Zhu.
