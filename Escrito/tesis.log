@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  31 MAY 2026 22:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  2 JUN 2026 23:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -349,7 +349,7 @@ Package hyperref Info: Link coloring OFF on input line 20.
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
  (./cover.tex
-<images/Logo_UNLP.jpg, id=84, 592.614pt x 289.08pt>
+<images/Logo_UNLP.jpg, id=92, 592.614pt x 289.08pt>
 File: images/Logo_UNLP.jpg Graphic file (type jpg)
 <use images/Logo_UNLP.jpg>
 Package pdftex.def Info: images/Logo_UNLP.jpg  used on input line 6.
@@ -361,4 +361,4 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 3.
-LaTeX Font Info:    
+LaTeX Font Info:    E

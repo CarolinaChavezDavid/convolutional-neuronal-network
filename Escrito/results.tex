@@ -1,1 +1,87 @@
 \chapter{Resultados experimentales}
+
+En este capítulo se presentan los resultados obtenidos durante la evaluación de los modelos MobileNetV3 Small y EfficientNetV2B0.
+El análisis considera tanto el desempeño de clasificación como el comportamiento de los modelos al ejecutarse directamente en los
+dispositivos móviles definidos en la metodología. De esta manera, los resultados permiten observar no solo la calidad de las
+predicciones, sino también la viabilidad práctica de cada arquitectura dentro de una aplicación Android.
+
+\section{Aplicación móvil}
+En la figura \ref{fig:app_screenshots} se muestran capturas de pantalla de la aplicación móvil desarrollada para la ejecución de
+inferencias en los dispositivos. La pantalla inicial (captura a) permite seleccionar el modelo que se desea probar, ya sea
+MobileNetV3 Small o EfficientNetV2B0. Desde esta misma vista, el usuario puede ingresar la imagen al modelo mediante dos opciones:
+cargar una fotografía desde la galería del dispositivo (captura b) o capturar una imagen directamente desde la cámara de la
+aplicación (captura c). En la pantalla de captura se mantiene un área de enfoque que orienta al usuario para ubicar la hoja dentro
+de la región de análisis, con el fin de facilitar una entrada más adecuada para el proceso de inferencia.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/app_screenshots.png}
+    \caption{Pantallas iniciales de la aplicación móvil: selección del modelo, carga desde galería y captura de imagen.\label{fig:app_screenshots}}
+\end{figure}
+
+
+Posteriormente, en la figura \ref{fig:app_screenshots_2} se presenta el flujo de análisis de la imagen. La pantalla de análisis
+(captura a) muestra la imagen seleccionada y el avance de la ejecución del modelo, de manera que el usuario pueda identificar que la
+inferencia se encuentra en proceso. Cuando la predicción obtiene una confianza igual o superior al umbral definido del 50\%, se
+presenta la pantalla de resultado (captura b), en la cual se indica la clase asignada, el porcentaje de confianza asociado y una
+descripción breve relacionada con el diagnóstico obtenido.
+
+En caso de que la confianza de la predicción sea menor al 50\%, o si durante la ejecución del modelo se presenta un error, la
+aplicación muestra un mensaje de error en la pantalla de análisis (captura c). Aquí se informa que no fue posible clasificar la 
+imagen y se habilita la
+opción de reintento, permitiendo al usuario tomar o seleccionar una nueva fotografía. De esta forma, la interfaz mantiene un flujo
+simple para la prueba de los modelos, desde la selección de la imagen hasta la visualización del diagnóstico o la repetición del
+proceso cuando la entrada no permite una inferencia confiable.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/app_screenshots_2.png}
+    \caption{Pantallas de análisis, resultado y error durante la inferencia en la aplicación móvil.\label{fig:app_screenshots_2}}
+\end{figure}
+
+\section{Resultados de ejecución en dispositivo}
+
+    La tabla \ref{tab:motog_execution_results} presenta las mediciones obtenidas en el dispositivo Moto G30 durante tres sesiones de
+    evaluación. En cada sesión se ejecutaron ambos modelos bajo el mismo protocolo de prueba, registrando variables asociadas al estado del
+dispositivo y al tiempo de inferencia.
+
+\begin{table}[H]
+    \centering
+    \caption{Resultados de ejecución de MobileNetV3 Small y EfficientNetV2B0 en Moto G30.}
+    \label{tab:motog_execution_results}
+    \scriptsize
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{>{\raggedright\arraybackslash}p{3.2cm}
+                    >{\centering\arraybackslash}p{1.8cm}
+                    >{\centering\arraybackslash}p{1.8cm}
+                    >{\centering\arraybackslash}p{1.8cm}
+                    >{\centering\arraybackslash}p{1.8cm}
+                    >{\centering\arraybackslash}p{1.8cm}
+                    >{\centering\arraybackslash}p{1.8cm}}
+        \hline
+        \multicolumn{7}{c}{\textbf{Moto G30}} \\
+        \hline
+        \textbf{Métrica} & \multicolumn{2}{c}{\textbf{Sesión 1}} & \multicolumn{2}{c}{\textbf{Sesión 2}} & \multicolumn{2}{c}{\textbf{Sesión 3}} \\
+        \hline
+        & \textbf{MNetV3} & \textbf{EffNet} & \textbf{MNetV3} & \textbf{EffNet} & \textbf{MNetV3} & \textbf{EffNet} \\
+        \hline
+        Temperatura inicial (C) & 283 & 284 & 272 & 290 & 258 & 300 \\
+        Temperatura final (C) & 296 & 316 & 295 & 324 & 295 & 313 \\
+        Batería inicial (\%) & 100 & 79 & 72 & 65 & 50 & 65 \\
+        Batería final (\%) & 77 & 68 & 63 & 55 & 37 & 51 \\
+        Tiempo de inicialización (ms) & 3423 & 357 & 3220 & 319 & 3258 & 374 \\
+        Warmup (ms) & 258,8 & 495,8 & 248 & 463,1 & 60,4 & 671,4 \\
+        Latencia promedio (ms) & 24,8 & 273,6 & 31,9 & 276,8 & 35,3 & 272 \\
+        Mediana P50 (ms) & 23,2 & 266,6 & 31 & 271,8 & 31,8 & 265,2 \\
+        Percentil P95 (ms) & 36,9 & 311,4 & 52,5 & 323,9 & 69 & 318,1 \\
+        Desviación estándar (ms) & 7,5 & 22,6 & 12,3 & 22,8 & 18,1 & 23,2 \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+En la tabla, MNetV3 corresponde a MobileNetV3 Small y EffNet corresponde a EfficientNetV2B0.
+
+Los resultados muestran una diferencia marcada entre ambos modelos en el tiempo de inferencia. MobileNetV3 Small mantiene latencias
+promedio considerablemente menores en las tres sesiones, mientras que EfficientNetV2B0 presenta tiempos más altos y una variabilidad
+mayor. 
