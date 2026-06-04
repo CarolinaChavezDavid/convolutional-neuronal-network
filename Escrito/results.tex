@@ -5,6 +5,77 @@ El análisis considera tanto el desempeño de clasificación como el comportamie
 dispositivos móviles definidos en la metodología. De esta manera, los resultados permiten observar no solo la calidad de las
 predicciones, sino también la viabilidad práctica de cada arquitectura dentro de una aplicación Android.
 
+\section{Resultados del entrenamiento de los modelos}
+
+En esta sección se presentan los resultados obtenidos durante el entrenamiento de los modelos seleccionados para la aplicación móvil.
+Estos resultados permiten observar el comportamiento de cada arquitectura sobre el conjunto de datos PlantVillage antes de su
+conversión e integración en Android. De esta manera, el análisis no se limita únicamente a la ejecución en el dispositivo, sino que
+también considera el desempeño alcanzado por los modelos durante la etapa de entrenamiento y evaluación sobre el conjunto de prueba.
+
+\subsection{Modelo EfficientNetV2B0}
+
+El modelo EfficientNetV2B0 fue entrenado como una arquitectura de comparación frente a MobileNetV3 Small, manteniendo el mismo
+conjunto de clases, la misma división de los datos y el mismo criterio de evaluación descrito en la metodología. Para este modelo se
+utilizó la variante B0, con imágenes de entrada de 224x224 píxeles y pesos iniciales preentrenados en ImageNet. A diferencia de
+MobileNetV3 Small, el preprocesamiento de EfficientNetV2B0 se realizó normalizando los valores de los píxeles en el rango [0, 1],
+por lo que esta diferencia también se conservo durante la integración del modelo en la aplicación móvil.
+
+El entrenamiento se organizó en dos fases. En la primera fase se congeló el backbone preentrenado y se entrenó únicamente la cabeza
+de clasificación agregada para las 38 clases de PlantVillage. Posteriormente, en la fase de ajuste fino, se descongelaron las últimas
+capas del backbone con una tasa de aprendizaje menor, manteniendo congeladas las capas de normalización por lotes para evitar cambios
+bruscos en las estadísticas aprendidas durante el preentrenamiento. Esta estrategia permitió adaptar el modelo al dominio de hojas y
+enfermedades sin perder por completo la representación visual general aprendida desde ImageNet.
+
+La tabla \ref{tab:efficientnet_training_results} resume los principales resultados del entrenamiento y exportación del modelo
+EfficientNetV2B0, considerando tanto la configuración utilizada como las métricas obtenidas sobre el conjunto de prueba.
+
+\begin{table}[H]
+    \centering
+    \caption{Resumen de entrenamiento y exportación del modelo EfficientNetV2B0.}
+    \label{tab:efficientnet_training_results}
+    \begin{tabular}{>{\raggedright\arraybackslash}p{6cm} >{\centering\arraybackslash}p{6cm}}
+        \hline
+        \textbf{Atributo} & \textbf{Resultado} \\
+        \hline
+        Arquitectura & EfficientNetV2B0 \\
+        Variante & B0 \\
+        Tamaño de entrada & 224x224 píxeles \\
+        Número de clases & 38 \\
+        División del conjunto de datos & 80\% entrenamiento, 10\% validación, 10\% prueba \\
+        Imágenes de entrenamiento & 43442 \\
+        Imágenes de validación & 5430 \\
+        Imágenes de prueba & 5431 \\
+        Preprocesamiento & Normalización en el rango [0, 1] \\
+        Épocas de entrenamiento de cabeza & 15 \\
+        Épocas de ajuste fino & 10 \\
+        Capas descongeladas en ajuste fino & Últimas 20 capas del backbone \\
+        Exactitud en prueba &  \\
+        Pérdida en prueba &  \\
+        Precisión macro &  \\
+        Recall macro &  \\
+        F1-score macro &  \\
+        Tamaño del modelo TFLite FP32 & 22,52 MB \\
+        Tamaño del modelo TFLite FP16 & 11,33 MB \\
+        \hline
+    \end{tabular}
+\end{table}
+
+La matriz de confusión obtenida para EfficientNetV2B0 se presenta en la figura \ref{fig:efficientnet_confusion_matrix}. Esta matriz
+permite identificar visualmente las clases en las que el modelo concentró la mayor parte de sus aciertos y los casos en los que
+se presentaron confusiones entre enfermedades o cultivos con características visuales similares. Este análisis es relevante porque
+una exactitud global alta no siempre evidencia los errores específicos que pueden aparecer en clases particulares.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../EfficientNet/confusion_matrix_v2b0.png}
+    \caption{Matriz de confusión del modelo EfficientNetV2B0 sobre el conjunto de prueba de PlantVillage.\label{fig:efficientnet_confusion_matrix}}
+\end{figure}
+
+Después del entrenamiento, el modelo fue exportado a TensorFlow Lite en formato FP32 y FP16. La versión FP16 redujo el tamaño del
+archivo aproximadamente a la mitad, pasando de 22,52 MB a 11,33 MB. Esta reducción es importante para el despliegue en dispositivos
+móviles, ya que disminuye el espacio requerido por el modelo dentro de la aplicación y facilita su distribución sin modificar la
+estructura general de la arquitectura entrenada.
+
 \section{Aplicación móvil}
 En la figura \ref{fig:app_screenshots} se muestran capturas de pantalla de la aplicación móvil desarrollada para la ejecución de
 inferencias en los dispositivos. La pantalla inicial (captura a) permite seleccionar el modelo que se desea probar, ya sea
