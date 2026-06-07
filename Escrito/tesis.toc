@@ -20,6 +20,20 @@
 \contentsline {subsection}{\numberline {2.5.2}Métricas de ejecución en dispositivo}{19}{subsection.2.5.2}%
 \contentsline {chapter}{\numberline {3}Resultados experimentales}{21}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Resultados del entrenamiento de los modelos}{21}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Modelo EfficientNetV2B0}{21}{subsection.3.1.1}%
-\contentsline {section}{\numberline {3.2}Aplicación móvil}{23}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Resultados de ejecución en dispositivo}{25}{section.3.3}%
+\contentsline {subsection}{\numberline {3.1.1}Modelo MobileNetV3 Small}{21}{subsection.3.1.1}%
+\contentsline {subsubsection}{Configuración del entrenamiento}{21}{section*.8}%
+\contentsline {subsubsection}{Evolución del entrenamiento}{22}{section*.10}%
+\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{23}{section*.12}%
+\contentsline {subsubsection}{Exportación del modelo}{24}{section*.14}%
+\contentsline {subsection}{\numberline {3.1.2}Modelo EfficientNetV2B0}{24}{subsection.3.1.2}%
+\contentsline {subsubsection}{Configuración del entrenamiento}{25}{section*.15}%
+\contentsline {subsubsection}{Evolución del entrenamiento}{26}{section*.17}%
+\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{26}{section*.19}%
+\contentsline {subsubsection}{Exportación del modelo}{28}{section*.22}%
+\contentsline {section}{\numberline {3.2}Aplicación móvil}{28}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Resultados de ejecución en dispositivo}{30}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Tiempo de inicialización y warmup}{33}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Memoria PSS}{33}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Consumo de batería}{35}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Temperatura del dispositivo}{35}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Coherencia botánica}{35}{subsection.3.3.5}%

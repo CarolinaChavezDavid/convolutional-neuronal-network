@@ -3,60 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: tesis.aux
 The style file: plain.bst
 Database file #1: bibliografia.bib
-Warning--entry type for "chen2025idadp" isn't style-file defined
---line 249 of file bibliografia.bib
-Warning--entry type for "mendeley_8nnd2ypcv3" isn't style-file defined
---line 269 of file bibliografia.bib
-Warning--entry type for "liu2024pepper" isn't style-file defined
---line 278 of file bibliografia.bib
-Warning--entry type for "solapure2024tomato" isn't style-file defined
---line 288 of file bibliografia.bib
-Warning--entry type for "rashid2024pumpkin" isn't style-file defined
---line 310 of file bibliografia.bib
-Warning--entry type for "shabrina2023potato" isn't style-file defined
---line 320 of file bibliografia.bib
-Warning--entry type for "rajput2023soynet" isn't style-file defined
---line 330 of file bibliografia.bib
-Warning--empty journal in Zhu2023
-You've used 31 entries,
+You've used 32 entries,
             2118 wiz_defined-function locations,
-            657 strings with 9650 characters,
-and the built_in function-call counts, 9393 in all, are:
-= -- 867
-> -- 580
+            662 strings with 9773 characters,
+and the built_in function-call counts, 9604 in all, are:
+= -- 887
+> -- 587
 < -- 0
-+ -- 234
-- -- 198
-* -- 654
-:= -- 1667
-add.period$ -- 91
-call.type$ -- 31
-change.case$ -- 194
++ -- 237
+- -- 200
+* -- 658
+:= -- 1698
+add.period$ -- 94
+call.type$ -- 32
+change.case$ -- 198
 chr.to.int$ -- 0
 cite$ -- 32
-duplicate$ -- 285
-empty$ -- 663
-format.name$ -- 198
-if$ -- 1867
+duplicate$ -- 289
+empty$ -- 690
+format.name$ -- 200
+if$ -- 1918
 int.to.chr$ -- 0
-int.to.str$ -- 31
-missing$ -- 19
-newline$ -- 156
-num.names$ -- 62
-pop$ -- 210
+int.to.str$ -- 32
+missing$ -- 18
+newline$ -- 161
+num.names$ -- 64
+pop$ -- 221
 preamble$ -- 1
-purify$ -- 161
+purify$ -- 164
 quote$ -- 0
-skip$ -- 231
+skip$ -- 238
 stack$ -- 0
-substring$ -- 376
-swap$ -- 28
+substring$ -- 381
+swap$ -- 30
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 124
-warning$ -- 1
-while$ -- 77
-width$ -- 33
-write$ -- 322
-(There were 8 warnings)
+type$ -- 128
+warning$ -- 0
+while$ -- 79
+width$ -- 34
+write$ -- 333

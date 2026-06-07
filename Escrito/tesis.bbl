@@ -43,6 +43,12 @@ G.~Geetharamani and Arun Pandian~J.
   convolutional neural network.
 \newblock {\em Computers and Electrical Engineering}, 76:323--338, 2019.
 
+\bibitem{google2026litert}
+{Google}.
+\newblock Litert documentation.
+\newblock \url{https://developers.google.com/edge/litert}, 2026.
+\newblock Consultado el 4 de junio de 2026.
+
 \bibitem{howard2017mobilenetsefficientconvolutionalneural}
 Andrew~G. Howard, Menglong Zhu, Bo~Chen, Dmitry Kalenichenko, Weijun Wang,
   Tobias Weyand, Marco Andreetto, and Hartwig Adam.
@@ -182,7 +188,6 @@ Zunaira Zainab and Rabbia Mahum.
 
 \bibitem{Zhu2023}
 Fangzhou Zhu.
-\newblock {AppleLeaf9-Enhanced Edition(AL9EE)}.
-\newblock 6 2023.
+\newblock {AppleLeaf9-Enhanced Edition(AL9EE)}, 6 2023.
 
 \end{thebibliography}

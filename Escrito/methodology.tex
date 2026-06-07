@@ -287,6 +287,10 @@ Para la construcción de la interfaz de usuario se utilizó Jetpack Compose, lo 
 La captura y el procesamiento inicial de imágenes se integraron mediante
 CameraX, una librería de Android diseñada para simplificar el uso de la cámara en distintos dispositivos.
 
+Para la API de inferencia  MobileNetV3 utiliza CompiledModel (compilación AOT de LiteRT) \cite{google2026litert}, que aprovecha aceleradores de hardware disponibles. 
+EfficientNetV2B0 usa el Interpreter clásico de TFLite con 4 hilos de CPU, ya que sus bloques Fused-MBConv no son compatibles con el compilador AOT de LiteRT.
+Esta diferencia en la API de inferencia puede contribuir parcialmente a una brecha de latencia entre los resultados de los modelos.
+
 En cuanto al componente de inteligencia artificial, la aplicación recibe los modelos convertidos a formato TensorFlow Lite / LiteRT,
 almacenados localmente. Esto permite ejecutar la inferencia en el dispositivo sin conexión a
 internet. Los modelos evaluados incluyen MobileNetV3 Small FP16 y EfficientNetV2B0 FP16, ambos integrados como archivos .tflite. Cada
