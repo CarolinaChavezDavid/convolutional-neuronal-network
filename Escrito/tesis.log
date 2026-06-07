@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  6 JUN 2026 22:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  7 JUN 2026 20:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -518,43 +518,61 @@ LaTeX Info: Redefining \% on input line 390.
 LaTeX Info: Redefining \. on input line 428.
 LaTeX Info: Redefining \% on input line 428.
  [32]
-<images/PSS_MobileNetV3Small_MotoG.png, id=441, 570.933pt x 426.03165pt>
+LaTeX Info: Redefining \. on input line 506.
+LaTeX Info: Redefining \% on input line 506.
+ [33]
+<images/PSS_MobileNetV3Small_MotoG.png, id=450, 570.933pt x 426.03165pt>
 File: images/PSS_MobileNetV3Small_MotoG.png Graphic file (type png)
 <use images/PSS_MobileNetV3Small_MotoG.png>
 Package pdftex.def Info: images/PSS_MobileNetV3Small_MotoG.png  used on input line 511.
 (pdftex.def)             Requested size: 216.1011pt x 161.25664pt.
-<images/PSS_EfficientNetV2B0_MotoG.png, id=442, 570.933pt x 426.03165pt>
+<images/PSS_EfficientNetV2B0_MotoG.png, id=451, 570.933pt x 426.03165pt>
 File: images/PSS_EfficientNetV2B0_MotoG.png Graphic file (type png)
 <use images/PSS_EfficientNetV2B0_MotoG.png>
 Package pdftex.def Info: images/PSS_EfficientNetV2B0_MotoG.png  used on input line 516.
 (pdftex.def)             Requested size: 216.1011pt x 161.25664pt.
-LaTeX Info: Redefining \. on input line 519.
-LaTeX Info: Redefining \% on input line 519.
- [33]
-<images/PSS_MobileNetV3Small_SamsungS23.png, id=452, 570.933pt x 426.03165pt>
+<images/PSS_MobileNetV3Small_SamsungS23.png, id=453, 570.933pt x 426.03165pt>
 File: images/PSS_MobileNetV3Small_SamsungS23.png Graphic file (type png)
 <use images/PSS_MobileNetV3Small_SamsungS23.png>
 Package pdftex.def Info: images/PSS_MobileNetV3Small_SamsungS23.png  used on input line 528.
 (pdftex.def)             Requested size: 216.1011pt x 161.25664pt.
-<images/PSS_EfficientNetV2B0_SamsungS23.png, id=453, 570.933pt x 426.03165pt>
+<images/PSS_EfficientNetV2B0_SamsungS23.png, id=454, 570.933pt x 426.03165pt>
 File: images/PSS_EfficientNetV2B0_SamsungS23.png Graphic file (type png)
 <use images/PSS_EfficientNetV2B0_SamsungS23.png>
 Package pdftex.def Info: images/PSS_EfficientNetV2B0_SamsungS23.png  used on input line 533.
 (pdftex.def)             Requested size: 216.1011pt x 161.25664pt.
-LaTeX Info: Redefining \. on input line 546.
-LaTeX Info: Redefining \% on input line 546.
- [34 <./images/PSS_MobileNetV3Small_MotoG.png> <./images/PSS_EfficientNetV2B0_MotoG.png> <./images/PSS_MobileNetV3Small_SamsungS23.png> <./images/PSS_EfficientNetV2B0_SamsungS23.png>]) (./conclusion.tex) (./tesis.bbl
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [35] [36
+LaTeX Info: Redefining \. on input line 554.
+LaTeX Info: Redefining \% on input line 554.
+ [34 <./images/PSS_MobileNetV3Small_MotoG.png> <./images/PSS_EfficientNetV2B0_MotoG.png> <./images/PSS_MobileNetV3Small_SamsungS23.png> <./images/PSS_EfficientNetV2B0_SamsungS23.png>]
+LaTeX Info: Redefining \. on input line 604.
+LaTeX Info: Redefining \% on input line 604.
+ [35]
+LaTeX Info: Redefining \. on input line 639.
+LaTeX Info: Redefining \% on input line 639.
+ [36]
+LaTeX Info: Redefining \. on input line 713.
+LaTeX Info: Redefining \% on input line 713.
+ [37]
+LaTeX Info: Redefining \. on input line 736.
+LaTeX Info: Redefining \% on input line 736.
+ [38]
+<images/comparativa_imagenes_prueba_dataset.png, id=494, 579.66562pt x 172.39406pt>
+File: images/comparativa_imagenes_prueba_dataset.png Graphic file (type png)
+<use images/comparativa_imagenes_prueba_dataset.png>
+Package pdftex.def Info: images/comparativa_imagenes_prueba_dataset.png  used on input line 739.
+(pdftex.def)             Requested size: 418.96548pt x 124.60237pt.
+LaTeX Info: Redefining \. on input line 742.
+LaTeX Info: Redefining \% on input line 742.
+ [39 <./images/comparativa_imagenes_prueba_dataset.png (PNG copy)>]) (./conclusion.tex) (./tesis.bbl [40
+
 
 ]
 LaTeX Info: Redefining \. on input line 162.
 LaTeX Info: Redefining \% on input line 162.
- [37])
+ [41])
 LaTeX Info: Redefining \. on input line 34.
 LaTeX Info: Redefining \% on input line 34.
- [38] (./tesis.aux
+ [42] (./tesis.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -566,18 +584,18 @@ Package rerunfilecheck Info: File `tesis.out' has not changed.
 (rerunfilecheck)             Checksum: 2D4278D277A86905AA3F7091898A3CA9;5492.
  ) 
 Here is how much of TeX's memory you used:
- 12489 strings out of 469006
- 205458 string characters out of 5454814
- 658008 words of memory out of 5000000
- 40907 multiletter control sequences out of 15000+600000
+ 12507 strings out of 469006
+ 206054 string characters out of 5454814
+ 658506 words of memory out of 5000000
+ 40916 multiletter control sequences out of 15000+600000
  635328 words of font info for 65 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  75i,13n,79p,515b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on tesis.pdf (38 pages, 8866965 bytes).
+</usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on tesis.pdf (42 pages, 9196096 bytes).
 PDF statistics:
- 570 PDF objects out of 1000 (max. 8388607)
- 475 compressed objects within 5 object streams
- 135 named destinations out of 1000 (max. 500000)
- 311 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 608 PDF objects out of 1000 (max. 8388607)
+ 505 compressed objects within 6 object streams
+ 144 named destinations out of 1000 (max. 500000)
+ 316 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -36,4 +36,4 @@
 \contentsline {subsection}{\numberline {3.3.2}Memoria PSS}{33}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Consumo de batería}{35}{subsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.3.4}Temperatura del dispositivo}{35}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Coherencia botánica}{35}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.5}Coherencia botánica}{36}{subsection.3.3.5}%

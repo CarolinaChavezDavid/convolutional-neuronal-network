@@ -307,8 +307,8 @@ En las tablas, MNetV3 corresponde a MobileNetV3 Small y EffNet corresponde a Eff
         \hline
         & \textbf{MNetV3} & \textbf{EffNet} & \textbf{MNetV3} & \textbf{EffNet} & \textbf{MNetV3} & \textbf{EffNet} \\
         \hline
-        Temperatura inicial (C) & 283 & 284 & 272 & 290 & 258 & 300 \\
-        Temperatura final (C) & 296 & 316 & 295 & 324 & 295 & 313 \\
+        Temperatura inicial ($^\circ$C) & 28,3 & 28,4 & 27,2 & 29,0 & 25,8 & 30,0 \\
+        Temperatura final ($^\circ$C) & 29,6 & 31,6 & 29,5 & 32,4 & 29,5 & 31,3 \\
         Batería inicial (\%) & 100 & 79 & 72 & 65 & 50 & 65 \\
         Batería final (\%) & 77 & 68 & 63 & 55 & 37 & 51 \\
         Tiempo de inicialización (ms) & 3423 & 357 & 3220 & 319 & 3258 & 374 \\
@@ -373,8 +373,8 @@ sesiones de evaluación.
         \hline
         & \textbf{MNetV3} & \textbf{EffNet} & \textbf{MNetV3} & \textbf{EffNet} & \textbf{MNetV3} & \textbf{EffNet} \\
         \hline
-        Temperatura inicial (C) & 289 & 247 & 250 & 292 & 262 & 293 \\
-        Temperatura final (C) & 300 & 335 & 313 & 313 & 313 & 310 \\
+        Temperatura inicial ($^\circ$C) & 28,9 & 24,7 & 25,0 & 29,2 & 26,2 & 29,3 \\
+        Temperatura final ($^\circ$C) & 30,0 & 33,5 & 31,3 & 31,3 & 31,3 & 31,0 \\
         Batería inicial (\%) & 100 & 93 & 90 & 83 & 75 & 82 \\
         Batería final (\%) & 93 & 85 & 83 & 75 & 68 & 75 \\
         Tiempo de inicialización (ms) & 844 & 140 & 863 & 141 & 647 & 172 \\
@@ -536,20 +536,207 @@ memoria de ambos modelos en un dispositivo con mayores recursos de hardware.
 \end{figure}
 
 
-El consumo de memoria PSS en ambos dispositivos tiene una tendecia creciente durante la ejecucion de los modelos en las 3 sesiones de prueba, aunque con una variabilidad considerable. 
-En el Moto G30, MobileNetV3 Small presentó un consumo promedio general de ~263 MB, mientras que EfficientNetV2B0 tuvo un consumo promedio de ~285 MB. En el Samsung
-Galaxy S23, MobileNetV3 Small mostró un consumo promedio de ~394 MB, mientras que EfficientNetV2B0 registró un consumo promedio de ~466 MB. En ambos dispositivos, EfficientNetV2B0 presentó un 
-consumo de memoria mayor que MobileNetV3 Small, lo cual es consistente con su arquitectura más compleja y su mayor número de parámetros.
-El crecimiento progresivo de PSS a lo largo de la sesión indica acumulación de buffers intermedios. No se registraron OOM ni crashes en ninguna sesión.
-Ademas se observa que el dispositivo Samsung al tener más RAM disponible (8 GB vs. 4 GB) el sistema operativo permite que la app ocupe más memoria sin presión.
-Esto explica valores de PSS mayores en valor absoluto respecto al Moto G.
+El consumo de memoria PSS presentó una tendencia creciente a lo largo de las tres sesiones de prueba, aunque con variaciones entre
+mediciones. En el Moto G30, MobileNetV3 Small obtuvo un consumo promedio cercano a 263 MB, mientras que EfficientNetV2B0 alcanzó
+aproximadamente 285 MB. En el Samsung Galaxy S23, los valores fueron mayores en términos absolutos, con un promedio aproximado de
+394 MB para MobileNetV3 Small y 466 MB para EfficientNetV2B0. En ambos dispositivos, EfficientNetV2B0 mantuvo un consumo superior de
+memoria, lo cual es coherente con una arquitectura de mayor complejidad y con un modelo de mayor tamaño. En el caso del Samsung Galaxy
+S23, este aumento no generó problemas de estabilidad en la aplicación, debido a que el dispositivo cuenta con una mayor disponibilidad
+de memoria frente al Moto G30.
+
+El incremento progresivo de PSS puede relacionarse con el manejo de las imágenes y con la reserva temporal de memoria durante el proceso
+de inferencia. Aun con este comportamiento, no se presentaron errores por falta de memoria ni cierres inesperados de la aplicación en
+ninguna de las sesiones evaluadas. Los picos más altos se observaron principalmente cuando las imágenes fueron capturadas desde la cámara,
+lo que sugiere un mayor uso temporal de memoria antes de realizar el redimensionamiento a 224x224 píxeles. Esto resulta coherente con las
+condiciones del protocolo de evaluación, ya que las imágenes capturadas por el dispositivo conservan una resolución original mayor y
+presentan fondos más variables, mientras que las imágenes cargadas desde la galería pertenencientes a datasets externos pueden llegar previamente
+ajustadas u optimizadas por el sistema operativo o por la propia aplicación o con un resolución menor.
 
 
 \subsection{Consumo de batería}
 
+Previamente en las tablas \ref{tab:motog_execution_results} y \ref{tab:samsung_execution_results} se presentaron los valores de batería inicial y final 
+registrados en cada sesión de prueba para ambos dispositivos.
+La tabla \ref{tab:battery_consumption_average} resume la variación promedio de batería registrada por sesión para cada modelo y
+dispositivo. El valor corresponde al cambio porcentual observado entre el nivel inicial y final de batería en las sesiones de ejecución,
+por lo que los valores negativos indican disminución de carga durante la prueba.
+
+\begin{table}[H]
+    \centering
+    \caption{Variación promedio de batería por sesión.\label{tab:battery_consumption_average}}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Dispositivo} & \textbf{MobileNetV3 Small} & \textbf{EfficientNetV2B0} \\
+        \hline
+        Moto G30 & -11,0 \% & -11,7 \% \\
+        \hline
+        Samsung Galaxy S23 & -7,0 \% & -7,7 \% \\
+        \hline
+    \end{tabular}
+\end{table}
+
+En ambos dispositivos, EfficientNetV2B0 presentó una disminución promedio de batería ligeramente mayor que MobileNetV3 Small. Esta
+diferencia es coherente con el mayor costo computacional observado en las métricas de inferencia, aunque la variación entre modelos fue
+menor que la diferencia presentada en los tiempos de ejecución. También se observa que el consumo promedio fue más bajo en el Samsung
+Galaxy S23, lo cual puede relacionarse con una ejecución más rápida de las inferencias y con una gestión energética más eficiente del
+dispositivo frente al Moto G30.
+
 \subsection{Temperatura del dispositivo}
+
+Previamente en las tablas \ref{tab:motog_execution_results} y \ref{tab:samsung_execution_results} se presentaron los valores de temperatura inicial y final 
+registrados en cada sesión de prueba para ambos dispositivos.
+La tabla \ref{tab:temperature_average_increase} resume el incremento promedio de temperatura registrado por sesión en cada dispositivo.
+Este valor corresponde a la diferencia entre la temperatura final e inicial de cada sesión, expresada en grados Celsius.
+
+\begin{table}[H]
+    \centering
+    \caption{Incremento promedio de temperatura por sesión.\label{tab:temperature_average_increase}}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Dispositivo} & \textbf{MobileNetV3 Small} & \textbf{EfficientNetV2B0} \\
+        \hline
+        Moto G30 & 2,4 $^\circ$C & 2,6 $^\circ$C \\
+        \hline
+        Samsung Galaxy S23 & 4,2 $^\circ$C & 4,2 $^\circ$C \\
+        \hline
+    \end{tabular}
+\end{table}
+
+En el Moto G30, EfficientNetV2B0 presentó un aumento de temperatura ligeramente mayor que MobileNetV3 Small, lo cual mantiene relación
+con su mayor tiempo de inferencia y con una ejecución más exigente para el dispositivo. En el Samsung Galaxy S23, ambos modelos registraron
+el mismo incremento promedio de temperatura; sin embargo, este valor estuvo influenciado por la temperatura inicial de algunas sesiones. Por
+ejemplo, la primera sesión de EfficientNetV2B0 inició con el dispositivo a 24,7 $^\circ$C, por lo que el incremento resultó mayor aunque la
+temperatura final se mantuvo dentro de un rango similar al resto de las mediciones. En general, las temperaturas finales de ambos dispositivos
+se mantuvieron por debajo de 34 $^\circ$C, lo que indica que las pruebas se desarrollaron dentro de un rango térmico normal para los
+dispositivos evaluados.
+
+También se observa que el Moto G30 presentó incrementos más pequeños y consistentes entre sesiones, mientras que el Samsung Galaxy S23 tuvo
+una variación mayor en los deltas debido principalmente a las diferencias en la temperatura de inicio. A pesar de esto, las temperaturas
+finales tendieron a converger entre 30 $^\circ$C y 33,5 $^\circ$C. No se evidenció una degradación térmica durante las pruebas, ya que las
+latencias medidas en la tercera sesión, donde existía mayor temperatura acumulada, fueron comparables con las obtenidas en la primera sesión.
+Esto sugiere que el aumento de temperatura registrado no afectó de forma apreciable el rendimiento de inferencia de los modelos en los
+dispositivos evaluados.
 
 \subsection{Coherencia botánica}
 
-En el dispositivo Moto G30, ambos modelos fueron consistentes es su clasificacion y confianza durante las tres sesiones de prueba, obteniendo el mismo 
-diagnóstico para cada imagen evaluada. 
+La coherencia botánica permite evaluar si el modelo predice correctamente la especie de planta, independientemente de si identifica la
+enfermedad exacta. Por ejemplo, si una imagen corresponde a \textit{Tomato\_\_\_Early\_blight} y el modelo predice
+\textit{Tomato\_\_\_Late\_blight}, la predicción se considera coherente botánicamente, aunque no sea correcta en términos de enfermedad.
+En cambio, si para esa misma imagen el modelo predice \textit{Potato\_\_\_Early\_blight}, la predicción no es coherente, ya que asigna
+una especie diferente a la que realmente corresponde la imagen.
+
+De esta manera, la coherencia botánica se calculó como el total de predicciones coherentes dividido por el total de predicciones evaluadas.
+Esta medida fue relevante en el contexto de la experimentación porque las imágenes de prueba corresponden a condiciones de campo, tanto de
+fuente propia como de datasets externos, y en varios casos la enfermedad no estaba clasificada con la misma precisión que en PlantVillage.
+Por esta razón, antes de analizar si el modelo identifica correctamente la enfermedad, resulta necesario observar si logra reconocer la
+planta a la que pertenece la hoja.
+
+En ambos dispositivos, los modelos mantuvieron la misma clasificación y confianza durante las tres sesiones de prueba para cada imagen
+evaluada. Esto permitió realizar el análisis de coherencia botánica a partir de las predicciones de una sesión, ya que no se observaron
+cambios entre ejecuciones para una misma imagen. Este comportamiento indica que las diferencias de hardware afectaron principalmente los
+tiempos de ejecución, memoria, batería y temperatura, pero no modificaron la salida del modelo cuando las imágenes fueron preprocesadas de
+la misma manera.
+
+\begin{table}[H]
+    \centering
+    \caption{Coherencia botánica por cultivo en el conjunto de prueba en dispositivo.\label{tab:botanical_coherence}}
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+        \textbf{Planta} & \textbf{N} & \textbf{Correctas} & \textbf{Coherencia} \\
+        \hline
+        Maíz & 9 & 9 & 100 \% \\
+        \hline
+        Tomate & 10 & 9 & 90 \% \\
+        \hline
+        Fresa & 7 & 6 & 85,7 \% \\
+        \hline
+        Cereza & 4 & 2 & 50,0 \% \\
+        \hline
+        Uva & 10 & 3 & 30,0 \% \\
+        \hline
+        Calabaza & 10 & 2 & 20,0 \% \\
+        \hline
+        Manzana & 10 & 2 & 20,0 \% \\
+        \hline
+        Soja & 10 & 1 & 10,0 \% \\
+        \hline
+        Pimiento & 6 & 0 & 0,0 \% \\
+        \hline
+        Papa & 10 & 0 & 0,0 \% \\
+        \hline
+        Naranja & 3 & 0 & 0,0 \% \\
+        \hline
+        \textbf{Global (excluye IFD)} & \textbf{89} & \textbf{34} & \textbf{38,2 \%} \\
+        \hline
+        IFD (grupo de control) & 10 & 0 & 0,0 \% \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Los resultados de la tabla \ref{tab:botanical_coherence} muestran que la coherencia botánica fue alta en cultivos como maíz, tomate y
+fresa, mientras que disminuyó de forma importante en uva, calabaza, manzana, soja, pimiento, papa y naranja. Esto evidencia que el modelo
+no tuvo el mismo nivel de generalización para todos los cultivos cuando fue evaluado con imágenes de campo. El caso de maíz muestra un
+comportamiento favorable, ya que las imágenes usadas en el protocolo presentaban hojas completas y fondos relativamente uniformes, más
+cercanos a las condiciones del dataset de entrenamiento. En contraste, las imágenes de papa, uva, calabaza, manzana y soja presentaron
+fondos más complejos, hojas parcialmente visibles, variaciones de iluminación y ángulos de captura más difíciles para el modelo.
+
+Una parte de estos resultados también puede explicarse por la distribución de clases dentro de PlantVillage. Algunas clases con mayor
+representación o con patrones visuales muy marcados funcionaron como clases atractoras, es decir, clases hacia las que el modelo tendió a
+desplazar predicciones de otras plantas cuando encontraba síntomas visualmente similares. La tabla \ref{tab:botanical_bias_patterns}
+resume los principales patrones observados durante la evaluación.
+
+\begin{table}[H]
+    \centering
+    \caption{Patrones de sesgo asociados a la representación de clases en PlantVillage.\label{tab:botanical_bias_patterns}}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{4.6cm}|>{\centering\arraybackslash}p{2.2cm}|>{\raggedright\arraybackslash}p{8.4cm}|}
+        \hline
+        \textbf{Clase en PlantVillage} & \textbf{N aprox.} & \textbf{Efecto observado} \\
+        \hline
+        Tomate: Yellow Leaf Curl Virus & 5.400 & Predicción frecuente en hojas amarillas de otras plantas. \\
+        \hline
+        Soja: saludable & 5.100 & Al existir solo la clase saludable para soja, el modelo no aprende variaciones de enfermedad para este cultivo. \\
+        \hline
+        Fresa: Leaf scorch & 1.100 & EfficientNetV2B0 tendió a predecir esta clase ante manchas marrones o rojizas presentes en distintas hojas. \\
+        \hline
+        Maíz: Common rust & 1.100 & MobileNetV3 Small tendió a predecir esta clase ante manchas anaranjadas visualmente similares. \\
+        \hline
+        Papa: saludable & 100 & La baja representación de esta clase se relacionó con un fallo sistemático en las imágenes de papa evaluadas. \\
+        \hline
+        Manzana: Cedar apple rust & 300 & Algunas imágenes fueron confundidas con maíz Common rust por la similitud visual entre manchas. \\
+        \hline
+        Uva: saludable & 400 & Las imágenes de uva fueron confundidas principalmente con clases de fresa o tomate. \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+En EfficientNetV2B0 se observó que la clase \textit{Strawberry\_\_\_Leaf\_scorch} actuó como una clase atractora para imágenes de uva,
+cereza, papa, soja e incluso para algunas imágenes del grupo IFD. Este comportamiento puede estar asociado a que el patrón de manchas
+marrones o rojizas sobre hojas verdes aparece en diferentes enfermedades, por lo que el modelo terminó asociando ese rasgo visual con una
+clase específica del entrenamiento. En MobileNetV3 Small se presentó un comportamiento similar con la clase \textit{Corn\_\_\_Common\_rust},
+especialmente en imágenes de manzana. En este caso, las manchas anaranjadas de \textit{Apple\_\_\_Cedar\_apple\_rust} comparten caracteristicas
+visuales parecidas con la roya común del maíz, y además esta última tiene una mayor cantidad de imágenes en el dataset.
+
+El caso más crítico fue papa, ya que las diez imágenes evaluadas, mayormente sanas, obtuvieron 0 \% de coherencia botánica. Esto puede
+relacionarse con la baja representación de la clase \textit{Potato\_\_\_healthy} dentro de PlantVillage, que cuenta con una cantidad
+reducida de imágenes frente a otras clases. En consecuencia, el modelo no logró aprender una representación robusta de la hoja de papa bajo
+condiciones de campo y la desplazó hacia clases con patrones visuales más dominantes, principalmente asociadas a fresa.
+
+Por otro lado, el grupo IFD permitió verificar el comportamiento de los modelos frente a imágenes sin hojas, funcionando como un control
+fuera del dominio de clasificación. Ambos modelos clasificaron estas imágenes dentro de alguna de las clases disponibles, sin un mecanismo
+de rechazo explícito. Esto no corresponde a un fallo particular del hardware, sino a una limitación del esquema de clasificación cerrado,
+donde toda entrada debe ser asignada a una de las clases conocidas aunque no pertenezca realmente al dominio de plantas evaluado.
+
+La figura \ref{fig:comparativa_imagenes_prueba_dataset} muestra una comparación visual entre algunas imágenes utilizadas en el protocolo
+de evaluación y muestras del dataset PlantVillage. Esta comparación permite observar que las imágenes de prueba presentan fondos más
+variables, diferentes ángulos de captura, cambios de iluminación y hojas con mayor variabilidad visual. Estas condiciones ayudan tambien a explicar
+por qué la coherencia botánica no fue uniforme entre todos los cultivos, ya que el modelo fue entrenado principalmente con imágenes en un
+entorno más controlado.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/comparativa_imagenes_prueba_dataset.png}
+    \caption{Comparación entre imágenes del protocolo de evaluación y muestras del dataset PlantVillage.\label{fig:comparativa_imagenes_prueba_dataset}}
+\end{figure}
+\clearpage
