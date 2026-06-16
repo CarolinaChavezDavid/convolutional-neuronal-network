@@ -4,46 +4,52 @@
 \contentsline {subsection}{\numberline {1.1.1}Objetivo general}{5}{subsection.1.1.1}%
 \contentsline {subsection}{\numberline {1.1.2}Objetivos específicos}{6}{subsection.1.1.2}%
 \contentsline {chapter}{\numberline {2}Marco Teórico}{7}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Deep Learning aplicado a la clasificación de imágenes}{7}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Redes neuronales convolucionales para clasificación de imágenes}{7}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Aprendizaje profundo y visión por computadora en agricultura}{7}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Transfer Learning y ajuste fino}{7}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Arquitecturas ligeras para dispositivos móviles}{7}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Inferencia en dispositivos móviles}{7}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Inferencia en la nube e inferencia local}{7}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}TensorFlow Lite, LiteRT y cuantización}{7}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5}Desafios tecnicos en la implementación de modelos de aprendizaje profundo en dispositivos móviles}{7}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Metodología}{8}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Conjunto de datos}{8}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Modelos de aprendizaje profundo}{12}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Modelos MobileNet}{13}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Modelos EfficientNet}{13}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Entrenamiento de los modelos}{14}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Preprocesamiento de imágenes}{14}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Entrenamiento de MobileNetV3 Small}{15}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Entrenamiento de EfficientNetV2B0}{15}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Aplicación móvil}{16}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Dispositivo de prueba}{17}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Protocolo de evaluación en dispositivo}{18}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Métricas de evaluación}{20}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Métricas del modelo}{20}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Métricas de ejecución en dispositivo}{21}{subsection.3.5.2}%
-\contentsline {chapter}{\numberline {4}Resultados experimentales}{23}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Resultados del entrenamiento de los modelos}{23}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Modelo MobileNetV3 Small}{23}{subsection.4.1.1}%
-\contentsline {subsubsection}{Configuración del entrenamiento}{23}{section*.8}%
-\contentsline {subsubsection}{Evolución del entrenamiento}{24}{section*.10}%
-\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{25}{section*.12}%
-\contentsline {subsubsection}{Exportación del modelo}{26}{section*.14}%
-\contentsline {subsection}{\numberline {4.1.2}Modelo EfficientNetV2B0}{26}{subsection.4.1.2}%
-\contentsline {subsubsection}{Configuración del entrenamiento}{27}{section*.15}%
-\contentsline {subsubsection}{Evolución del entrenamiento}{28}{section*.17}%
-\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{28}{section*.19}%
-\contentsline {subsubsection}{Exportación del modelo}{30}{section*.22}%
-\contentsline {section}{\numberline {4.2}Aplicación móvil}{30}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Resultados de ejecución en dispositivo}{32}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Tiempo de inicialización y warmup}{35}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Memoria PSS}{35}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Consumo de batería}{37}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Temperatura del dispositivo}{37}{subsection.4.3.4}%
-\contentsline {subsection}{\numberline {4.3.5}Coherencia botánica}{38}{subsection.4.3.5}%
+\contentsline {section}{\numberline {2.1}Redes neuronales convolucionales para clasificación de imágenes}{7}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Transfer Learning y ajuste fino}{7}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Arquitecturas ligeras para dispositivos móviles}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Metodos de despligue}{8}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Dispositivos edge}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}TensorFlow Lite, LiteRT y cuantización}{9}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Desafios tecnicos en la implementación de modelos de aprendizaje profundo en dispositivos móviles}{9}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Tiempo de procesamiento}{9}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Memoria}{9}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Consumo energético}{10}{subsection.2.4.3}%
+\contentsline {chapter}{\numberline {3}Trabajos relacionados}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Comparación de arquitecturas ligeras para clasificación de enfermedades}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Aplicaciones móviles para diagnóstico de enfermedades en plantas}{12}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Síntesis de los trabajos revisados}{13}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Metodología}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Conjunto de datos}{14}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Modelos de aprendizaje profundo}{18}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Modelos MobileNet}{19}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Modelos EfficientNet}{19}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Entrenamiento de los modelos}{20}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Preprocesamiento de imágenes}{20}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Entrenamiento de MobileNetV3 Small}{21}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Entrenamiento de EfficientNetV2B0}{21}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Aplicación móvil}{22}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Dispositivo de prueba}{23}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Protocolo de evaluación en dispositivo}{24}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Métricas de evaluación}{26}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Métricas del modelo}{26}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Métricas de ejecución en dispositivo}{27}{subsection.4.5.2}%
+\contentsline {chapter}{\numberline {5}Resultados experimentales}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Resultados del entrenamiento de los modelos}{29}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Modelo MobileNetV3 Small}{29}{subsection.5.1.1}%
+\contentsline {subsubsection}{Configuración del entrenamiento}{29}{section*.9}%
+\contentsline {subsubsection}{Evolución del entrenamiento}{30}{section*.11}%
+\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{31}{section*.13}%
+\contentsline {subsubsection}{Exportación del modelo}{32}{section*.15}%
+\contentsline {subsection}{\numberline {5.1.2}Modelo EfficientNetV2B0}{32}{subsection.5.1.2}%
+\contentsline {subsubsection}{Configuración del entrenamiento}{33}{section*.16}%
+\contentsline {subsubsection}{Evolución del entrenamiento}{34}{section*.18}%
+\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{34}{section*.20}%
+\contentsline {subsubsection}{Exportación del modelo}{36}{section*.23}%
+\contentsline {section}{\numberline {5.2}Aplicación móvil}{36}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Resultados de ejecución en dispositivo}{38}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Tiempo de inicialización y warmup}{41}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Memoria PSS}{41}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Consumo de batería}{43}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Temperatura del dispositivo}{43}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Coherencia botánica}{44}{subsection.5.3.5}%
+\contentsline {chapter}{\numberline {6}Conclusiones}{48}{chapter.6}%

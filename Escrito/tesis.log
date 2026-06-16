@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  9 JUN 2026 23:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  15 JUN 2026 22:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -349,7 +349,7 @@ Package hyperref Info: Link coloring OFF on input line 20.
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
  (./cover.tex
-<images/Logo_UNLP.jpg, id=164, 592.614pt x 289.08pt>
+<images/Logo_UNLP.jpg, id=188, 592.614pt x 289.08pt>
 File: images/Logo_UNLP.jpg Graphic file (type jpg)
 <use images/Logo_UNLP.jpg>
 Package pdftex.def Info: images/Logo_UNLP.jpg  used on input line 6.
@@ -388,203 +388,221 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [6]
 Cap\'{\i }tulo 2.
-
-Overfull \hbox (3.21344pt too wide) in paragraph at lines 10--10
-[]\OT1/cmr/bx/n/14.4 Aprendizaje pro-fun-do y vi-si^^Son por compu-tado-ra en agri-
- []
-
-) (./state_art.tex) (./methodology.tex [7
+[7
 
 ]
+LaTeX Info: Redefining \. on input line 70.
+LaTeX Info: Redefining \% on input line 70.
+ [8]
+LaTeX Info: Redefining \. on input line 100.
+LaTeX Info: Redefining \% on input line 100.
+ [9]) (./previous_works.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [10]
 Cap\'{\i }tulo 3.
-[8
+[11
 
 ]
-<images/ejemplos_plant_village.png, id=286, 839.7774pt x 572.3784pt>
+LaTeX Info: Redefining \. on input line 78.
+LaTeX Info: Redefining \% on input line 78.
+ [12]) (./methodology.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [13]
+Cap\'{\i }tulo 4.
+[14
+
+]
+<images/ejemplos_plant_village.png, id=355, 839.7774pt x 572.3784pt>
 File: images/ejemplos_plant_village.png Graphic file (type png)
 <use images/ejemplos_plant_village.png>
 Package pdftex.def Info: images/ejemplos_plant_village.png  used on input line 39.
 (pdftex.def)             Requested size: 441.01773pt x 300.59923pt.
-<images/dataset_distribution.png, id=289, 1003.5894pt x 570.4512pt>
+<images/dataset_distribution.png, id=358, 1003.5894pt x 570.4512pt>
 File: images/dataset_distribution.png Graphic file (type png)
 <use images/dataset_distribution.png>
 Package pdftex.def Info: images/dataset_distribution.png  used on input line 50.
 (pdftex.def)             Requested size: 441.01773pt x 250.67723pt.
 LaTeX Info: Redefining \. on input line 54.
 LaTeX Info: Redefining \% on input line 54.
- [9 <./images/ejemplos_plant_village.png>]
+ [15 <./images/ejemplos_plant_village.png>]
 ignored: Infinite glue shrinkage found in box being split
 LaTeX Info: Redefining \. on input line 113.
 LaTeX Info: Redefining \% on input line 113.
- [10 <./images/dataset_distribution.png>]
+ [16 <./images/dataset_distribution.png>]
 ignored: Infinite glue shrinkage found in box being split
 LaTeX Info: Redefining \. on input line 113.
 LaTeX Info: Redefining \% on input line 113.
- [11]
+ [17]
 LaTeX Info: Redefining \. on input line 148.
 LaTeX Info: Redefining \% on input line 148.
- [12]
+ [18]
 LaTeX Info: Redefining \. on input line 187.
 LaTeX Info: Redefining \% on input line 187.
- [13]
+ [19]
 LaTeX Info: Redefining \. on input line 225.
 LaTeX Info: Redefining \% on input line 225.
- [14]
+ [20]
 LaTeX Info: Redefining \. on input line 269.
 LaTeX Info: Redefining \% on input line 269.
- [15]
+ [21]
 LaTeX Info: Redefining \. on input line 306.
 LaTeX Info: Redefining \% on input line 306.
- [16]
+ [22]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 320.
 LaTeX Info: Redefining \. on input line 342.
 LaTeX Info: Redefining \% on input line 342.
- [17]
+ [23]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 380.
 LaTeX Info: Redefining \. on input line 403.
 LaTeX Info: Redefining \% on input line 403.
- [18]
-<images/muestra_imagenes_protocolo.png, id=375, 656.4525pt x 357.58594pt>
+ [24]
+<images/muestra_imagenes_protocolo.png, id=442, 656.4525pt x 357.58594pt>
 File: images/muestra_imagenes_protocolo.png Graphic file (type png)
 <use images/muestra_imagenes_protocolo.png>
 Package pdftex.def Info: images/muestra_imagenes_protocolo.png  used on input line 411.
 (pdftex.def)             Requested size: 441.01773pt x 240.23608pt.
 LaTeX Info: Redefining \. on input line 423.
 LaTeX Info: Redefining \% on input line 423.
- [19 <./images/muestra_imagenes_protocolo.png>]
+ [25 <./images/muestra_imagenes_protocolo.png>]
 LaTeX Info: Redefining \. on input line 458.
 LaTeX Info: Redefining \% on input line 458.
- [20]) (./results.tex
+ [26]) (./results.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [21]
+ [27]
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [22]
-Cap\'{\i }tulo 4.
-[23
+ [28]
+Cap\'{\i }tulo 5.
+[29
 
 ]
-<../MobileNet/training graph.png, id=412, 1003.5894pt x 353.6412pt>
+<../MobileNet/training graph.png, id=480, 1003.5894pt x 353.6412pt>
 File: ../MobileNet/training graph.png Graphic file (type png)
 <use ../MobileNet/training graph.png>
 Package pdftex.def Info: ../MobileNet/training graph.png  used on input line 76.
 (pdftex.def)             Requested size: 441.01773pt x 155.40294pt.
 LaTeX Info: Redefining \. on input line 79.
 LaTeX Info: Redefining \% on input line 79.
- [24]
-<../MobileNet/confussion_matrix.png, id=420, 1079.232pt x 1004.0712pt>
+ [30]
+<../MobileNet/confussion_matrix.png, id=488, 1079.232pt x 1004.0712pt>
 File: ../MobileNet/confussion_matrix.png Graphic file (type png)
 <use ../MobileNet/confussion_matrix.png>
 Package pdftex.def Info: ../MobileNet/confussion_matrix.png  used on input line 95.
 (pdftex.def)             Requested size: 418.96548pt x 389.77834pt.
 LaTeX Info: Redefining \. on input line 98.
 LaTeX Info: Redefining \% on input line 98.
- [25 <../MobileNet/training graph.png>]
+ [31 <../MobileNet/training graph.png>]
 LaTeX Info: Redefining \. on input line 114.
 LaTeX Info: Redefining \% on input line 114.
- [26 <../MobileNet/confussion_matrix.png>]
+ [32 <../MobileNet/confussion_matrix.png>]
 LaTeX Info: Redefining \. on input line 164.
 LaTeX Info: Redefining \% on input line 164.
- [27]
-<../EfficientNet/training_graph_v2b0.png, id=444, 1004.0712pt x 352.6776pt>
+ [33]
+<../EfficientNet/training_graph_v2b0.png, id=511, 1004.0712pt x 352.6776pt>
 File: ../EfficientNet/training_graph_v2b0.png Graphic file (type png)
 <use ../EfficientNet/training_graph_v2b0.png>
 Package pdftex.def Info: ../EfficientNet/training_graph_v2b0.png  used on input line 179.
 (pdftex.def)             Requested size: 441.01773pt x 154.90416pt.
 LaTeX Info: Redefining \. on input line 193.
 LaTeX Info: Redefining \% on input line 193.
- [28 <../EfficientNet/training_graph_v2b0.png>]
-<../EfficientNet/confusion_matrix_v2b0.png, id=455, 1080.1956pt x 1003.1076pt>
+ [34 <../EfficientNet/training_graph_v2b0.png>]
+<../EfficientNet/confusion_matrix_v2b0.png, id=522, 1080.1956pt x 1003.1076pt>
 File: ../EfficientNet/confusion_matrix_v2b0.png Graphic file (type png)
 <use ../EfficientNet/confusion_matrix_v2b0.png>
 Package pdftex.def Info: ../EfficientNet/confusion_matrix_v2b0.png  used on input line 233.
 (pdftex.def)             Requested size: 418.96548pt x 389.06754pt.
 LaTeX Info: Redefining \. on input line 236.
 LaTeX Info: Redefining \% on input line 236.
- [29]
+ [35]
 LaTeX Info: Redefining \. on input line 252.
 LaTeX Info: Redefining \% on input line 252.
- [30 <../EfficientNet/confusion_matrix_v2b0.png>]
-<images/app_screenshots.png, id=470, 566.86781pt x 433.62pt>
+ [36 <../EfficientNet/confusion_matrix_v2b0.png>]
+<images/app_screenshots.png, id=537, 566.86781pt x 433.62pt>
 File: images/app_screenshots.png Graphic file (type png)
 <use images/app_screenshots.png>
 Package pdftex.def Info: images/app_screenshots.png  used on input line 255.
 (pdftex.def)             Requested size: 441.01773pt x 337.36209pt.
-<images/app_screenshots_2.png, id=472, 566.86781pt x 421.575pt>
+<images/app_screenshots_2.png, id=539, 566.86781pt x 421.575pt>
 File: images/app_screenshots_2.png Graphic file (type png)
 <use images/app_screenshots_2.png>
 Package pdftex.def Info: images/app_screenshots_2.png  used on input line 275.
 (pdftex.def)             Requested size: 441.01773pt x 327.99092pt.
 LaTeX Info: Redefining \. on input line 278.
 LaTeX Info: Redefining \% on input line 278.
- [31 <./images/app_screenshots.png (PNG copy)>]
+ [37 <./images/app_screenshots.png (PNG copy)>]
 LaTeX Info: Redefining \. on input line 324.
 LaTeX Info: Redefining \% on input line 324.
- [32 <./images/app_screenshots_2.png (PNG copy)>]
+ [38 <./images/app_screenshots_2.png (PNG copy)>]
 LaTeX Info: Redefining \. on input line 390.
 LaTeX Info: Redefining \% on input line 390.
- [33]
+ [39]
 LaTeX Info: Redefining \. on input line 428.
 LaTeX Info: Redefining \% on input line 428.
- [34]
+ [40]
 LaTeX Info: Redefining \. on input line 506.
 LaTeX Info: Redefining \% on input line 506.
- [35]
-<images/PSS_MobileNetV3Small_MotoG.png, id=512, 570.933pt x 426.03165pt>
+ [41]
+<images/PSS_MobileNetV3Small_MotoG.png, id=580, 570.933pt x 426.03165pt>
 File: images/PSS_MobileNetV3Small_MotoG.png Graphic file (type png)
 <use images/PSS_MobileNetV3Small_MotoG.png>
 Package pdftex.def Info: images/PSS_MobileNetV3Small_MotoG.png  used on input line 511.
 (pdftex.def)             Requested size: 216.1011pt x 161.25664pt.
-<images/PSS_EfficientNetV2B0_MotoG.png, id=513, 570.933pt x 426.03165pt>
+<images/PSS_EfficientNetV2B0_MotoG.png, id=581, 570.933pt x 426.03165pt>
 File: images/PSS_EfficientNetV2B0_MotoG.png Graphic file (type png)
 <use images/PSS_EfficientNetV2B0_MotoG.png>
 Package pdftex.def Info: images/PSS_EfficientNetV2B0_MotoG.png  used on input line 516.
 (pdftex.def)             Requested size: 216.1011pt x 161.25664pt.
-<images/PSS_MobileNetV3Small_SamsungS23.png, id=515, 570.933pt x 426.03165pt>
+<images/PSS_MobileNetV3Small_SamsungS23.png, id=583, 570.933pt x 426.03165pt>
 File: images/PSS_MobileNetV3Small_SamsungS23.png Graphic file (type png)
 <use images/PSS_MobileNetV3Small_SamsungS23.png>
 Package pdftex.def Info: images/PSS_MobileNetV3Small_SamsungS23.png  used on input line 528.
 (pdftex.def)             Requested size: 216.1011pt x 161.25664pt.
-<images/PSS_EfficientNetV2B0_SamsungS23.png, id=516, 570.933pt x 426.03165pt>
+<images/PSS_EfficientNetV2B0_SamsungS23.png, id=584, 570.933pt x 426.03165pt>
 File: images/PSS_EfficientNetV2B0_SamsungS23.png Graphic file (type png)
 <use images/PSS_EfficientNetV2B0_SamsungS23.png>
 Package pdftex.def Info: images/PSS_EfficientNetV2B0_SamsungS23.png  used on input line 533.
 (pdftex.def)             Requested size: 216.1011pt x 161.25664pt.
 LaTeX Info: Redefining \. on input line 554.
 LaTeX Info: Redefining \% on input line 554.
- [36 <./images/PSS_MobileNetV3Small_MotoG.png> <./images/PSS_EfficientNetV2B0_MotoG.png> <./images/PSS_MobileNetV3Small_SamsungS23.png> <./images/PSS_EfficientNetV2B0_SamsungS23.png>]
+ [42 <./images/PSS_MobileNetV3Small_MotoG.png> <./images/PSS_EfficientNetV2B0_MotoG.png> <./images/PSS_MobileNetV3Small_SamsungS23.png> <./images/PSS_EfficientNetV2B0_SamsungS23.png>]
 LaTeX Info: Redefining \. on input line 604.
 LaTeX Info: Redefining \% on input line 604.
- [37]
+ [43]
 LaTeX Info: Redefining \. on input line 639.
 LaTeX Info: Redefining \% on input line 639.
- [38]
+ [44]
 LaTeX Info: Redefining \. on input line 713.
 LaTeX Info: Redefining \% on input line 713.
- [39]
+ [45]
 LaTeX Info: Redefining \. on input line 736.
 LaTeX Info: Redefining \% on input line 736.
- [40]
-<images/comparativa_imagenes_prueba_dataset.png, id=556, 579.66562pt x 172.39406pt>
+ [46]
+<images/comparativa_imagenes_prueba_dataset.png, id=624, 579.66562pt x 172.39406pt>
 File: images/comparativa_imagenes_prueba_dataset.png Graphic file (type png)
 <use images/comparativa_imagenes_prueba_dataset.png>
 Package pdftex.def Info: images/comparativa_imagenes_prueba_dataset.png  used on input line 739.
 (pdftex.def)             Requested size: 418.96548pt x 124.60237pt.
 LaTeX Info: Redefining \. on input line 742.
 LaTeX Info: Redefining \% on input line 742.
- [41 <./images/comparativa_imagenes_prueba_dataset.png (PNG copy)>]) (./conclusion.tex) (./tesis.bbl [42
+ [47 <./images/comparativa_imagenes_prueba_dataset.png (PNG copy)>]) (./conclusion.tex
+Cap\'{\i }tulo 6.
+) (./tesis.bbl [48
 
+
+] [49
 
 ]
-LaTeX Info: Redefining \. on input line 162.
-LaTeX Info: Redefining \% on input line 162.
- [43])
-LaTeX Info: Redefining \. on input line 35.
-LaTeX Info: Redefining \% on input line 35.
- [44] (./tesis.aux
+LaTeX Info: Redefining \. on input line 159.
+LaTeX Info: Redefining \% on input line 159.
+ [50])
+LaTeX Info: Redefining \. on input line 36.
+LaTeX Info: Redefining \% on input line 36.
+ [51] (./tesis.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -592,38 +610,22 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-
-
-Package rerunfilecheck Warning: File `tesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `tesis.out':
-(rerunfilecheck)             Before: 7090AE10BF11D390F717DCFE44752E06;8627
-(rerunfilecheck)             After:  A9B3092F76033A9E2734867ADFFC6613;8634.
+Package rerunfilecheck Info: File `tesis.out' has not changed.
+(rerunfilecheck)             Checksum: 9BA862ED026A608C2CFCB82897451622;9468.
  ) 
 Here is how much of TeX's memory you used:
- 12538 strings out of 469006
- 206507 string characters out of 5454814
- 658508 words of memory out of 5000000
- 40929 multiletter control sequences out of 15000+600000
+ 12565 strings out of 469006
+ 206925 string characters out of 5454814
+ 658728 words of memory out of 5000000
+ 40942 multiletter control sequences out of 15000+600000
  635328 words of font info for 65 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,13n,79p,681b,755s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{section.2.6} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.2.5.2} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.2.5.1} has been referenced but does not exist, replaced by a fixed one
-
+ 75i,13n,79p,681b,782s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on tesis.pdf (44 pages, 9199648 bytes).
+Output written on tesis.pdf (51 pages, 9219962 bytes).
 PDF statistics:
- 675 PDF objects out of 1000 (max. 8388607)
- 570 compressed objects within 6 object streams
- 159 named destinations out of 1000 (max. 500000)
- 396 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 751 PDF objects out of 1000 (max. 8388607)
+ 638 compressed objects within 7 object streams
+ 173 named destinations out of 1000 (max. 500000)
+ 444 words of extra memory for PDF output out of 10000 (max. 10000000)
 

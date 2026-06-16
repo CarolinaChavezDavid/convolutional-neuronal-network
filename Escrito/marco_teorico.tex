@@ -5,19 +5,110 @@ diagnóstico de enfermedades foliares utilizando arquitecturas ligeras de aprend
 Se abordan temas  los modelos de aprendizaje profundo, transfer learning y los desafíos asociados a la implementación
 en dispositivos móviles.
 
-\section{Deep Learning aplicado a la clasificación de imágenes}
-\subsection{Redes neuronales convolucionales para clasificación de imágenes}
-\subsection{Aprendizaje profundo y visión por computadora en agricultura}
 
 
+\section{Redes neuronales convolucionales para clasificación de imágenes}
+Las redes neuronales convulucionales (CNN) son un tipo de arquitectura de aprendizaje profundo que se ha vuelto muy popular en los 
+ultimos años, especialemente en tareas de clasificación de imágenes. Estan diseñadas para reconocer objetos usando capas
+que incluyen la convolución, la activación y el pooling. Estas capas permiten a las CNN aprender características jerárquicas de
+las imágenes, desde bordes y texturas simples en las primeras capas hasta patrones más complejos en las capas posteriores.
+Ademas estas capas trabajan juntas usando backprogation para adaptar y mejorar la red. El objetivo principal de esta las CNN es 
+crear una red más extensa con menos parámetros \cite{agronomy13040961}.
 
-\section{Transfer Learning y ajuste fino}
+
+\subsection{Transfer Learning y ajuste fino}
+Las redes neuronales convolucionales (CNN) han demostrado un rendimiento sobresaliente en tareas de 
+clasificación de imágenes, pero su entrenamiento desde cero requiere grandes cantidades de datos y recursos computacionales.
+El transfer learning es una técnica que permite aprovechar el conocimiento adquirido por un modelo preentrenado en una tarea relacionada 
+para mejorar el rendimiento en una nueva tarea con menos datos. En este enfoque, se utiliza un modelo preentrenado 
+como punto de partida y se ajusta (fine-tuning) para adaptarlo a la nueva tarea específica, lo que puede resultar en una mejora
+significativa en la precisión del modelo con un menor esfuerzo de entrenamiento.
+
+La tecnica de transfer learning se ha vuelto especialmente relevante en el contexto de dispositivos móviles, donde las limitaciones
+de recursos hacen que el entrenamiento desde cero sea impráctico. Hay una manera de acelerar el tiempo de entrenamiento, previniendo el 
+overfitting, mejorando la interpretabilidad del modelo, reduciendo los requermientos de memoria y optimizando la eficiencia es utilizar
+la tecnica de congelado de capas (layer freezing). Esta técnica consiste en mantener fijas las capas iniciales del modelo preentrenado,
+ue suelen aprender características generales de las imágenes, y solo ajustar las capas finales, que se encargan de la
+clasificación específica de la nueva tarea. Esto permite aprovechar el conocimiento general del modelo preentrenado mientras
+se adapta a las particularidades de la nueva tarea con un menor riesgo de sobreajuste y una reducción significativa en el 
+tiempo de entrenamiento \cite{zainab2025plant}.
+
+
 
 
 \section{Arquitecturas ligeras para dispositivos móviles}
 
-\section{Inferencia en dispositivos móviles}
-\subsection{Inferencia en la nube e inferencia local}
+\section{Metodos de despligue}
+Para hablar de la inferencia de modelos de inteligencias artificial en dispositivos móviles, es importante entender los conceptos de
+inferencia en la nube e inferencia local. El paradigma tradicional de inferencia en la nube consisten en recolactar la informacion requerida
+para la inferencia a nivel dispositivo El dispositivo se conecta a un servidor en la nube a traves de la red. Luego los modelos de inteligencia 
+artificial operando en los servidores ejecutan la inferencia sobre la data y envian el resultado al dispositivo \cite{li2025empirical}.  
+
+Los sitemas basados en la nube tienen acceso casi que a recursos ilimitados, unicamente limtados por el costo de los recursos utilizados, lo que los
+hace ideales para escenarios de complejos de actividades de alto consumo de recursos como almacenamiento de data, procesamiento de data, 
+entrenamiento de modelos, etc. Sin embargo, la inferencia en la nube tiene limitaciones que se vuelven mas promientes a medida IA constanteme se 
+esta transformando en un factor clave en la vida cotidiana, especiamente den las aplicaciones móviles.\cite{dhar2019ondevice}. A continuacion se presentan algunas de las limitaciones mas importantes de la inferencia en la nube:
+algunas de las desvantajas de la inferencia en la nube incluyen:
+
+\begin{description}
+    \item[Privacidad y seguridad:] La segurdidad es una de las preocupaciones mas importantes, ya que la data del usuario debe ser enviada a
+servidores externos para su procesamiento y almacenamiento, lo que puede exponer la información a riesgos de seguridad y privacidad.
+    \item[Latencia:] Esta es la descripción detallada del segundo punto.
+\end{description}
+
+Por otro lado la inferencia local, también conocida como inferencia en el dispositivo (on-device), se refiere a la ejecución de modelos 
+de inteligencia artificial directamente en el hardware del dispositivo móvil, sin necesidad de enviar datos a servidores externos \cite{dhar2019ondevice}. Este enfoque tiene varias ventajas, como la reducción de la latencia, 
+la mejora de la privacidad y la capacidad de funcionar sin conexión a internet lo que garantiza respuestas inmediatas y una mejora significativa
+en la privacidad y seguridad de las aplicaciones. Sin embargo, también presenta desafíos técnicos
+significativos debido a las limitaciones de recursos de los dispositivos móviles, como la memoria, el procesamiento y el consumo energético.
+    
+\subsection{Dispositivos edge}
+Para enteder lo que implica la inferecias en el dispositivo se vuelve imperativo de definir lo que es un dispositvo edge. este se puede definir como
+definir como aquel cuyos recursos de computación, memoria y energía son limitados y no pueden aumentarse ni disminuirse fácilmente ya sea por factor 
+de forma o costo. dentro de esta categoría se encuentran los dispositivos móviles, como teléfonos inteligentes y tabletas,
+así como también dispositivos IoT (Internet de las cosas)y otros dispositivos embebidos.
+
+El hardware de los dispositivos edge se encuentra como la base de sus limitaciones. Inclusive es una linea de investigacion con el objetivo de 
+desarrollar hardware especializado para mejorar el rendimiento de la inferencia en el dispositivo, como los procesadores de inteligencia
+artificial (AI accelerators) y las unidades de procesamiento gráfico (GPUs) optimizadas para tareas de aprendizaje profundo. Sin embargo, 
+es un proceso es un proceso costoso que requiere una gran inversión de capital para construir laboratorios e instalaciones de fabricación, y suele implicar
+largos plazos de tiempo para su desarrollo.
+
+
+
 \subsection{TensorFlow Lite, LiteRT y cuantización}
+Todos los algoritmos de aprendizaje automático dependen de operaciones clave como la multiplicación-acumulación o Multiply-Add
+en el caso de las redes neuronales. Las bibliotecas que soportan estas operaciones constituyen la interfaz que separa el hardware de 
+los algoritmos de aprendizaje. Esta separación permite el desarrollo de algoritmos que no dependen de ninguna arquitectura de hardware específica.
+
+Esta separación entre el software y el hardware es fundamental para la flexibilidad en la inteligencia artificial,
+ya que permite que un mismo modelo pueda ejecutarse en diferentes dispositivos sin necesidad de ser rediseñado desde cero.
 
 \section{Desafios tecnicos en la implementación de modelos de aprendizaje profundo en dispositivos móviles}
+
+\subsection{Tiempo de procesamiento}
+El tiempo de respuesta suele estar entre los factores más críticos para la usabilidad de cualquier aplicación en el dispositivo (on-device). 
+Las dos medidas comúnmente utilizadas son el rendimiento (throughput) y la latencia. El rendimiento se mide como la tasa a la que se procesan los datos de 
+entrada. Para maximizar el rendimiento, es común agrupar las entradas en lotes (batches), lo que resulta en una mayor utilización.
+Sin embargo, realizar esta medición conlleva un tiempo de espera adicional para agregar los datos en dichos lotes. 
+Por tanto, para casos de uso críticos en tiempo, la latencia es la medida utilizada con mayor frecuencia.
+
+ \subsection{Memoria}
+La memoria de un dispositivo proporciona un acceso inmediato a los datos en comparación con otros componentes de almacenamiento. 
+Sin embargo, esta velocidad de acceso tiene costos más elevados. Por razones de costo, la mayoría de los dispositivos edge están diseñados con una memoria 
+limitada. Como tal, la huella de memoria (memory footprint) de las aplicaciones edge suele estar adaptada para un dispositivo objetivo específico.
+
+Los algoritmos de aprendizaje automático avanzados a menudo consumen una cantidad significativa de memoria durante la construcción del modelo,
+debido al almacenamiento de los parámetros del modelo, variables auxiliares, etc. Por ejemplo, incluso modelos de clasificación de imágenes relativamente 
+simples como ResNet-50 pueden ocupar megabytes de espacio en memoria
+
+\subsection{Consumo energético}
+El consumo de energía es otro factor crucial para la ejecución de modelos en dispositivos móviles. Una solución energéticamente eficiente puede prolongar 
+la vida útil de la batería y reducir los costos de mantenimiento. La potencia del sistema, comúnmente estudiada en el desarrollo de hardware, 
+es la relación entre el consumo de energía y el lapso de tiempo para una tarea determinada. 
+Vincular el consumo de energía de una aplicación particular impulsada por IA para un dispositivo específico depende conjuntamente de una
+serie de variables como el tiempo de ejecución, la memoria, etc. Capturar estas dependencias casi nunca es determinista.
+Por ello, la mayoría de las investigaciones existentes estiman el uso de potencia/energía a través de una función sustituta (surrogate function)
+que típicamente depende de la memoria y el tiempo de ejecución de una aplicación.
+
+

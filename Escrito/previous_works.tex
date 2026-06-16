@@ -1,0 +1,102 @@
+\chapter{Trabajos relacionados}
+
+En esta sección se presentan trabajos relacionados con el uso de modelos de aprendizaje profundo para la detección de enfermedades en
+plantas. La revisión se organiza en dos grupos principales. En primer lugar, se analizan investigaciones que comparan distintas
+arquitecturas de redes neuronales convolucionales, con especial atención en modelos ligeros como MobileNet y EfficientNet, debido a que
+estas familias de modelos fueron utilizadas como base para esta tesis. En segundo lugar, se revisan trabajos que llevaron los modelos
+entrenados a aplicaciones móviles, especialmente en Android, con el fin de identificar qué aspectos de la ejecución en dispositivo han
+sido evaluados y cuáles permanecen menos explorados.
+
+Esta organización permite ubicar el aporte de la presente investigación. Por un lado, se retoma la comparación entre arquitecturas
+ligeras para clasificación de enfermedades en hojas. Por otro lado, se amplía el análisis hacia la ejecución real en dispositivos
+móviles, considerando métricas como latencia, memoria, batería, temperatura, tiempo de inicialización y comportamiento frente a imágenes
+capturadas en condiciones menos controladas.
+
+\section{Comparación de arquitecturas ligeras para clasificación de enfermedades}
+
+Gopi y Kondaveeti \cite{agronomy13040961} evaluaron 15 arquitecturas convolucionales preentrenadas mediante aprendizaje por
+transferencia para el reconocimiento automático de enfermedades en hojas de arroz. El estudio utilizó un conjunto de 10.080 imágenes
+organizadas en 10 clases, correspondientes a nueve enfermedades foliares y una clase de hojas sanas. Los modelos fueron entrenados con
+técnicas de aumento de datos y evaluados bajo distintos esquemas de partición del conjunto de datos.
+
+Dentro de las arquitecturas evaluadas, EfficientNetB0 y MobileNetV2 resultan especialmente relevantes para esta investigación, ya que
+representan familias de modelos orientadas a mantener una relación favorable entre precisión y eficiencia. EfficientNetB0 obtuvo uno de
+los mejores desempeños reportados por el estudio, con una exactitud promedio de 99,56 \%, mientras que MobileNetV2 alcanzó una exactitud
+promedio de 99,53 \%. Estos resultados muestran que ambas arquitecturas pueden alcanzar un rendimiento alto en tareas de clasificación
+foliar cuando son entrenadas sobre conjuntos de datos controlados.
+
+\begin{table}[H]
+    \centering
+    \caption{Resultados reportados por Gopi y Kondaveeti para MobileNetV2 y EfficientNetB0.}
+    \label{tab:related_gopi_kondaveeti}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Métrica} & \textbf{MobileNetV2} & \textbf{EfficientNetB0} \\
+        \hline
+        Exactitud & 99,53 \% & 99,56 \% \\
+        \hline
+        Precisión & 97,78 \% & 97,93 \% \\
+        \hline
+        Sensibilidad & 97,68 \% & 97,80 \% \\
+        \hline
+        F1-score & 97,68 \% & 97,82 \% \\
+        \hline
+        Especificidad & 99,74 \% & 99,75 \% \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Aunque los resultados de ambos modelos fueron cercanos, EfficientNetB0 presentó una ligera ventaja en las métricas principales. Sin
+embargo, el estudio se concentra en el desempeño del modelo durante la clasificación y no profundiza en la ejecución directa sobre un
+dispositivo móvil. Esta diferencia es importante para la presente tesis, ya que un modelo con alta precisión no necesariamente resulta
+el más adecuado cuando debe ejecutarse localmente en un teléfono con restricciones de memoria, procesamiento y energía.
+
+De forma similar, Subramaniam et al. \cite{subramaniam2026comparative} realizaron un análisis comparativo de modelos de aprendizaje
+profundo para la detección de enfermedades en cultivos. En este trabajo se evaluaron arquitecturas como EfficientNetB0, MobileNet,
+InceptionV3, ResNet101 y una CNN personalizada. EfficientNetB0 obtuvo el mejor desempeño del conjunto, alcanzando una precisión de
+validación de 97,10 \% y valores cercanos a 0,97 en precisión, sensibilidad y F1-score. Los autores relacionan este desempeño con el
+escalado compuesto de EfficientNet, que ajusta de manera conjunta profundidad, ancho y resolución de entrada.
+
+En contraste, MobileNet presentó el rendimiento más bajo entre los modelos comparados, con una precisión de validación de 94,20 \%.
+Este resultado muestra una tensión que también es relevante para esta investigación: las arquitecturas más ligeras pueden ser adecuadas
+para escenarios con recursos limitados, pero su menor complejidad puede reducir la capacidad para capturar patrones visuales más
+difíciles. Por esta razón, la comparación entre MobileNetV3 Small y EfficientNetV2B0 no solo debe considerar la exactitud, sino también
+el costo práctico de ejecutar cada modelo dentro de una aplicación móvil.
+
+\section{Aplicaciones móviles para diagnóstico de enfermedades en plantas}
+
+Ahmed y Reddy \cite{ahmed2021mobile} propusieron un sistema móvil para la detección de enfermedades en hojas de plantas basado en redes
+neuronales convolucionales. El sistema fue implementado como una aplicación Android capaz de capturar imágenes y clasificar 38 categorías
+asociadas a 14 especies de cultivos, utilizando un conjunto de datos que incluye imágenes de PlantVillage. El trabajo reporta una
+precisión de clasificación de 94 \% y un tiempo promedio de predicción de 0,88 segundos, mostrando la viabilidad de integrar modelos de
+aprendizaje profundo dentro de una aplicación móvil.
+
+Este trabajo es relevante porque vincula directamente el entrenamiento de modelos con una aplicación Android orientada al diagnóstico de
+enfermedades foliares. Sin embargo, el análisis se centra principalmente en la precisión y en el tiempo de predicción, sin presentar una
+evaluación más amplia del comportamiento del modelo en el dispositivo. No se reportan métricas como consumo de memoria, batería,
+temperatura, estabilidad entre sesiones o diferencias de rendimiento entre dispositivos con distintas capacidades de hardware.
+
+Niaz et al. \cite{Niaz2025Efficient} desarrollaron una aplicación móvil para la detección de enfermedades en trigo, orientada a su uso en
+campo por agricultores. A diferencia de los trabajos centrados únicamente en imágenes, este estudio utilizó un conjunto de datos textual
+curado a partir de fuentes gubernamentales, expertos y literatura agrícola. Se evaluaron distintos algoritmos de aprendizaje automático,
+incluyendo árboles de decisión, bosques aleatorios, máquinas de soporte vectorial y AdaBoost, junto con técnicas de extracción de
+características como Count Vectorizer y TF-IDF. El mejor resultado fue obtenido por SVM con Count Vectorizer, alcanzando una precisión de
+99 \%.
+
+El aporte principal de este trabajo se encuentra en la construcción de una herramienta móvil orientada al diagnóstico en campo, con un modo
+de funcionamiento \textit{offline} para zonas con conectividad limitada. Esta característica se relaciona con el objetivo de la presente
+tesis, que también busca una solución capaz de funcionar sin depender de servicios externos. Sin embargo, al igual que en otros trabajos
+orientados a aplicaciones móviles, la evaluación se concentra en métricas del modelo y no incluye un análisis detallado de la ejecución
+\textit{on-device}, como latencia en distintos dispositivos, memoria utilizada, consumo de batería o temperatura.
+
+\section{Síntesis de los trabajos revisados}
+
+Los trabajos revisados muestran que las arquitecturas ligeras como MobileNet y EfficientNet han sido utilizadas con buenos resultados en
+tareas de clasificación de enfermedades foliares. En general, EfficientNet tiende a obtener mejores métricas de clasificación, mientras
+que MobileNet resulta atractiva por su diseño más liviano y su orientación a entornos con recursos limitados. Esta relación entre
+precisión y eficiencia justifica la selección de MobileNetV3 Small y EfficientNetV2B0 como arquitecturas comparativas en esta
+investigación.
+
+También se observa que existen propuestas que integran modelos de aprendizaje automático o aprendizaje profundo en aplicaciones Android
+para diagnóstico agrícola. Sin embargo, la mayoría de estos trabajos reporta principalmente métricas de clasificación del modelo, y en
+menor medida analiza el comportamiento técnico de la aplicación una vez que el modelo son ejecutados en los dispositivo. 

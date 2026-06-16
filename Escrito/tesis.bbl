@@ -68,6 +68,14 @@ David~P. Hughes and Marcel Salath{\'{e}}.
   crowdsourcing.
 \newblock {\em CoRR}, abs/1511.08060, 2015.
 
+\bibitem{jasim2020plant}
+Marwan~Adnan Jasim and Jamal~Mustafa AL-Tuwaijari.
+\newblock Plant leaf diseases detection and classification using image
+  processing and deep learning techniques.
+\newblock In {\em 2020 International Conference on Computer Science and
+  Software Engineering (CSASE)}, pages 259--265, Duhok, Kurdistan Region -
+  Iraq, 2020. IEEE.
+
 \bibitem{johannes2017automatic}
 A.~Johannes, A.~Picon, A.~{\'A}lvarez-Gila, J.~Seitz, R.~Sadikaj, and
   J.~Echazarra.
@@ -75,12 +83,25 @@ A.~Johannes, A.~Picon, A.~{\'A}lvarez-Gila, J.~Seitz, R.~Sadikaj, and
   neural networks.
 \newblock {\em Computers and Electronics in Agriculture}, 138:326--336, 2017.
 
+\bibitem{Khan2023}
+Faiza Khan, Noureen Zafar, Muhammad~Naveed Tahir, Muhammad Aqib, Hamna Waheed,
+  and Zainab Haroon.
+\newblock A mobile-based system for maize plant leaf disease detection and
+  classification using deep learning.
+\newblock {\em Frontiers in Plant Science}, 14:1079366, 2023.
+
 \bibitem{li2022mobilenetv3}
 Yajing Li, Huimin Hao, Jiahai Huang, and Wenbin Xin.
 \newblock Mobilenetv3-centernet: A target recognition method for avoiding
   missed detection effectively based on a lightweight network.
 \newblock {\em Research Square}, May 2022.
 \newblock Preprint.
+
+\bibitem{li2025empirical}
+Yinghua Li, Xueqi Dang, Haoye Tian, Tiezhu Sun, Zhijie Wang, Lei Ma, Jacques
+  Klein, and Tegawend{\'e}~F. Bissyand{\'e}.
+\newblock An empirical study of ai techniques in mobile applications.
+\newblock {\em The Journal of Systems and Software}, 219:112233, 2025.
 
 \bibitem{liu2024pepper}
 Jun Liu.
