@@ -3,44 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: tesis.aux
 The style file: plain.bst
 Database file #1: bibliografia.bib
-You've used 35 entries,
+Warning--I'm ignoring deng2022understanding's extra "address" field
+--line 400 of file bibliografia.bib
+You've used 40 entries,
             2118 wiz_defined-function locations,
-            682 strings with 10603 characters,
-and the built_in function-call counts, 11003 in all, are:
-= -- 1021
-> -- 676
-< -- 1
-+ -- 274
-- -- 232
-* -- 769
-:= -- 1930
-add.period$ -- 104
-call.type$ -- 35
-change.case$ -- 223
+            712 strings with 11723 characters,
+and the built_in function-call counts, 13117 in all, are:
+= -- 1215
+> -- 831
+< -- 2
++ -- 337
+- -- 288
+* -- 948
+:= -- 2302
+add.period$ -- 122
+call.type$ -- 40
+change.case$ -- 266
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 334
-empty$ -- 780
-format.name$ -- 232
-if$ -- 2206
+cite$ -- 40
+duplicate$ -- 396
+empty$ -- 903
+format.name$ -- 288
+if$ -- 2623
 int.to.chr$ -- 0
-int.to.str$ -- 35
-missing$ -- 21
-newline$ -- 176
-num.names$ -- 70
-pop$ -- 244
+int.to.str$ -- 40
+missing$ -- 26
+newline$ -- 203
+num.names$ -- 80
+pop$ -- 282
 preamble$ -- 1
-purify$ -- 186
+purify$ -- 224
 quote$ -- 0
-skip$ -- 271
+skip$ -- 310
 stack$ -- 0
-substring$ -- 469
-swap$ -- 42
-text.length$ -- 1
+substring$ -- 561
+swap$ -- 52
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 140
+type$ -- 160
 warning$ -- 0
-while$ -- 90
-width$ -- 37
-write$ -- 368
+while$ -- 105
+width$ -- 42
+write$ -- 428
+(There was 1 warning)

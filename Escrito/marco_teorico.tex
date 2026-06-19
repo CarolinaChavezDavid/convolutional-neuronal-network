@@ -8,37 +8,128 @@ en dispositivos móviles.
 
 
 \section{Redes neuronales convolucionales para clasificación de imágenes}
-Las redes neuronales convulucionales (CNN) son un tipo de arquitectura de aprendizaje profundo que se ha vuelto muy popular en los 
-ultimos años, especialemente en tareas de clasificación de imágenes. Estan diseñadas para reconocer objetos usando capas
-que incluyen la convolución, la activación y el pooling. Estas capas permiten a las CNN aprender características jerárquicas de
-las imágenes, desde bordes y texturas simples en las primeras capas hasta patrones más complejos en las capas posteriores.
-Ademas estas capas trabajan juntas usando backprogation para adaptar y mejorar la red. El objetivo principal de esta las CNN es 
-crear una red más extensa con menos parámetros \cite{agronomy13040961}.
+
+La clasificación de imágenes mediante aprendizaje profundo se ha convertido en una técnica ampliamente utilizada en aplicaciones
+agrícolas, especialmente para la identificación automática de enfermedades en plantas. En este tipo de problemas, el entrenamiento suele
+realizarse de forma supervisada, utilizando imágenes etiquetadas que permiten al modelo aprender la relación entre los patrones visuales
+de una hoja y la clase a la que pertenece. De esta manera, el modelo no solo recibe la imagen como entrada, sino también una etiqueta que
+indica si la hoja corresponde a una planta sana o a una enfermedad específica.
+
+Dentro de las técnicas de aprendizaje profundo, las redes neuronales convolucionales o CNN (\textit{Convolutional Neural Networks}) han
+tenido un papel central en tareas de clasificación, detección y segmentación de imágenes. Su importancia se debe a que están diseñadas
+para extraer características visuales a partir de capas sucesivas de convolución, activación y agrupamiento (\textit{pooling}). En las
+primeras capas, la red suele aprender patrones simples como bordes, cambios de textura y variaciones de color. En capas más profundas,
+estas características se combinan para representar patrones más complejos, como manchas, lesiones, deformaciones o cambios de coloración
+asociados a enfermedades foliares.
+
+El entrenamiento de una CNN consiste en ajustar los pesos internos de la red para reducir el error entre la clase predicha y la clase real.
+Este proceso se realiza mediante retropropagación (\textit{backpropagation}), que permite actualizar los parámetros de la red a partir del
+error calculado durante el entrenamiento. Gracias a esta capacidad de aprender características directamente desde los datos, las CNN han
+sido utilizadas en numerosos estudios de diagnóstico de enfermedades en plantas, alcanzando resultados altos en conjuntos de datos
+controlados \cite{agronomy13040961}. Sin embargo, un desempeño elevado en condiciones controladas no garantiza necesariamente el mismo comportamiento en imágenes capturadas en
+campo. Algunos estudios reportan precisiones muy altas en conjuntos de prueba, pero también señalan dificultades para generalizar cuando
+las imágenes presentan variaciones de iluminación, fondo, resolución, ángulo de captura o estado de la hoja \cite{Ahmad2023}. 
+
+La evaluación de estos modelos suele considerar métricas como exactitud, precisión, sensibilidad y F1-score. La exactitud permite medir el
+desempeño general del modelo, mientras que métricas como sensibilidad y F1-score ayudan a observar el comportamiento en clases específicas,
+especialmente cuando el conjunto de datos presenta una distribución desigual entre categorías. Por esta razón, el análisis de un modelo de
+clasificación no debe limitarse a un único valor global, sino que debe considerar también los patrones de error y la capacidad de
+generalización frente a imágenes diferentes a las utilizadas durante el entrenamiento.
 
 
 \subsection{Transfer Learning y ajuste fino}
-Las redes neuronales convolucionales (CNN) han demostrado un rendimiento sobresaliente en tareas de 
-clasificación de imágenes, pero su entrenamiento desde cero requiere grandes cantidades de datos y recursos computacionales.
-El transfer learning es una técnica que permite aprovechar el conocimiento adquirido por un modelo preentrenado en una tarea relacionada 
-para mejorar el rendimiento en una nueva tarea con menos datos. En este enfoque, se utiliza un modelo preentrenado 
-como punto de partida y se ajusta (fine-tuning) para adaptarlo a la nueva tarea específica, lo que puede resultar en una mejora
-significativa en la precisión del modelo con un menor esfuerzo de entrenamiento.
 
-La tecnica de transfer learning se ha vuelto especialmente relevante en el contexto de dispositivos móviles, donde las limitaciones
-de recursos hacen que el entrenamiento desde cero sea impráctico. Hay una manera de acelerar el tiempo de entrenamiento, previniendo el 
-overfitting, mejorando la interpretabilidad del modelo, reduciendo los requermientos de memoria y optimizando la eficiencia es utilizar
-la tecnica de congelado de capas (layer freezing). Esta técnica consiste en mantener fijas las capas iniciales del modelo preentrenado,
-ue suelen aprender características generales de las imágenes, y solo ajustar las capas finales, que se encargan de la
-clasificación específica de la nueva tarea. Esto permite aprovechar el conocimiento general del modelo preentrenado mientras
-se adapta a las particularidades de la nueva tarea con un menor riesgo de sobreajuste y una reducción significativa en el 
-tiempo de entrenamiento \cite{zainab2025plant}.
+Aunque las CNN pueden entrenarse desde cero, este enfoque requiere grandes cantidades de datos, tiempo de entrenamiento y recursos
+computacionales. En muchos problemas de clasificación de imágenes, especialmente en aplicaciones agrícolas, no siempre se dispone de
+datasets suficientemente grandes o variados para entrenar una arquitectura completa desde el inicio. Por esta razón, el aprendizaje por
+transferencia o \textit{transfer learning} se ha convertido en una estrategia ampliamente utilizada para mejorar el desempeño del modelo
+con un menor costo de entrenamiento \cite{zainab2025plant}.
 
+El \textit{transfer learning} consiste en reutilizar un modelo previamente entrenado en una tarea general y adaptarlo a una nueva tarea
+relacionada. En visión por computadora, es común utilizar modelos preentrenados sobre conjuntos de datos grandes como ImageNet, ya que
+estos modelos han aprendido representaciones visuales generales que pueden ser útiles para nuevos problemas de clasificación. En el caso
+de enfermedades foliares, las capas iniciales de una red preentrenada pueden reconocer patrones generales como bordes, texturas y
+contrastes, mientras que las capas finales se adaptan para distinguir las clases específicas del nuevo conjunto de datos \cite{amin2022end}.
+
+Una forma común de aplicar esta técnica es eliminar o reemplazar la cabeza de clasificación original del modelo preentrenado y agregar una
+nueva salida ajustada al número de clases del problema. En una primera etapa, el cuerpo principal de la red, también conocido como
+\textit{backbone}, puede mantenerse congelado para que sus pesos no se modifiquen. De esta manera, solo se entrenan las capas finales
+encargadas de mapear las características extraídas hacia las nuevas clases. Esta estrategia reduce el riesgo de sobreajuste, acelera el
+entrenamiento y permite aprovechar el conocimiento visual ya aprendido por el modelo.
+
+Posteriormente, puede realizarse una etapa de ajuste fino o \textit{fine-tuning}. En esta fase se descongelan algunas capas finales del
+\textit{backbone} y se continúan entrenando con una tasa de aprendizaje menor. El objetivo es adaptar parcialmente las representaciones
+del modelo a las características particulares del nuevo dominio, sin destruir por completo el conocimiento adquirido durante el
+preentrenamiento. Esta etapa resulta útil cuando el conjunto de datos de destino tiene suficientes imágenes para refinar el modelo, pero
+no tantas como para justificar un entrenamiento completo desde cero.
+
+En investigaciones sobre enfermedades de plantas, el aprendizaje por transferencia ha mostrado ser una alternativa efectiva frente al
+entrenamiento desde cero, especialmente cuando se utilizan modelos preentrenados para tareas de reconocimiento de imágenes \cite{Ahmad2023}.
+Esta técnica permite entrenar arquitecturas ligeras como MobileNetV3 Small y EfficientNetV2B0 sobre
+PlantVillage, reduciendo el costo computacional del entrenamiento y facilitando posteriormente su conversión e integración en una
+aplicación móvil.
+
+\subsection{Dispositivos edge}
+Para comprender la inferencia en el dispositivo es necesario definir primero el concepto de dispositivo \textit{edge}. En términos
+generales, un dispositivo \textit{edge} es aquel que se encuentra cerca del lugar donde se generan los datos y que tiene la capacidad de
+procesarlos localmente, sin depender de manera permanente de un servidor en la nube. Dentro de esta categoría se incluyen teléfonos
+inteligentes, tabletas, sensores IoT, drones, vehículos autónomos, robots industriales y otros sistemas embebidos \cite{wang2025empowering}.
+
+La principal característica de estos dispositivos es que acercan la capacidad de cómputo al usuario o al entorno donde ocurre la captura
+de datos. Esto permite reducir la latencia, mejorar la privacidad y responder en tiempo real ante ciertas tareas. En el caso de una
+aplicación móvil para diagnóstico de enfermedades foliares, esto significa que la imagen capturada por el usuario puede procesarse
+directamente en el teléfono, sin necesidad de enviarla a un servidor externo. Esta propiedad resulta especialmente importante en contextos
+rurales o de campo, donde la conectividad puede ser limitada o intermitente.
+
+Sin embargo, los dispositivos \textit{edge} también presentan restricciones importantes. A diferencia de un servidor, sus recursos de
+procesamiento, memoria y energía son limitados y no pueden ampliarse fácilmente debido a factores de forma, costo y consumo energético.
+Por esta razón, ejecutar modelos de aprendizaje profundo en este tipo de hardware exige utilizar arquitecturas eficientes, formatos de
+modelo optimizados y frameworks preparados para inferencia móvil.
+
+El hardware se convierte entonces en un elemento central para determinar la viabilidad de una solución \textit{on-device}. Algunos
+dispositivos incorporan unidades de procesamiento gráfico, procesadores neuronales o aceleradores de inteligencia artificial que pueden
+mejorar el rendimiento de ciertas operaciones. No obstante, la disponibilidad y compatibilidad de estos recursos varía entre dispositivos,
+por lo que el desempeño final de un modelo no depende únicamente de su exactitud durante el entrenamiento, sino también de cómo se ejecuta
+en el hardware específico donde será utilizado.
+
+En esta investigación, los teléfonos móviles se consideran dispositivos \textit{edge}, ya que ejecutan localmente los modelos de
+clasificación y realizan el preprocesamiento de las imágenes dentro de la aplicación. Esta perspectiva permite analizar no solo la
+capacidad predictiva de los modelos, sino también su comportamiento práctico en términos de latencia, memoria, batería y temperatura.
+
+\subsection{Flujo de integración de modelos de IA en el dispositivo}
+
+La integración de modelos de inteligencia artificial en el dispositivo puede entenderse como un flujo compuesto por tres aspectos
+principales: los datos, el modelo y el sistema \cite{wang2025empowering}. Esta división permite observar que una solución
+\textit{on-device} no depende únicamente del modelo entrenado, sino también de la forma en que los datos son preparados y de cómo el
+modelo se integra finalmente con el software y el hardware del dispositivo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/flujo_integracion_modelos_dispositivo.png}
+    \caption{Flujo general de integración de modelos de inteligencia artificial en el dispositivo.}
+    \label{fig:flujo_integracion_modelos_dispositivo}
+\end{figure}
+
+En primer lugar, los datos deben ser recolectados y preparados antes de la inferencia. Este proceso puede incluir limpieza, filtrado,
+extracción de características, agregación o reducción de precisión, con el fin de conservar la información relevante y disminuir el costo
+de procesamiento. En aplicaciones de visión por computadora, este paso se relaciona con tareas como redimensionar la imagen, normalizar
+los valores de entrada y adaptar la imagen al formato esperado por el modelo.
+
+En segundo lugar, se encuentra el desarrollo del modelo. Esta etapa incluye la selección de la arquitectura, el entrenamiento, el ajuste de
+hiperparámetros y, cuando es necesario, el uso de técnicas de compresión u optimización para obtener un modelo más compacto. Este punto es
+especialmente importante en dispositivos móviles, donde un modelo demasiado grande puede afectar la latencia, el uso de memoria y el
+consumo energético.
+
+Por último, la integración del sistema permite llevar el modelo optimizado a la aplicación final, considerando tanto aspectos de software
+como de hardware. En esta etapa se define cómo se carga el modelo, cómo se ejecuta la inferencia y cómo se aprovechan los recursos
+disponibles del dispositivo. En el contexto de esta tesis, este flujo se refleja en la preparación de las imágenes, el entrenamiento y
+conversión de los modelos, y su posterior integración dentro de una aplicación Android para ejecutar la clasificación de forma local.
 
 
 
 \section{Arquitecturas ligeras para dispositivos móviles}
 
-\section{Metodos de despligue}
+\subsection{Métodos de despliegue}
 Para hablar de la inferencia de modelos de inteligencias artificial en dispositivos móviles, es importante entender los conceptos de
 inferencia en la nube e inferencia local. El paradigma tradicional de inferencia en la nube consisten en recolactar la informacion requerida
 para la inferencia a nivel dispositivo El dispositivo se conecta a un servidor en la nube a traves de la red. Luego los modelos de inteligencia 
@@ -53,7 +144,10 @@ algunas de las desvantajas de la inferencia en la nube incluyen:
 \begin{description}
     \item[Privacidad y seguridad:] La segurdidad es una de las preocupaciones mas importantes, ya que la data del usuario debe ser enviada a
 servidores externos para su procesamiento y almacenamiento, lo que puede exponer la información a riesgos de seguridad y privacidad.
-    \item[Latencia:] Esta es la descripción detallada del segundo punto.
+    \item[Dependencia de la red:] Requiere una conexión a internet estable para enviar datos a la nube y recibir resultados, lo que puede ser problemático en áreas
+     con conectividad limitada o intermitente.
+    \item[Costo:] Usar servicios en la nube puede generar costos adicionales, especialmente si se procesan grandes volúmenes de datos o se requieren 
+    recursos computacionales significativos.
 \end{description}
 
 Por otro lado la inferencia local, también conocida como inferencia en el dispositivo (on-device), se refiere a la ejecución de modelos 
@@ -62,27 +156,40 @@ la mejora de la privacidad y la capacidad de funcionar sin conexión a internet 
 en la privacidad y seguridad de las aplicaciones. Sin embargo, también presenta desafíos técnicos
 significativos debido a las limitaciones de recursos de los dispositivos móviles, como la memoria, el procesamiento y el consumo energético.
     
-\subsection{Dispositivos edge}
-Para enteder lo que implica la inferecias en el dispositivo se vuelve imperativo de definir lo que es un dispositvo edge. este se puede definir como
-definir como aquel cuyos recursos de computación, memoria y energía son limitados y no pueden aumentarse ni disminuirse fácilmente ya sea por factor 
-de forma o costo. dentro de esta categoría se encuentran los dispositivos móviles, como teléfonos inteligentes y tabletas,
-así como también dispositivos IoT (Internet de las cosas)y otros dispositivos embebidos.
-
-El hardware de los dispositivos edge se encuentra como la base de sus limitaciones. Inclusive es una linea de investigacion con el objetivo de 
-desarrollar hardware especializado para mejorar el rendimiento de la inferencia en el dispositivo, como los procesadores de inteligencia
-artificial (AI accelerators) y las unidades de procesamiento gráfico (GPUs) optimizadas para tareas de aprendizaje profundo. Sin embargo, 
-es un proceso es un proceso costoso que requiere una gran inversión de capital para construir laboratorios e instalaciones de fabricación, y suele implicar
-largos plazos de tiempo para su desarrollo.
 
 
+\subsection{Marcos de trabajo en dispositivos móviles}
 
-\subsection{TensorFlow Lite, LiteRT y cuantización}
-Todos los algoritmos de aprendizaje automático dependen de operaciones clave como la multiplicación-acumulación o Multiply-Add
-en el caso de las redes neuronales. Las bibliotecas que soportan estas operaciones constituyen la interfaz que separa el hardware de 
-los algoritmos de aprendizaje. Esta separación permite el desarrollo de algoritmos que no dependen de ninguna arquitectura de hardware específica.
+Los marcos de trabajo (frameworks) para aprendizaje profundo en dispositivos móviles permiten llevar un modelo entrenado desde el entorno de
+desarrollo hasta una aplicación ejecutable en un teléfono. Estos frameworks proporcionan las APIs y herramientas necesarias para cargar
+el modelo, preparar los datos de entrada, ejecutar la inferencia y obtener la salida sin que el desarrollador tenga que implementar
+directamente las operaciones matriciales o las optimizaciones de bajo nivel. A diferencia de los frameworks utilizados en servidores, los
+marcos móviles deben priorizar una ejecución rápida, un consumo reducido de memoria y un número menor de dependencias, ya que el modelo
+debe funcionar dentro de las restricciones propias del dispositivo \cite{deng2022understanding}.
 
-Esta separación entre el software y el hardware es fundamental para la flexibilidad en la inteligencia artificial,
-ya que permite que un mismo modelo pueda ejecutarse en diferentes dispositivos sin necesidad de ser rediseñado desde cero.
+El flujo general de despliegue comienza con un modelo entrenado en un entorno de desarrollo, que luego se convierte a un formato
+compatible con ejecución móvil. En muchos casos también se aplican técnicas de optimización, como la cuantización, con el fin de reducir
+el tamaño del archivo y mejorar la eficiencia durante la inferencia. Posteriormente, el modelo se integra dentro de la aplicación móvil,
+por ejemplo dentro de un archivo \texttt{.apk} en Android, y suele almacenarse como un recurso local en la carpeta de \textit{assets} o
+como un archivo de recursos sin procesar. De esta manera, la aplicación puede cargar el modelo desde el almacenamiento interno y ejecutarlo
+sin depender de una conexión a internet.
+
+Una característica importante de este enfoque es que el archivo del modelo contiene tanto la estructura de la red como sus parámetros
+entrenados. Por esta razón, no es necesario reconstruir la arquitectura completa desde el código de la aplicación. Una vez instalada la
+aplicación, el modelo se carga mediante las bibliotecas del framework correspondiente, y el código de la aplicación se encarga de recibir
+la imagen, aplicar el preprocesamiento necesario, entregar los datos al modelo y procesar la predicción generada localmente.
+
+En aplicaciones móviles de inteligencia artificial se han utilizado distintos marcos de trabajo según el sistema operativo, el tipo de
+modelo y las necesidades de despliegue. En el estudio empírico realizado por Li et al. \cite{li2024empirical}, sobre 56.682 aplicaciones
+móviles con técnicas de IA, se observa que para el despliegue directamente en el dispositivo destacan los frameworks ligeros, especialmente
+TensorFlow Lite en Android y Core ML en el ecosistema de Apple. También se reporta el uso de frameworks más generales como TensorFlow,
+PyTorch o Caffe en etapas de diseño y entrenamiento, así como herramientas especializadas como OpenCV para tareas de visión por
+computadora.
+
+En el contexto de esta investigación, el uso de un framework móvil resulta fundamental porque permite integrar los modelos entrenados en
+una aplicación Android y ejecutar la inferencia de forma local. Esto hace posible evaluar no solo la exactitud del modelo, sino también
+su comportamiento práctico en el dispositivo, incluyendo el tiempo de respuesta, el uso de memoria, el consumo de batería y la estabilidad
+durante sesiones repetidas de prueba.
 
 \section{Desafios tecnicos en la implementación de modelos de aprendizaje profundo en dispositivos móviles}
 
@@ -110,5 +217,3 @@ Vincular el consumo de energía de una aplicación particular impulsada por IA p
 serie de variables como el tiempo de ejecución, la memoria, etc. Capturar estas dependencias casi nunca es determinista.
 Por ello, la mayoría de las investigaciones existentes estiman el uso de potencia/energía a través de una función sustituta (surrogate function)
 que típicamente depende de la memoria y el tiempo de ejecución de una aplicación.
-
-

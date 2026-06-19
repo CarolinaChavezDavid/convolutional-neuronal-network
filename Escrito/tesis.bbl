@@ -12,11 +12,22 @@ Umar Afzaal, Binod Bhattarai, Yadav~R. Pandeya, and Jong Lee.
   r-cnn.
 \newblock {\em Sensors}, 21(19):6565, 2021.
 
+\bibitem{Ahmad2023}
+Aanis Ahmad, Dharmendra Saraswat, and Aly El~Gamal.
+\newblock A survey on using deep learning techniques for plant disease
+  diagnosis and recommendations for development of appropriate tools.
+\newblock {\em Smart Agricultural Technology}, 3:100083, 2023.
+
 \bibitem{ahmed2021mobile}
 Ahmed~Abdelmoamen Ahmed and Gopireddy~Harshavardhan Reddy.
 \newblock A mobile-based system for detecting plant leaf diseases using deep
   learning.
 \newblock {\em AgriEngineering}, 3(3):478--493, jul 2021.
+
+\bibitem{amin2022end}
+Hassan Amin, Ashraf Darwish, Aboul~Ella Hassanien, and Mona Soliman.
+\newblock End-to-end deep learning model for corn leaf disease classification.
+\newblock {\em IEEE Access}, 10:31103--31115, 2022.
 
 \bibitem{worldbank2024agricultura}
 {Banco Mundial}.
@@ -29,6 +40,15 @@ Ahmed~Abdelmoamen Ahmed and Gopireddy~Harshavardhan Reddy.
 Lei Chen, Boru Shi, and Yuan Yuan.
 \newblock Idadp - corn disease image description dataset, 2025.
 \newblock Accessed: 2026-05-27.
+
+\bibitem{deng2022understanding}
+Zizhuang Deng, Kai Chen, Guozhu Meng, Xiaodong Zhang, Ke~Xu, and Yao Cheng.
+\newblock Understanding real-world threats to deep learning models in android
+  apps.
+\newblock In {\em Proceedings of the 2022 ACM SIGSAC Conference on Computer and
+  Communications Security (CCS '22)}, page~18, Los Angeles, CA, USA, November
+  2022. ACM.
+\newblock arXiv:2209.09577v1 [cs.CR].
 
 \bibitem{dhar2019ondevice}
 Sauptik Dhar, Junyao Guo, Jiayi Liu, Samarth Tripathi, Unmesh Kurup, and Mohak
@@ -96,6 +116,12 @@ Yajing Li, Huimin Hao, Jiahai Huang, and Wenbin Xin.
   missed detection effectively based on a lightweight network.
 \newblock {\em Research Square}, May 2022.
 \newblock Preprint.
+
+\bibitem{li2024empirical}
+Yinghua Li, Xueqi Dang, Haoye Tian, Tiezhu Sun, Zhijie Wang, Lei Ma, Jacques
+  Klein, and Tegawend{\'e}~F. Bissyand{\'e}.
+\newblock An empirical study of ai techniques in mobile applications.
+\newblock {\em arXiv preprint arXiv:2212.01635v3}, 2024.
 
 \bibitem{li2025empirical}
 Yinghua Li, Xueqi Dang, Haoye Tian, Tiezhu Sun, Zhijie Wang, Lei Ma, Jacques
@@ -193,6 +219,14 @@ Jitendra~V. Tembhurne, Saurav~M. Gajbhiye, Vedant~R. Gannarpwar, Harshal~R.
 \newblock Technical report, United States Department of Agriculture (USDA),
   2024.
 \newblock Consultado el 28 de mayo de 2026.
+
+\bibitem{wang2025empowering}
+Xubin Wang, Zhiqing Tang, Jianxiong Guo, Tianhui Meng, Chenhao Wang, Tian Wang,
+  and Weijia Jia.
+\newblock Empowering edge intelligence: A comprehensive survey on on-device ai
+  models.
+\newblock {\em ACM Comput. Surv.}, 1(1):42, mar 2025.
+\newblock arXiv:2503.06027v2 [cs.AI].
 
 \bibitem{xiao2025understanding}
 Jie Xiao, Qianyi Huang, Xu~Chen, and Chen Tiant.
