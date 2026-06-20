@@ -1,10 +1,10 @@
 \chapter{Marco Teórico}
 
-En esta sección se presentan los conceptos fundamentales relacionados con el reconocimiento de imagenes enfocado al 
+En esta sección se presentan los conceptos fundamentales relacionados con el reconocimiento de imágenes enfocado al
 diagnóstico de enfermedades foliares utilizando arquitecturas ligeras de aprendizaje profundo en dispositivos móviles.
-Se abordan temas  los modelos de aprendizaje profundo, transfer learning y los desafíos asociados a la implementación
-en dispositivos móviles.
-
+Se abordan los conceptos de redes neuronales convolucionales, aprendizaje por transferencia, inferencia en el dispositivo,
+arquitecturas ligeras y los principales desafíos asociados a la implementación de modelos de aprendizaje profundo en teléfonos
+móviles.
 
 
 \section{Redes neuronales convolucionales para clasificación de imágenes}
@@ -26,8 +26,8 @@ El entrenamiento de una CNN consiste en ajustar los pesos internos de la red par
 Este proceso se realiza mediante retropropagación (\textit{backpropagation}), que permite actualizar los parámetros de la red a partir del
 error calculado durante el entrenamiento. Gracias a esta capacidad de aprender características directamente desde los datos, las CNN han
 sido utilizadas en numerosos estudios de diagnóstico de enfermedades en plantas, alcanzando resultados altos en conjuntos de datos
-controlados \cite{agronomy13040961}. Sin embargo, un desempeño elevado en condiciones controladas no garantiza necesariamente el mismo comportamiento en imágenes capturadas en
-campo. Algunos estudios reportan precisiones muy altas en conjuntos de prueba, pero también señalan dificultades para generalizar cuando
+controlados \cite{agronomy13040961}. Sin embargo, un desempeño elevado en condiciones controladas no garantiza necesariamente el mismo
+comportamiento en imágenes capturadas en campo. Algunos estudios reportan precisiones muy altas en conjuntos de prueba, pero también señalan dificultades para generalizar cuando
 las imágenes presentan variaciones de iluminación, fondo, resolución, ángulo de captura o estado de la hoja \cite{Ahmad2023}. 
 
 La evaluación de estos modelos suele considerar métricas como exactitud, precisión, sensibilidad y F1-score. La exactitud permite medir el
@@ -37,11 +37,11 @@ clasificación no debe limitarse a un único valor global, sino que debe conside
 generalización frente a imágenes diferentes a las utilizadas durante el entrenamiento.
 
 
-\subsection{Transfer Learning y ajuste fino}
+\subsection{Aprendizaje por transferencia y ajuste fino}
 
 Aunque las CNN pueden entrenarse desde cero, este enfoque requiere grandes cantidades de datos, tiempo de entrenamiento y recursos
 computacionales. En muchos problemas de clasificación de imágenes, especialmente en aplicaciones agrícolas, no siempre se dispone de
-datasets suficientemente grandes o variados para entrenar una arquitectura completa desde el inicio. Por esta razón, el aprendizaje por
+conjuntos de datos suficientemente grandes o variados para entrenar una arquitectura completa desde el inicio. Por esta razón, el aprendizaje por
 transferencia o \textit{transfer learning} se ha convertido en una estrategia ampliamente utilizada para mejorar el desempeño del modelo
 con un menor costo de entrenamiento \cite{zainab2025plant}.
 
@@ -69,7 +69,19 @@ Esta técnica permite entrenar arquitecturas ligeras como MobileNetV3 Small y Ef
 PlantVillage, reduciendo el costo computacional del entrenamiento y facilitando posteriormente su conversión e integración en una
 aplicación móvil.
 
-\subsection{Dispositivos edge}
+\section{Inferencia en dispositivos móviles}
+
+La inferencia en dispositivos móviles corresponde a la ejecución de un modelo de inteligencia artificial directamente en un teléfono u
+otro dispositivo con recursos limitados. En este escenario, el modelo ya ha sido entrenado previamente y la aplicación utiliza sus
+parámetros aprendidos para procesar una nueva entrada y generar una predicción. A diferencia del entrenamiento, esta etapa se enfoca en
+obtener una respuesta rápida y estable durante el uso real de la aplicación.
+
+En el contexto de esta investigación, la inferencia móvil permite que la clasificación de enfermedades foliares se realice dentro de la
+aplicación Android, sin depender necesariamente de un servidor externo. Esto hace que el análisis no se limite al desempeño predictivo de
+los modelos, sino que también considere las condiciones bajo las cuales estos se ejecutan en el dispositivo, incluyendo el hardware
+disponible, el marco de trabajo utilizado y las restricciones de memoria, batería y tiempo de respuesta.
+
+\subsection{Dispositivos \textit{edge}}
 Para comprender la inferencia en el dispositivo es necesario definir primero el concepto de dispositivo \textit{edge}. En términos
 generales, un dispositivo \textit{edge} es aquel que se encuentra cerca del lugar donde se generan los datos y que tiene la capacidad de
 procesarlos localmente, sin depender de manera permanente de un servidor en la nube. Dentro de esta categoría se incluyen teléfonos
@@ -84,17 +96,50 @@ rurales o de campo, donde la conectividad puede ser limitada o intermitente.
 Sin embargo, los dispositivos \textit{edge} también presentan restricciones importantes. A diferencia de un servidor, sus recursos de
 procesamiento, memoria y energía son limitados y no pueden ampliarse fácilmente debido a factores de forma, costo y consumo energético.
 Por esta razón, ejecutar modelos de aprendizaje profundo en este tipo de hardware exige utilizar arquitecturas eficientes, formatos de
-modelo optimizados y frameworks preparados para inferencia móvil.
+modelo optimizados y marcos de trabajo preparados para inferencia móvil.
 
 El hardware se convierte entonces en un elemento central para determinar la viabilidad de una solución \textit{on-device}. Algunos
 dispositivos incorporan unidades de procesamiento gráfico, procesadores neuronales o aceleradores de inteligencia artificial que pueden
 mejorar el rendimiento de ciertas operaciones. No obstante, la disponibilidad y compatibilidad de estos recursos varía entre dispositivos,
-por lo que el desempeño final de un modelo no depende únicamente de su exactitud durante el entrenamiento, sino también de cómo se ejecuta
-en el hardware específico donde será utilizado.
+por lo que el desempeño final de un modelo también depende de la forma en que se ejecuta en el hardware específico donde será utilizado.
 
 En esta investigación, los teléfonos móviles se consideran dispositivos \textit{edge}, ya que ejecutan localmente los modelos de
-clasificación y realizan el preprocesamiento de las imágenes dentro de la aplicación. Esta perspectiva permite analizar no solo la
-capacidad predictiva de los modelos, sino también su comportamiento práctico en términos de latencia, memoria, batería y temperatura.
+clasificación y realizan el preprocesamiento de las imágenes dentro de la aplicación. Esta perspectiva permite analizar su comportamiento
+práctico en términos de latencia, memoria, batería y temperatura.
+
+\subsection{Métodos de despliegue}
+
+Para hablar de la inferencia de modelos de inteligencia artificial en dispositivos móviles, es importante entender los conceptos de
+inferencia en la nube e inferencia local. El paradigma tradicional de inferencia en la nube consiste en recolectar la información requerida
+en el dispositivo y enviarla a un servidor externo a través de la red. Luego, los modelos de inteligencia artificial ejecutados en la nube
+procesan los datos y devuelven el resultado al dispositivo \cite{li2025empirical}.
+
+Los sistemas basados en la nube tienen acceso a una mayor capacidad de cómputo y almacenamiento, por lo que son adecuados para tareas de
+alto consumo de recursos, como almacenamiento de datos, procesamiento masivo y entrenamiento de modelos. Sin embargo, en aplicaciones
+móviles este enfoque presenta limitaciones importantes. Zhao et al. \cite{zhao2022survey} señalan que, aunque la nube permite ejecutar
+modelos complejos, también introduce dependencia de la red, posibles costos de infraestructura y preocupaciones de privacidad cuando los
+datos del usuario deben enviarse fuera del dispositivo. Estas limitaciones se vuelven más relevantes cuando la aplicación requiere una
+respuesta inmediata o debe funcionar en entornos con conectividad inestable.
+
+A continuación se presentan algunas de las desventajas más importantes de la inferencia en la nube:
+
+\begin{description}
+    \item[Privacidad y seguridad:] La seguridad es una de las preocupaciones más importantes, ya que los datos del usuario deben ser enviados a
+servidores externos para su procesamiento y almacenamiento, lo que puede exponer la información a riesgos de seguridad y privacidad.
+    \item[Dependencia de la red:] Requiere una conexión a internet estable para enviar datos a la nube y recibir resultados, lo que puede ser problemático en áreas
+     con conectividad limitada o intermitente.
+    \item[Costo:] Usar servicios en la nube puede generar costos adicionales, especialmente si se procesan grandes volúmenes de datos o se requieren 
+    recursos computacionales significativos.
+\end{description}
+
+Por otro lado, la inferencia local, también conocida como inferencia en el dispositivo (\textit{on-device}), se refiere a la ejecución de
+modelos de inteligencia artificial directamente en el hardware del dispositivo móvil, sin necesidad de enviar datos a servidores externos
+\cite{dhar2019ondevice}. Este enfoque reduce la latencia, mejora la privacidad y permite que la aplicación funcione sin conexión a
+internet. Sin embargo, también presenta desafíos técnicos debido a las limitaciones de memoria, procesamiento y energía propias de los
+dispositivos móviles.
+
+En el caso de esta tesis, esta diferencia es central, ya que los modelos no solo se entrenan para clasificar enfermedades foliares, sino
+que además se integran en una aplicación Android y se evalúan directamente sobre teléfonos con capacidades de hardware diferentes.
 
 \subsection{Flujo de integración de modelos de IA en el dispositivo}
 
@@ -125,47 +170,14 @@ como de hardware. En esta etapa se define cómo se carga el modelo, cómo se eje
 disponibles del dispositivo. En el contexto de esta tesis, este flujo se refleja en la preparación de las imágenes, el entrenamiento y
 conversión de los modelos, y su posterior integración dentro de una aplicación Android para ejecutar la clasificación de forma local.
 
-
-
-\section{Arquitecturas ligeras para dispositivos móviles}
-
-\subsection{Métodos de despliegue}
-Para hablar de la inferencia de modelos de inteligencias artificial en dispositivos móviles, es importante entender los conceptos de
-inferencia en la nube e inferencia local. El paradigma tradicional de inferencia en la nube consisten en recolactar la informacion requerida
-para la inferencia a nivel dispositivo El dispositivo se conecta a un servidor en la nube a traves de la red. Luego los modelos de inteligencia 
-artificial operando en los servidores ejecutan la inferencia sobre la data y envian el resultado al dispositivo \cite{li2025empirical}.  
-
-Los sitemas basados en la nube tienen acceso casi que a recursos ilimitados, unicamente limtados por el costo de los recursos utilizados, lo que los
-hace ideales para escenarios de complejos de actividades de alto consumo de recursos como almacenamiento de data, procesamiento de data, 
-entrenamiento de modelos, etc. Sin embargo, la inferencia en la nube tiene limitaciones que se vuelven mas promientes a medida IA constanteme se 
-esta transformando en un factor clave en la vida cotidiana, especiamente den las aplicaciones móviles.\cite{dhar2019ondevice}. A continuacion se presentan algunas de las limitaciones mas importantes de la inferencia en la nube:
-algunas de las desvantajas de la inferencia en la nube incluyen:
-
-\begin{description}
-    \item[Privacidad y seguridad:] La segurdidad es una de las preocupaciones mas importantes, ya que la data del usuario debe ser enviada a
-servidores externos para su procesamiento y almacenamiento, lo que puede exponer la información a riesgos de seguridad y privacidad.
-    \item[Dependencia de la red:] Requiere una conexión a internet estable para enviar datos a la nube y recibir resultados, lo que puede ser problemático en áreas
-     con conectividad limitada o intermitente.
-    \item[Costo:] Usar servicios en la nube puede generar costos adicionales, especialmente si se procesan grandes volúmenes de datos o se requieren 
-    recursos computacionales significativos.
-\end{description}
-
-Por otro lado la inferencia local, también conocida como inferencia en el dispositivo (on-device), se refiere a la ejecución de modelos 
-de inteligencia artificial directamente en el hardware del dispositivo móvil, sin necesidad de enviar datos a servidores externos \cite{dhar2019ondevice}. Este enfoque tiene varias ventajas, como la reducción de la latencia, 
-la mejora de la privacidad y la capacidad de funcionar sin conexión a internet lo que garantiza respuestas inmediatas y una mejora significativa
-en la privacidad y seguridad de las aplicaciones. Sin embargo, también presenta desafíos técnicos
-significativos debido a las limitaciones de recursos de los dispositivos móviles, como la memoria, el procesamiento y el consumo energético.
-    
-
-
 \subsection{Marcos de trabajo en dispositivos móviles}
 
-Los marcos de trabajo (frameworks) para aprendizaje profundo en dispositivos móviles permiten llevar un modelo entrenado desde el entorno de
-desarrollo hasta una aplicación ejecutable en un teléfono. Estos frameworks proporcionan las APIs y herramientas necesarias para cargar
-el modelo, preparar los datos de entrada, ejecutar la inferencia y obtener la salida sin que el desarrollador tenga que implementar
-directamente las operaciones matriciales o las optimizaciones de bajo nivel. A diferencia de los frameworks utilizados en servidores, los
-marcos móviles deben priorizar una ejecución rápida, un consumo reducido de memoria y un número menor de dependencias, ya que el modelo
-debe funcionar dentro de las restricciones propias del dispositivo \cite{deng2022understanding}.
+Los marcos de trabajo (\textit{frameworks}) para aprendizaje profundo en dispositivos móviles permiten llevar un modelo entrenado desde
+el entorno de desarrollo hasta una aplicación ejecutable en un teléfono. Estos marcos proporcionan las APIs y herramientas necesarias
+para cargar el modelo, preparar los datos de entrada, ejecutar la inferencia y obtener la salida sin que el desarrollador tenga que
+implementar directamente las operaciones matriciales o las optimizaciones de bajo nivel. A diferencia de los marcos utilizados en
+servidores, los marcos móviles deben priorizar una ejecución rápida, un consumo reducido de memoria y un número menor de dependencias,
+ya que el modelo debe funcionar dentro de las restricciones propias del dispositivo \cite{deng2022understanding}.
 
 El flujo general de despliegue comienza con un modelo entrenado en un entorno de desarrollo, que luego se convierte a un formato
 compatible con ejecución móvil. En muchos casos también se aplican técnicas de optimización, como la cuantización, con el fin de reducir
@@ -176,44 +188,112 @@ sin depender de una conexión a internet.
 
 Una característica importante de este enfoque es que el archivo del modelo contiene tanto la estructura de la red como sus parámetros
 entrenados. Por esta razón, no es necesario reconstruir la arquitectura completa desde el código de la aplicación. Una vez instalada la
-aplicación, el modelo se carga mediante las bibliotecas del framework correspondiente, y el código de la aplicación se encarga de recibir
+aplicación, el modelo se carga mediante las bibliotecas del marco correspondiente, y el código de la aplicación se encarga de recibir
 la imagen, aplicar el preprocesamiento necesario, entregar los datos al modelo y procesar la predicción generada localmente.
 
 En aplicaciones móviles de inteligencia artificial se han utilizado distintos marcos de trabajo según el sistema operativo, el tipo de
 modelo y las necesidades de despliegue. En el estudio empírico realizado por Li et al. \cite{li2024empirical}, sobre 56.682 aplicaciones
-móviles con técnicas de IA, se observa que para el despliegue directamente en el dispositivo destacan los frameworks ligeros, especialmente
-TensorFlow Lite en Android y Core ML en el ecosistema de Apple. También se reporta el uso de frameworks más generales como TensorFlow,
+móviles con técnicas de IA, se observa que para el despliegue directamente en el dispositivo destacan los marcos ligeros, especialmente
+TensorFlow Lite en Android y Core ML en el ecosistema de Apple. También se reporta el uso de marcos más generales como TensorFlow,
 PyTorch o Caffe en etapas de diseño y entrenamiento, así como herramientas especializadas como OpenCV para tareas de visión por
 computadora.
 
-En el contexto de esta investigación, el uso de un framework móvil resulta fundamental porque permite integrar los modelos entrenados en
-una aplicación Android y ejecutar la inferencia de forma local. Esto hace posible evaluar no solo la exactitud del modelo, sino también
-su comportamiento práctico en el dispositivo, incluyendo el tiempo de respuesta, el uso de memoria, el consumo de batería y la estabilidad
-durante sesiones repetidas de prueba.
+De manera complementaria, Zhao et al. \cite{zhao2022survey} agrupan las estrategias de optimización para dispositivos móviles en dos
+categorías principales. La primera corresponde a las optimizaciones orientadas al modelo, como la selección de arquitecturas ligeras, la
+poda, la cuantización o la compresión del modelo. La segunda corresponde a optimizaciones no orientadas directamente al modelo, donde se
+busca aprovechar mejor el software y el hardware disponible, por ejemplo mediante aceleradores, GPUs móviles, DSPs o librerías específicas
+para inferencia. Esta distinción permite entender que la eficiencia final no depende solamente del tamaño del modelo, sino también del
+marco utilizado y de la forma en que este se comunica con el hardware del dispositivo.
 
-\section{Desafios tecnicos en la implementación de modelos de aprendizaje profundo en dispositivos móviles}
+En el contexto de esta investigación, el uso de un marco de trabajo móvil resulta fundamental porque permite integrar los modelos
+entrenados en una aplicación Android y ejecutar la inferencia de forma local. Esto hace posible evaluar no solo la exactitud del modelo,
+sino también su comportamiento práctico en el dispositivo, incluyendo el tiempo de respuesta, el uso de memoria, el consumo de batería y
+la estabilidad durante sesiones repetidas de prueba.
+
+
+
+\section{Arquitecturas ligeras para dispositivos móviles}
+
+El diseño de arquitecturas ligeras de redes neuronales ha tomado importancia debido a que los dispositivos \textit{edge}, especialmente
+en aplicaciones de IoT y AIoT, requieren modelos capaces de procesar información de forma local y con tiempos de respuesta adecuados,
+pero bajo restricciones de memoria, energía y capacidad de cómputo. En este contexto, una arquitectura ligera busca reducir la cantidad
+de parámetros y el costo computacional del modelo, de manera que pueda ser ejecutada en plataformas móviles sin depender necesariamente
+de recursos externos \cite{wang2025empowering}.
+
+Para lograr esta reducción, este tipo de modelos suele utilizar estrategias como convoluciones separables en profundidad, reducción de
+canales, poda de redes y agrupamiento convolucional. Estas técnicas permiten disminuir el número de operaciones y el uso de memoria,
+manteniendo un desempeño competitivo frente a arquitecturas más grandes. Por esta razón, las redes ligeras resultan especialmente
+relevantes cuando el objetivo no es únicamente obtener una buena precisión durante el entrenamiento, sino también ejecutar la inferencia
+directamente en un teléfono móvil.
+
+Dentro de las arquitecturas ligeras más utilizadas se encuentra la familia MobileNet, diseñada para aplicaciones de visión por computadora
+en dispositivos móviles y embebidos \cite{howard2017mobilenetsefficientconvolutionalneural}. MobileNetV1 introdujo el uso de convoluciones
+separables en profundidad para reducir el cálculo respecto a redes convolucionales tradicionales. Posteriormente, MobileNetV2 incorporó
+residuos invertidos y cuellos de botella lineales, mejorando la relación entre exactitud y costo computacional. MobileNetV3 continúa esta
+línea al optimizar la arquitectura para escenarios con restricciones de latencia, por lo que alcanza un aumento aproximado de precisión
+frente a las versiones anteriores, pero con un número menor de operaciones que facilita su despliegue en dispositivos móviles.
+
+Otra familia relevante es EfficientNet, la cual propone un escalado compuesto de la red, ajustando de forma conjunta la anchura, la
+profundidad y la resolución de entrada \cite{tan2020efficientnetrethinkingmodelscaling}. A diferencia de aumentar solo una dimensión del
+modelo, este enfoque busca mantener un equilibrio entre capacidad de representación y costo computacional. Posteriormente, EfficientNetV2
+mejoró este diseño con modelos más pequeños y entrenamientos más rápidos, conservando un desempeño competitivo frente a versiones
+anteriores \cite{DBLP:journals/corr/abs-2104-00298}. Esta familia resulta importante para la investigación porque permite analizar un
+modelo más robusto que MobileNetV3 Small, pero que todavía puede ser llevado a un dispositivo móvil para evaluar su comportamiento real
+en términos de latencia, memoria, batería y temperatura.
+
+\section{Desafíos técnicos en la implementación de modelos de aprendizaje profundo en dispositivos móviles}
+
+La implementación de modelos de aprendizaje profundo en dispositivos móviles presenta desafíos adicionales a los observados durante el
+entrenamiento. En un entorno de desarrollo, el desempeño del modelo suele analizarse principalmente a partir de métricas de clasificación;
+sin embargo, al llevar el modelo a un teléfono móvil también se deben considerar las restricciones propias del hardware. El procesador,
+la memoria disponible, el consumo de batería y la temperatura del dispositivo pueden influir directamente en la experiencia de uso y en
+la viabilidad de ejecutar la inferencia de forma local.
+
+Por esta razón, una solución \textit{on-device} no debe evaluarse únicamente por su exactitud, sino también por su comportamiento durante
+la ejecución real. Un modelo con buen desempeño predictivo puede no ser adecuado para una aplicación móvil si requiere demasiado tiempo
+para generar una respuesta, si incrementa de forma considerable el uso de memoria o si produce un consumo energético elevado. En este
+sentido, los principales desafíos técnicos considerados en esta investigación se relacionan con el tiempo de procesamiento, la memoria y
+el consumo energético, ya que estos factores permiten caracterizar el comportamiento práctico de los modelos dentro del dispositivo.
 
 \subsection{Tiempo de procesamiento}
-El tiempo de respuesta suele estar entre los factores más críticos para la usabilidad de cualquier aplicación en el dispositivo (on-device). 
-Las dos medidas comúnmente utilizadas son el rendimiento (throughput) y la latencia. El rendimiento se mide como la tasa a la que se procesan los datos de 
-entrada. Para maximizar el rendimiento, es común agrupar las entradas en lotes (batches), lo que resulta en una mayor utilización.
+El tiempo de respuesta suele estar entre los factores más críticos para la usabilidad de cualquier aplicación en el dispositivo
+(\textit{on-device}). Las dos medidas comúnmente utilizadas son el rendimiento (\textit{throughput}) y la latencia. El rendimiento se
+mide como la tasa a la que se procesan los datos de entrada. Para maximizar el rendimiento, es común agrupar las entradas en lotes
+(\textit{batches}), lo que resulta en una mayor utilización.
 Sin embargo, realizar esta medición conlleva un tiempo de espera adicional para agregar los datos en dichos lotes. 
 Por tanto, para casos de uso críticos en tiempo, la latencia es la medida utilizada con mayor frecuencia.
 
- \subsection{Memoria}
+En aplicaciones móviles, la latencia resulta especialmente importante porque está directamente relacionada con la percepción del usuario.
+Un modelo puede tener buen desempeño en el conjunto de prueba, pero si su inferencia es lenta, la experiencia de uso puede verse afectada.
+Además, el tiempo de ejecución no es una propiedad fija del modelo, ya que depende del procesador, la memoria, el marco de trabajo utilizado y
+las condiciones del dispositivo durante la prueba \cite{zhao2022survey}. Por esta razón, en esta investigación se mide la inferencia
+directamente sobre los dispositivos móviles utilizados, en lugar de asumir que el comportamiento observado durante el entrenamiento se
+mantiene igual en el teléfono.
+
+\subsection{Memoria}
 La memoria de un dispositivo proporciona un acceso inmediato a los datos en comparación con otros componentes de almacenamiento. 
-Sin embargo, esta velocidad de acceso tiene costos más elevados. Por razones de costo, la mayoría de los dispositivos edge están diseñados con una memoria 
-limitada. Como tal, la huella de memoria (memory footprint) de las aplicaciones edge suele estar adaptada para un dispositivo objetivo específico.
+Sin embargo, esta velocidad de acceso tiene costos más elevados. Por razones de costo, la mayoría de los dispositivos \textit{edge} están diseñados con una memoria 
+limitada. Por esto, la huella de memoria (\textit{memory footprint}) de las aplicaciones \textit{edge} suele estar adaptada para un dispositivo objetivo específico.
 
 Los algoritmos de aprendizaje automático avanzados a menudo consumen una cantidad significativa de memoria durante la construcción del modelo,
-debido al almacenamiento de los parámetros del modelo, variables auxiliares, etc. Por ejemplo, incluso modelos de clasificación de imágenes relativamente 
-simples como ResNet-50 pueden ocupar megabytes de espacio en memoria
+debido al almacenamiento de los parámetros del modelo y de variables auxiliares. Por ejemplo, incluso modelos de clasificación de imágenes relativamente 
+simples como ResNet-50 pueden ocupar megabytes de espacio en memoria.
+
+En el despliegue móvil, la memoria no solo se relaciona con el tamaño del archivo del modelo, sino también con los tensores intermedios,
+las estructuras internas del marco de trabajo y los recursos temporales utilizados durante la inferencia. Por esta razón, dos modelos con tamaños de
+archivo distintos pueden generar comportamientos diferentes al ejecutarse en una aplicación real. Esta consideración justifica evaluar el
+uso de memoria del proceso durante la ejecución, ya que permite observar el impacto práctico del modelo dentro del sistema móvil.
 
 \subsection{Consumo energético}
-El consumo de energía es otro factor crucial para la ejecución de modelos en dispositivos móviles. Una solución energéticamente eficiente puede prolongar 
-la vida útil de la batería y reducir los costos de mantenimiento. La potencia del sistema, comúnmente estudiada en el desarrollo de hardware, 
-es la relación entre el consumo de energía y el lapso de tiempo para una tarea determinada. 
+El consumo de energía es otro factor crucial para la ejecución de modelos en dispositivos móviles. Una solución energéticamente eficiente puede prolongar
+la vida útil de la batería y reducir los costos de mantenimiento. La potencia del sistema, comúnmente estudiada en el desarrollo de hardware,
+es la relación entre el consumo de energía y el lapso de tiempo para una tarea determinada.
 Vincular el consumo de energía de una aplicación particular impulsada por IA para un dispositivo específico depende conjuntamente de una
-serie de variables como el tiempo de ejecución, la memoria, etc. Capturar estas dependencias casi nunca es determinista.
-Por ello, la mayoría de las investigaciones existentes estiman el uso de potencia/energía a través de una función sustituta (surrogate function)
+serie de variables como el tiempo de ejecución y la memoria. Capturar estas dependencias casi nunca es determinista.
+Por ello, la mayoría de las investigaciones existentes estiman el uso de potencia/energía a través de una función sustituta (\textit{surrogate function})
 que típicamente depende de la memoria y el tiempo de ejecución de una aplicación.
+
+En dispositivos móviles, este consumo energético se refleja directamente en la batería disponible para el usuario. Por lo tanto, una
+arquitectura con menor latencia no siempre debe analizarse de forma aislada, sino junto con el consumo de batería y la estabilidad térmica
+durante sesiones repetidas. Zhao et al. \cite{zhao2022survey} resaltan que la optimización de modelos móviles implica un balance entre
+exactitud, tiempo de inferencia, memoria y energía, y que este balance puede cambiar según el hardware donde se ejecute el modelo.

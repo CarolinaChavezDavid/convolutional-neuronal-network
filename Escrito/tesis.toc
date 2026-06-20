@@ -5,52 +5,53 @@
 \contentsline {subsection}{\numberline {1.1.2}Objetivos específicos}{6}{subsection.1.1.2}%
 \contentsline {chapter}{\numberline {2}Marco Teórico}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Redes neuronales convolucionales para clasificación de imágenes}{7}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Transfer Learning y ajuste fino}{8}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Dispositivos edge}{9}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Flujo de integración de modelos de IA en el dispositivo}{9}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}Arquitecturas ligeras para dispositivos móviles}{10}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Métodos de despliegue}{10}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Marcos de trabajo en dispositivos móviles}{11}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Desafios tecnicos en la implementación de modelos de aprendizaje profundo en dispositivos móviles}{12}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Tiempo de procesamiento}{12}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Memoria}{12}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Consumo energético}{13}{subsection.2.3.3}%
-\contentsline {chapter}{\numberline {3}Trabajos relacionados}{14}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Comparación de arquitecturas ligeras para clasificación de enfermedades}{14}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Aplicaciones móviles para diagnóstico de enfermedades en plantas}{15}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Síntesis de los trabajos revisados}{16}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Metodología}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Conjunto de datos}{17}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Modelos de aprendizaje profundo}{21}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Modelos MobileNet}{22}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Modelos EfficientNet}{22}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Entrenamiento de los modelos}{23}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Preprocesamiento de imágenes}{23}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Entrenamiento de MobileNetV3 Small}{24}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Entrenamiento de EfficientNetV2B0}{24}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Aplicación móvil}{25}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Dispositivo de prueba}{26}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Protocolo de evaluación en dispositivo}{27}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Métricas de evaluación}{29}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Métricas del modelo}{29}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Métricas de ejecución en dispositivo}{30}{subsection.4.5.2}%
-\contentsline {chapter}{\numberline {5}Resultados experimentales}{32}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Resultados del entrenamiento de los modelos}{32}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Modelo MobileNetV3 Small}{32}{subsection.5.1.1}%
-\contentsline {subsubsection}{Configuración del entrenamiento}{32}{section*.10}%
-\contentsline {subsubsection}{Evolución del entrenamiento}{33}{section*.12}%
-\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{34}{section*.14}%
-\contentsline {subsubsection}{Exportación del modelo}{35}{section*.16}%
-\contentsline {subsection}{\numberline {5.1.2}Modelo EfficientNetV2B0}{35}{subsection.5.1.2}%
-\contentsline {subsubsection}{Configuración del entrenamiento}{36}{section*.17}%
-\contentsline {subsubsection}{Evolución del entrenamiento}{37}{section*.19}%
-\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{37}{section*.21}%
-\contentsline {subsubsection}{Exportación del modelo}{39}{section*.24}%
-\contentsline {section}{\numberline {5.2}Aplicación móvil}{39}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Resultados de ejecución en dispositivo}{41}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Tiempo de inicialización y warmup}{44}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Memoria PSS}{44}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Consumo de batería}{46}{subsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.3.4}Temperatura del dispositivo}{46}{subsection.5.3.4}%
-\contentsline {subsection}{\numberline {5.3.5}Coherencia botánica}{47}{subsection.5.3.5}%
-\contentsline {chapter}{\numberline {6}Conclusiones}{51}{chapter.6}%
+\contentsline {subsection}{\numberline {2.1.1}Aprendizaje por transferencia y ajuste fino}{8}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Inferencia en dispositivos móviles}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Dispositivos \textit {edge}}{9}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Métodos de despliegue}{10}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Flujo de integración de modelos de IA en el dispositivo}{11}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Marcos de trabajo en dispositivos móviles}{11}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Arquitecturas ligeras para dispositivos móviles}{13}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Desafíos técnicos en la implementación de modelos de aprendizaje profundo en dispositivos móviles}{13}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Tiempo de procesamiento}{14}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Memoria}{14}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Consumo energético}{15}{subsection.2.4.3}%
+\contentsline {chapter}{\numberline {3}Trabajos relacionados}{16}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Comparación de arquitecturas ligeras para clasificación de enfermedades}{16}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Aplicaciones móviles para diagnóstico de enfermedades en plantas}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Síntesis de los trabajos revisados}{18}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Metodología}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Conjunto de datos}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Modelos de aprendizaje profundo}{23}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Modelos MobileNet}{24}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Modelos EfficientNet}{24}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Entrenamiento de los modelos}{25}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Preprocesamiento de imágenes}{25}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Entrenamiento de MobileNetV3 Small}{26}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Entrenamiento de EfficientNetV2B0}{26}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Aplicación móvil}{27}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Dispositivo de prueba}{28}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Protocolo de evaluación en dispositivo}{29}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Métricas de evaluación}{31}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Métricas del modelo}{31}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Métricas de ejecución en dispositivo}{32}{subsection.4.5.2}%
+\contentsline {chapter}{\numberline {5}Resultados experimentales}{34}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Resultados del entrenamiento de los modelos}{34}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Modelo MobileNetV3 Small}{34}{subsection.5.1.1}%
+\contentsline {subsubsection}{Configuración del entrenamiento}{34}{section*.10}%
+\contentsline {subsubsection}{Evolución del entrenamiento}{35}{section*.12}%
+\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{36}{section*.14}%
+\contentsline {subsubsection}{Exportación del modelo}{37}{section*.16}%
+\contentsline {subsection}{\numberline {5.1.2}Modelo EfficientNetV2B0}{37}{subsection.5.1.2}%
+\contentsline {subsubsection}{Configuración del entrenamiento}{38}{section*.17}%
+\contentsline {subsubsection}{Evolución del entrenamiento}{39}{section*.19}%
+\contentsline {subsubsection}{Evaluación en el conjunto de prueba}{39}{section*.21}%
+\contentsline {subsubsection}{Exportación del modelo}{41}{section*.24}%
+\contentsline {section}{\numberline {5.2}Aplicación móvil}{41}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Resultados de ejecución en dispositivo}{43}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Tiempo de inicialización y warmup}{46}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Memoria PSS}{46}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Consumo de batería}{48}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Temperatura del dispositivo}{48}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Coherencia botánica}{49}{subsection.5.3.5}%
+\contentsline {chapter}{\numberline {6}Conclusiones}{53}{chapter.6}%
